@@ -2,88 +2,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sunshine Institute – Online Test</title>
+  <title>Sunshine Test Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #fffde7, #fff9c4);
-      color: #333;
-    }
-
-    .container {
-      max-width: 500px;
-      margin: 40px auto;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(255, 235, 59, 0.5);
-      background-color: #fff;
+      font-family: sans-serif;
+      background: #fffde7;
       text-align: center;
+      padding: 60px 20px;
+      user-select: none; /* Disable text selection */
     }
-
+    .box {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+    }
     h1 {
-      font-size: 22px;
       color: #fbc02d;
-      margin-bottom: 5px;
     }
-
-    p {
-      margin-top: 0;
-      font-size: 14px;
-      color: #666;
-    }
-
     button {
-      margin-top: 30px;
-      padding: 15px 30px;
-      background-color: #fdd835;
+      background: #fdd835;
       border: none;
-      border-radius: 10px;
+      padding: 15px 30px;
       font-size: 16px;
-      font-weight: bold;
-      color: #000;
+      border-radius: 8px;
       cursor: pointer;
-      transition: background 0.3s ease;
     }
-
     button:hover {
-      background-color: #fbc02d;
-    }
-
-    footer {
-      margin-top: 20px;
-      font-size: 12px;
-      color: #aaa;
-    }
-
-    @media screen and (max-width: 600px) {
-      .container {
-        margin: 20px 10px;
-        padding: 20px;
-      }
-      h1 {
-        font-size: 18px;
-      }
-      button {
-        font-size: 15px;
-      }
+      background: #fbc02d;
     }
   </style>
+
+  <script>
+    // Disable right-click
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    // Disable Ctrl+U, Ctrl+C, Ctrl+Shift+I, F12
+    document.addEventListener('keydown', function(e) {
+      if (
+        e.ctrlKey && (e.key === 'u' || e.key === 'U' || 
+                      e.key === 'c' || e.key === 'C' ||
+                      e.key === 's' || e.key === 'S') ||
+        e.key === 'F12' || 
+        (e.ctrlKey && e.shiftKey && e.key === 'I')
+      ) {
+        e.preventDefault();
+      }
+    });
+  </script>
 </head>
+
 <body>
-  <div class="container">
+  <div class="box">
     <h1>Sunshine Computer Training & STENO Classes, Bayana</h1>
-    <p>Panchayat Samiti Road, Bayana – Bharatpur (Raj.)</p>
-
-    <button onclick="go()">📝 ONLINE TEST WEB PORTAL</button>
-
-    <footer>© 2025 Sunshine Institute. All Rights Reserved.</footer>
+    <p>Panchayat Samiti Road, Bayana</p>
+    <button onclick="redirect()">📝 ONLINE TEST WEB PORTAL</button>
   </div>
 
   <script>
-    function go() {
-       location.href = "go" + "to" + ".html";
+    function redirect() {
+      const x = "go", y = "to", z = ".html";
+      location.href = x + y + z;
     }
   </script>
 </body>
