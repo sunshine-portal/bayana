@@ -1,55 +1,130 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sunshine Institute - Online Test</title>
-  <style>
-    body {
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sunshine Institute – Online Test</title>
+  <title>Sunshine Test Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+body {
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-      background-color: #ffffff;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      background: linear-gradient(to right, #fffde7, #fff9c4);
+      color: #333;
+      font-family: sans-serif;
+      background: #fffde7;
       text-align: center;
+      padding: 60px 20px;
+      user-select: none; /* Disable text selection */
+}
+
+    .container {
+      max-width: 500px;
+      margin: 40px auto;
+    .box {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 235, 59, 0.5);
+      background-color: #fff;
+      text-align: center;
+      border-radius: 16px;
+      box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+}
+
+h1 {
+      font-size: 22px;
+color: #fbc02d;
+      margin-bottom: 5px;
     }
-    h2 {
-      color: #007BFF;
-    }
-    .info {
-      margin-top: 20px;
-      font-size: 16px;
-      color: #444;
-      line-height: 1.6;
-    }
-    .start-btn {
+
+    p {
+      margin-top: 0;
+      font-size: 14px;
+      color: #666;
+}
+
+button {
       margin-top: 30px;
-      padding: 12px 24px;
-      font-size: 18px;
-      background-color: #28a745;
-      color: white;
-      border: none;
+      padding: 15px 30px;
+      background-color: #fdd835;
+      background: #fdd835;
+border: none;
+      border-radius: 10px;
+      padding: 15px 30px;
+font-size: 16px;
+      font-weight: bold;
+      color: #000;
       border-radius: 8px;
-      cursor: pointer;
+cursor: pointer;
+      transition: background 0.3s ease;
+}
+
+button:hover {
+      background-color: #fbc02d;
+      background: #fbc02d;
+}
+  </style>
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #aaa;
     }
-    .start-btn:hover {
-      background-color: #1e7e34;
+  <script>
+    // Disable right-click
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    @media screen and (max-width: 600px) {
+      .container {
+        margin: 20px 10px;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 18px;
+    // Disable Ctrl+U, Ctrl+C, Ctrl+Shift+I, F12
+    document.addEventListener('keydown', function(e) {
+      if (
+        e.ctrlKey && (e.key === 'u' || e.key === 'U' || 
+                      e.key === 'c' || e.key === 'C' ||
+                      e.key === 's' || e.key === 'S') ||
+        e.key === 'F12' || 
+        (e.ctrlKey && e.shiftKey && e.key === 'I')
+      ) {
+        e.preventDefault();
+}
+      button {
+        font-size: 15px;
+      }
     }
   </style>
+    });
+  </script>
 </head>
-<body>
-  <h2>🌟 Sunshine Computer Training & STENO Classes</h2>
-  <div class="info">
-    <p><strong>Director:</strong> Atendra Sharma</p>
-    <p><strong>Location:</strong> Near Bus Stand, Bayana (Rajasthan)</p>
-    <p><strong>Contact:</strong> +91 9929856121</p>
-    <p><strong>Courses:</strong> RS-CIT, STENO, Tally Prime, Computer Typing</p>
-  </div>
 
-  <button class="start-btn" onclick="window.location.replace('https://script.google.com/macros/s/AKfycbx1eVmp0VQMh7pm3GTPmNdnkpvq4eXX5LtjL3qnhRdVr0Es6Us8PZScqy-5BWQ1ndH_/exec')">
-    Start Online Test Web Portal
-  </button>
+<body>
+  <div class="container">
+  <div class="box">
+<h1>Sunshine Computer Training & STENO Classes, Bayana</h1>
+    <p>Panchayat Samiti Road, Bayana – Bharatpur (Raj.)</p>
+
+    <button onclick="go()">📝 ONLINE TEST WEB PORTAL</button>
+
+    <footer>© 2025 Sunshine Institute. All Rights Reserved.</footer>
+    <p>Panchayat Samiti Road, Bayana</p>
+    <button onclick="redirect()">📝 ONLINE TEST WEB PORTAL</button>
+</div>
+
+<script>
+    function go() {
+       location.href = "go" + "to" + ".html";
+    function redirect() {
+      const x = "go", y = "to", z = ".html";
+      location.href = x + y + z;
+}
+</script>
 </body>
-</html>
