@@ -1,280 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sunshine Online Test Portal</title>
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Sunshine Online Test Portal - Practice RS-CIT, Typing & Competitive Exams Online">
-  <meta name="keywords" content="RS-CIT, Online Test, Typing Practice, Sunshine Institute, Competitive Exams">
-  <meta name="author" content="Atendra Sharma">
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- AOS Scroll Animations -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-
+  <title>Sunshine Computer Training & STENO Classes, Bayana – Online Test Portal</title>
   <style>
-    * {
-      box-sizing: border-box;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
       margin: 0;
       padding: 0;
     }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background-color: #fffefc;
-      color: #333;
-      line-height: 1.6;
-    }
-
     header {
-      background: #fdd835;
-      color: #000;
+      background-color: #003366;
+      color: white;
+      padding: 20px;
       text-align: center;
-      padding: 8px 10px 10px;
-      line-height: 1.2;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
-    @media (min-width: 769px) {
-      header {
-        position: static;
-      }
-    }
-
-    @media (max-width: 768px) {
-      header {
-        position: sticky;
-        top: 0;
-      }
-    }
-
-    header img {
-      width: 70px;
-      border-radius: 10px;
-    }
-
-    h1, h2, h3 {
-      margin: 10px 0;
+    .content {
+      text-align: center;
+      padding: 30px;
     }
 
     .btn {
-      background-color: #ff6f00;
-      color: #fff;
-      padding: 14px 28px;
-      font-size: 1.1rem;
+      padding: 15px 30px;
+      font-size: 18px;
+      background-color: #28a745;
+      color: white;
       border: none;
       border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-      margin-top: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: background 0.3s ease;
+      cursor: pointer;
     }
 
-    .btn:hover {
-      background-color: #e65100;
-    }
-
-    section {
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-
-    .intro-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: center;
-      background: #f9f9f9;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-
-    .intro-section img {
-      width: 120px;
-      border-radius: 10px;
-    }
-
-    .intro-text {
-      flex: 1;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    ul li::before {
-      content: '✔️';
-      margin-right: 10px;
-    }
-
-    table {
+    iframe {
       width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
-      background: #fff;
-      box-shadow: 0 0 8px rgba(0,0,0,0.05);
-    }
-
-    th, td {
-      padding: 10px;
-      border: 1px solid #eee;
-      font-size: 0.95rem;
-    }
-
-    th {
-      background-color: #f1c40f;
-      color: #000;
-    }
-
-    .qr {
-      width: 200px;
-      display: block;
-      margin: 20px auto;
+      height: 85vh;
+      border: none;
+      margin-top: 20px;
+      display: none;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      background-color: #eee;
-      font-size: 0.95rem;
+      font-size: 14px;
+      padding: 10px;
+      color: gray;
+      background-color: #eaeaea;
     }
-
-    @media (max-width: 768px) {
-      .intro-section {
-        flex-direction: column;
-        text-align: center;
-      }
-      .btn {
-        width: 100%;
-      }
-    }
-  header {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-body.loaded header {
-  opacity: 1;
-  transform: translateY(0);
-}
-</style>
-
-  <script>
-    window.addEventListener('load', () => {
-      document.body.classList.add('loaded');
-    });
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('copy', e => e.preventDefault());
-  </script>
+  </style>
 </head>
 <body>
   <header>
-    <img src="https://github.com/sunshine-digital/portal/blob/main/logo.jpg?raw=true" alt="Logo">
-    <h1>🧠 ONLINE TEST WEB PORTAL</h1>
-    <h2>🚀 Powered by SUNSHINE Computer Institute, Bayana</h2>
-    <a class="btn" href="https://sunshine-portal.github.io/bayana/">🏱 Free Trial – Start Test Now</a>
+    <h2>Sunshine Computer Training & STENO Classes, Bayana</h2>
+    <p>Empowering Students through Technology</p>
   </header>
 
-  <section>
-    <h2>🌟 About Us – Sunshine Online Test Portal</h2>
-    <p>Welcome to Sunshine Online Test Portal – A smart digital platform specially designed for:</p>
-    <ul>
-      <li>🎓 Competitive Exam Aspirants</li>
-      <li>🧑‍💼 RS-CIT Learners</li>
-      <li>⌨️ Typing & Steno Students</li>
-    </ul>
-    <p>✅ Easy-to-use, mobile-friendly test system<br>
-       ✅ Real-time exam-like experience<br>
-       ✅ Instant results with performance feedback<br>
-       ✅ Hindi + English language support</p>
-    <div class="intro-section">
-      <img src="https://github.com/sunshine-digital/portal/blob/main/mypic1.jpg?raw=true" alt="Atendra Sharma">
-      <div class="intro-text">
-        <h3>Atendra Sharma</h3>
-        <p>CEO & Founder, Sunshine Online Test Portal</p>
-        <p>Director – Sunshine Computer Training & STENO Classes, Bayana</p>
-      </div>
-    </div>
-  </section>
+  <div class="content">
+    <p>Click the button below to begin your Online Test:</p>
+    <button class="btn" onclick="startTest()">Start Test</button>
 
-  <section>
-    <h2>⚙️ About Our System</h2>
-    <p>Sunshine Online Test Portal is a 100% cloud-based platform – ideal for coaching centers, institutes, and training academies.</p>
-    <table>
-      <tr><th>🔧 Feature</th><th>📋 Description</th></tr>
-      <tr><td>🔐 Login/Signup</td><td>Secure student access</td></tr>
-      <tr><td>🧠 Practice & Exam Tests</td><td>Powerful question bank for RS-CIT & others</td></tr>
-      <tr><td>🎓 Digital Learning Zone</td><td>Specially curated for RS-CIT preparation</td></tr>
-      <tr><td>📝 Auto Result</td><td>Instantly view marks & analysis</td></tr>
-      <tr><td>📊 Rankings</td><td>Top 10 student list auto-generated</td></tr>
-      <tr><td>🖥️ Institute Panel</td><td>Manage student records efficiently</td></tr>
-      <tr><td>📱 Mobile Friendly</td><td>Seamless use on mobile & PC</td></tr>
-      <tr><td>♻️ Regular Updates</td><td>Always fresh and updated content</td></tr>
-    </table>
-  </section>
-
-  <section>
-    <h2>🎯 Why Choose Sunshine?</h2>
-    <p>This smart test portal is perfect for students who:</p>
-    <ul>
-      <li>📌 Worry about how to clear the RS-CIT exam</li>
-      <li>📌 Want to prepare from anywhere, anytime</li>
-      <li>📌 Prefer digital practice over traditional books</li>
-      <li>📌 Want real-time training at home or institute</li>
-    </ul>
-    <p><strong>🧭 Now study anywhere, anytime – only with SUNSHINE.</strong></p>
-  </section>
-
-  <section>
-    <h2>💼 For Coaching Centers</h2>
-    <p>Want your own branded test panel?<br>
-    We provide customized systems with your institute’s name and address – fully set up in just 24 hours!</p>
-    <ul>
-      <li>🏱 No Setup Fee for Trial</li>
-      <li>⚙️ Full Customization Available</li>
-      <li>📞 Call now to get started!</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>💸 Pricing Plans</h2>
-    <table>
-      <tr><th>Duration</th><th>With Your Institute Name</th><th>With Sunshine Name</th></tr>
-      <tr><td>🗓️ 3 Months</td><td>₹999</td><td>₹599</td></tr>
-      <tr><td>🗓️ 6 Months</td><td>₹1499</td><td>₹999</td></tr>
-      <tr><td>🗓️ 1 Year</td><td>₹1999</td><td>₹1499</td></tr>
-    </table>
-  </section>
-
-  <section>
-    <h2>💳 Make Payment via QR Code</h2>
-    <p>Make your payment using the following QR code:</p>
-    <img class="qr" src="https://github.com/sunshine-digital/portal/blob/main/QR%20Code.jpg?raw=true" alt="QR Code">
-  </section>
-
-  <section>
-    <h2>📞 Contact Us</h2>
-    <p>📍 Sunshine Computer Training & STENO Classes, Bayana<br>
-    ☎️ Call/WhatsApp: 9929856121<br>
-    📧 Email: sunshine.bayana@gmail.com</p>
-  </section>
+    <iframe id="testFrame"></iframe>
+  </div>
 
   <footer>
-    <p>🔥 A Smarter Way to Learn, Practice & Succeed – Only at SUNSHINE!</p>
+    Powered by Sunshine Institute | © 2025 Sunshine Computer Training & STENO Classes, Bayana
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script>AOS.init();</script>
+  <script>
+    function startTest() {
+      const iframe = document.getElementById('testFrame');
+      iframe.src = "https://script.google.com/macros/s/AKfycbx1eVmp0VQMh7pm3GTPmNdnkpvq4eXX5LtjL3qnhRdVr0Es6Us8PZScqy-5BWQ1ndH_/exec";
+      iframe.style.display = "block";
+    }
+  </script>
 </body>
 </html>
