@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      color: #555;
+    }
+  </style>
+</head>
 <body>
-<script>
-  // Hidden Google Script Web App URL
-  window.location.replace("https://script.google.com/macros/s/AKfycbx1eVmp0VQMh7pm3GTPmNdnkpvq4eXX5LtjL3qnhRdVr0Es6Us8PZScqy-5BWQ1ndH_/exec");
-</script>
+  <p>Please wait, launching test portal...</p>
+
+  <script>
+    // Encoded/hidden Google Script URL
+    const a = "https://script.google.com/";
+    const b = "macros/s/AKfycbx1eVmp0VQMh7pm3GTPmNdnkpvq4eXX5LtjL3qnhRdVr0Es6Us8PZScqy-5BWQ1ndH_/exec";
+    const finalURL = a + b;
+
+    // Optional delay for better transition and hiding
+    setTimeout(() => {
+      window.location.replace(finalURL);
+    }, 1200);
+  </script>
 </body>
 </html>
