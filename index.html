@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sunshine Institute – Online Test Portal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
@@ -12,12 +12,12 @@
       padding: 0;
     }
     body {
-      font-family: 'Poppins', sans-serif;
-      background: #f8f9fa;
-      color: #333;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #f9fbfc, #eaf3ff);
+      color: #222;
     }
     header {
-      background-color: #007bff;
+      background-color: #004aad;
       color: white;
       padding: 20px 40px;
       display: flex;
@@ -26,64 +26,73 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     header h1 {
-      font-size: 24px;
+      font-size: 26px;
+      font-weight: 600;
     }
     .home-link {
       text-decoration: none;
       color: white;
-      background-color: #0056b3;
-      padding: 8px 16px;
+      background-color: #007bff;
+      padding: 10px 20px;
       border-radius: 6px;
       font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+    .home-link:hover {
+      background-color: #0056b3;
     }
     .container {
       max-width: 960px;
       margin: 40px auto;
-      background: #fff;
+      background: #ffffff;
       padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
     .intro-section {
       margin-bottom: 30px;
-      padding: 20px;
-      background: #e9f5ff;
-      border-left: 5px solid #007bff;
-      border-radius: 8px;
+      padding: 30px;
+      background: #e0f0ff;
+      border-left: 6px solid #007bff;
+      border-radius: 10px;
     }
     .intro-section h2 {
-      color: #007bff;
-      margin-bottom: 10px;
+      color: #004aad;
+      font-size: 22px;
+      margin-bottom: 12px;
     }
     .intro-section p {
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.8;
+      color: #333;
     }
     .info-section h2 {
-      color: #343a40;
+      color: #004aad;
+      font-size: 20px;
       margin-top: 30px;
-      margin-bottom: 12px;
-      border-bottom: 2px solid #dee2e6;
-      padding-bottom: 6px;
+      margin-bottom: 14px;
+      border-bottom: 2px solid #007bff33;
+      padding-bottom: 4px;
     }
     ul {
       padding-left: 20px;
       margin-top: 10px;
     }
     li {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      line-height: 1.6;
     }
     .start-btn {
       display: inline-block;
       margin-top: 20px;
-      padding: 14px 28px;
-      font-size: 18px;
+      padding: 14px 30px;
+      font-size: 16px;
       background-color: #28a745;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.3s ease;
     }
     .start-btn:hover {
       background-color: #1e7e34;
@@ -92,7 +101,7 @@
       text-align: center;
       margin-top: 50px;
       font-size: 14px;
-      color: #777;
+      color: #555;
       padding: 20px 0;
     }
   </style>
@@ -105,26 +114,26 @@
 
   <div class="container">
     <div class="intro-section">
-      <h2>📅 Trial Users – Important Instructions!</h2>
+      <h2>🕒 FTrial Users – Important Instructions!</h2>
       <p>
-        1⃣ नीचे दिए गए "Start Online Test Web Portal" बटन पर क्लिक करें।<br>
-        2⃣ वहां जाकर Sign-Up करें और अपना एक Username (यूज़रनेम) बनाएं।<br>
-        3⃣ बनाया गया Username हमें WhatsApp पर भेजें: ☎ +91 9929856121<br><br>
-        ✅ कंफर्मेशन के बाद आपको 24 घंटों के लिए पूरा ट्रायल एक्सेस मिलेगा।<br>
-        📢 इस सुनहरे अवसर को न गंवाएं । Sunshine का शक्तिशाली ऑनलाइन टेस्ट सिस्टम आजञाएं ।
+        1️⃣ नीचे दिए गए "Start Online Test Web Portal" बटन पर क्लिक करें।<br>
+        2️⃣ वहां जाकर Sign-Up करें और अपना एक Username (यूज़रनेम) बनाएं।<br>
+        3️⃣ बनाया गया Username हमें WhatsApp पर भेजें: 📱 +91 9929856121<br><br>
+        ✅ पुष्टि के बाद आपको 24 घंटे का पूरा ट्रायल एक्सेस मिलेगा।<br>
+        📢 इस सुनहरे अवसर को न गंवाएं – Sunshine का शक्तिशाली ऑनलाइन टेस्ट सिस्टम आज़माएं!
       </p>
       <button class="start-btn" onclick="(()=>{let l=String.fromCharCode(103,111,116,111,46,104,116,109,108);window.location.href=l;})()">Start Online Test Web Portal</button>
     </div>
 
     <div class="info-section">
-      <h2>📝 Institute Details</h2>
+      <h2>📍 Institute Details</h2>
       <p><strong>Address:</strong> Panchayat Samiti Road, Bayana (Bharatpur – Rajasthan)</p>
       <p><strong>Director:</strong> Atendra Sharma</p>
       <p><strong>Mobile:</strong> +91 9929856121</p>
     </div>
 
     <div class="info-section">
-      <h2>💻 Courses Offered</h2>
+      <h2>🖥️ Courses Offered</h2>
       <ul>
         <li><strong>RS-CIT (Computer Course)</strong> – Rajasthan's most trusted computer literacy program</li>
         <li><strong>Hindi & English Typing Training</strong> – Build speed for govt job exams</li>
