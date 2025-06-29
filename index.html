@@ -22,21 +22,13 @@
       color: white;
       padding: 20px;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       text-align: center;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    header h1 {
-      font-size: 24px;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-    header p {
-      font-size: 15px;
-      margin-bottom: 10px;
-    }
-    .home-link {
+    .home-link, .test-link {
       text-decoration: none;
       color: white;
       background-color: #ffc107;
@@ -45,10 +37,15 @@
       font-size: 14px;
       font-weight: 600;
       transition: background-color 0.3s ease;
-      margin-top: 8px;
+      margin: 8px;
     }
-    .home-link:hover {
+    .home-link:hover, .test-link:hover {
       background-color: #e0a800;
+    }
+    .header-center {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffeb3b;
     }
     .container {
       max-width: 960px;
@@ -122,11 +119,11 @@
       border-top: 1px solid #ddd;
     }
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 20px;
+      header {
+        flex-direction: column;
       }
-      .intro-section h2 {
-        font-size: 20px;
+      .header-center {
+        margin: 10px 0;
       }
       .start-btn {
         width: 100%;
@@ -141,9 +138,9 @@
 </head>
 <body>
   <header>
-    <h1>🌟 Sunshine Computer Training & STENO Classes</h1>
-    <p>Panchayat Samiti Road, Bayana (Bharatpur – Rajasthan) | 📞 +91 9929856121</p>
     <a class="home-link" href="https://sunshine-digital.github.io/portal/">🏠 Home</a>
+    <div class="header-center">🌹 श्री राधे राधे 🌹</div>
+    <a class="test-link" href="goto.html">🚀 Start Online Test Web Portal</a>
   </header>
 
   <div class="container">
