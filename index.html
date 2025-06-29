@@ -1,55 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sunshine Institute - Online Test</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sunshine Institute – Online Test</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-      background-color: #ffffff;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #f8f9fa, #e9ecef);
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
       text-align: center;
+      color: #0056b3;
+      font-size: 32px;
+      margin-bottom: 10px;
     }
-    h2 {
+
+    .tagline {
+      text-align: center;
+      font-style: italic;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section h2 {
       color: #007BFF;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #007bff30;
+      padding-bottom: 4px;
     }
-    .info {
-      margin-top: 20px;
-      font-size: 16px;
-      color: #444;
-      line-height: 1.6;
+
+    ul {
+      padding-left: 20px;
     }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .info p {
+      margin: 5px 0;
+    }
+
     .start-btn {
-      margin-top: 30px;
-      padding: 12px 24px;
+      display: inline-block;
+      margin: 30px auto 10px;
+      padding: 14px 28px;
       font-size: 18px;
       background-color: #28a745;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      transition: background 0.3s;
     }
+
     .start-btn:hover {
       background-color: #1e7e34;
+    }
+
+    .home-btn {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 14px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .home-btn:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #777;
     }
   </style>
 </head>
 <body>
-  <h2>🌟 Sunshine Computer Training & STENO Classes</h2>
-  <div class="info">
-    <p><strong>Director:</strong> Atendra Sharma</p>
-    <p><strong>Location:</strong> Near Bus Stand, Bayana (Rajasthan)</p>
-    <p><strong>Contact:</strong> +91 9929856121</p>
-    <p><strong>Courses:</strong> RS-CIT, STENO, Tally Prime, Computer Typing</p>
-  </div>
+  <div class="container">
+    <h1>🌟 Sunshine Computer Training & STENO Classes, Bayana</h1>
+    <p class="tagline">“Empowering Minds for Government Jobs and a Successful Digital Future”<br>(सरकारी नौकरियों और डिजिटल सफलता की ओर प्रेरित करते हुए)</p>
 
-  <button class="start-btn" onclick="(()=>{let l=String.fromCharCode(103,111,116,111,46,104,116,109,108);window.location.href=l;})()">
-    Start Online Test Web Portal
-  </button>
+    <div class="section info">
+      <h2>📍 Address & Contact Info</h2>
+      <p>📍 Address: Panchayat Samiti Road, Bayana (Bharatpur – Rajasthan)</p>
+      <p>👨💼 Director: Atendra Sharma</p>
+      <p>📞 Mobile: +91 9929856121</p>
+    </div>
+
+    <div class="section">
+      <h2>🖥️ Courses Offered</h2>
+      <ul>
+        <li><strong>RS-CIT (Computer Course)</strong> – Rajasthan's most trusted computer literacy program</li>
+        <li><strong>Hindi & English Typing Training</strong> – Build speed for govt job exams</li>
+        <li><strong>Tally Prime with GST</strong> – Practical accounting skills for business & career</li>
+        <li><strong>STENO (Shorthand) – Hindi Medium</strong> – Expert prep for SSC, Court & Govt exams</li>
+        <li><strong>PG-DCA</strong> – Comprehensive Post Graduate Diploma in Computer Applications</li>
+        <li><strong>Advanced Excel</strong> – Master tools for office, MIS, and data analysis</li>
+        <li><strong>Programming with Latest Languages</strong> – Learn C, C++, Python & more</li>
+        <li><strong>Computer Efficiency for All Competitive Exams</strong> – Fast-track your exam prep</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🏆 Why Choose Sunshine?</h2>
+      <ul>
+        <li>Experienced & Caring Trainers (3 Male, 1 Female – Experts in their fields)</li>
+        <li>100% Practical and Job-Oriented Curriculum</li>
+        <li>Special Speed Batches & Techniques for STENO</li>
+        <li>Exclusive Practice Methods in Typing & Dictation</li>
+        <li>Weekly Tests, Progress Tracking & Feedback</li>
+        <li>Positive, Motivational & Career-Focused Learning Environment</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>📝 Trial Access – Only for the Next 24 Hours!</h2>
+      <ul>
+        <li>1️⃣ नीचे दिए गए "Start Online Test Web Portal" बटन पर क्लिक करें।</li>
+        <li>2️⃣ वहां जाकर Sign-Up करें और अपना एक Username (यूज़रनेम) बनाएं।</li>
+        <li>3️⃣ बनाया गया Username हमें WhatsApp पर भेजें: 📱 +91 9929856121</li>
+      </ul>
+      <p>✅ आपके Username की पुष्टि (verification) के बाद, आपको 24 घंटे के लिए पूरा ट्रायल एक्सेस फ्री प्रदान किया जाएगा।</p>
+      <p>📢 इस सुनहरे अवसर को न गंवाएं – Sunshine का शक्तिशाली ऑनलाइन टेस्ट सिस्टम आज़माएं</p>
+    </div>
+
+    <div class="section">
+      <h2>🔗 Start Online Test Web Portal</h2>
+      <p>👇 Click the button below to begin your online test experience:</p>
+      <button class="start-btn" onclick="(()=>{let l=String.fromCharCode(103,111,116,111,46,104,116,109,108);window.location.href=l;})()">Start Online Test Web Portal</button>
+      <br><br>
+      <a class="home-btn" href="https://sunshine-digital.github.io/portal/">🏠 Home</a>
+    </div>
+
+    <div class="section">
+      <h2>📸 Optional Images Section</h2>
+      <ul>
+        <li>• Classroom / Lab Photos</li>
+        <li>• Student Achievements or Certificates</li>
+        <li>• Faculty Introduction Pictures</li>
+      </ul>
+    </div>
+
+    <footer>
+      © 2025 Sunshine Computer Training & STENO Classes, Bayana<br />
+      Developed by: <strong>Atendra Sharma – CEO & Founder, Sunshine Online Test Web Portal</strong>
+    </footer>
+  </div>
 </body>
 </html>
