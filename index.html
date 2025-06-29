@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sunshine Institute – Online Test Portal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
@@ -12,90 +12,99 @@
       padding: 0;
     }
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #f9fbfc, #eaf3ff);
+      font-family: 'Inter', sans-serif;
+      background: #f4f9ff;
       color: #222;
       line-height: 1.6;
     }
     header {
       background-color: #002855;
       color: white;
-      padding: 20px 40px;
+      padding: 20px;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
+      text-align: center;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
     header h1 {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 15px;
+      margin-bottom: 10px;
     }
     .home-link {
       text-decoration: none;
       color: white;
       background-color: #ffc107;
-      padding: 10px 20px;
-      border-radius: 8px;
+      padding: 8px 16px;
+      border-radius: 6px;
       font-size: 14px;
-      font-weight: bold;
+      font-weight: 600;
       transition: background-color 0.3s ease;
+      margin-top: 8px;
     }
     .home-link:hover {
       background-color: #e0a800;
     }
     .container {
-      max-width: 1100px;
+      max-width: 960px;
       margin: 40px auto;
-      background: #ffffff;
-      padding: 40px;
-      border-radius: 14px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 20px;
     }
     .intro-section {
-      background: linear-gradient(135deg, #fdd835, #fff9c4);
-      padding: 40px;
+      background: linear-gradient(to bottom right, #fdd835, #fffde7);
+      padding: 40px 20px;
+      border-radius: 14px;
       text-align: center;
-      border-radius: 16px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
       margin-bottom: 40px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
     }
     .intro-section h2 {
-      color: #ff6f00;
-      font-size: 24px;
+      font-size: 22px;
+      color: #d84315;
       margin-bottom: 20px;
     }
     .intro-section p {
-      font-size: 17px;
-      color: #333;
+      font-size: 16px;
+      color: #444;
       margin-bottom: 30px;
     }
     .start-btn {
-      display: inline-block;
       background-color: #28a745;
-      color: white;
-      padding: 16px 36px;
+      color: #fff;
+      padding: 14px 28px;
       font-size: 16px;
-      border: none;
-      border-radius: 10px;
       font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
       transition: background 0.3s ease;
     }
     .start-btn:hover {
       background-color: #218838;
     }
+    .info-section {
+      background-color: #ffffff;
+      padding: 30px;
+      margin-bottom: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.03);
+    }
     .info-section h2 {
+      font-size: 20px;
       color: #002855;
-      font-size: 22px;
-      margin-top: 30px;
-      margin-bottom: 14px;
       border-bottom: 2px solid #ffc107;
       padding-bottom: 6px;
+      margin-bottom: 20px;
     }
-    .info-section p,
-    .info-section li {
-      font-size: 16px;
-      line-height: 1.7;
+    .info-section p, .info-section li {
+      font-size: 15px;
       color: #333;
+      line-height: 1.7;
     }
     ul {
       padding-left: 20px;
@@ -106,18 +115,34 @@
     }
     footer {
       text-align: center;
-      margin-top: 60px;
+      padding: 20px;
       font-size: 14px;
       color: #555;
-      padding: 20px;
       background-color: #f1f1f1;
       border-top: 1px solid #ddd;
     }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 20px;
+      }
+      .intro-section h2 {
+        font-size: 20px;
+      }
+      .start-btn {
+        width: 100%;
+      }
+    }
   </style>
+  <script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('cut', e => e.preventDefault());
+  </script>
 </head>
 <body>
   <header>
     <h1>🌟 Sunshine Computer Training & STENO Classes</h1>
+    <p>Panchayat Samiti Road, Bayana (Bharatpur – Rajasthan) | 📞 +91 9929856121</p>
     <a class="home-link" href="https://sunshine-digital.github.io/portal/">🏠 Home</a>
   </header>
 
@@ -132,13 +157,6 @@
         📢 इस सुनहरे अवसर को न गंवाएं – Sunshine का शक्तिशाली ऑनलाइन टेस्ट सिस्टम आज़माएं!
       </p>
       <button class="start-btn" onclick="(()=>{let l=String.fromCharCode(103,111,116,111,46,104,116,109,108);window.location.href=l;})()">Start Online Test Web Portal</button>
-    </div>
-
-    <div class="info-section">
-      <h2>📍 Institute Details</h2>
-      <p><strong>Address:</strong> Panchayat Samiti Road, Bayana (Bharatpur – Rajasthan)</p>
-      <p><strong>Director:</strong> Atendra Sharma</p>
-      <p><strong>Mobile:</strong> +91 9929856121</p>
     </div>
 
     <div class="info-section">
