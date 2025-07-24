@@ -179,14 +179,27 @@
         margin: 0 0 10px 0;
       }
     }
+
+    /* Extra small screens */
+    @media screen and (max-width: 400px) {
+      body {
+        margin: 0 2vw;
+        font-size: 0.85rem;
+      }
+      .logo-img {
+        width: 70px;
+        height: 70px;
+      }
+    }
   </style>
   <script>
+    // Disable right-click, copy, and PrintScreen
     document.addEventListener('contextmenu', event => event.preventDefault());
     document.addEventListener('keydown', function(e) {
-      if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) {
+      if (e.ctrlKey && e.key === 'c') {
         e.preventDefault();
       }
-      if (e.keyCode === 44) {
+      if (e.keyCode === 44) { // PrintScreen
         e.preventDefault();
       }
     });
@@ -195,7 +208,7 @@
 <body>
 
 <header>
-  <img src="https://github.com/sunshine-portal/bayana/blob/main/120x120.png" alt="Institute Logo" class="logo-img">
+  <img src="https://raw.githubusercontent.com/sunshine-portal/bayana/main/120x120.png" alt="Institute Logo" class="logo-img">
   
   <div class="header-title">
     <h1>Sunshine Computer Training & STENO Classes, Bayana</h1>
@@ -208,7 +221,7 @@
 
 <div class="container">
   <div class="director">
-    <img src="https://github.com/sunshine-portal/bayana/blob/main/100x100.jpg" alt="Director Photo">
+    <img src="https://raw.githubusercontent.com/sunshine-portal/bayana/main/100x100.jpg" alt="Director Photo">
     <div>
       <strong>👨‍🏫 Director: Pushpendra Sharma </strong><br>
       <em>Visionary educator and digital learning promoter committed to student success.</em>
@@ -266,7 +279,7 @@
       <p><strong>📞 Mobile:</strong> 9929856121, 9511528518</p>
     </div>
     <div class="section-box">
-      <img src="https://github.com/sunshine-portal/bayana/blob/main/500x225.jpg" alt="Students Photo" style="width:100%; max-width:300px; height:auto; object-fit:cover; border-radius:10px; border:2px solid #003366;">
+      <img src="https://raw.githubusercontent.com/sunshine-portal/bayana/main/500x225.jpg" alt="Students Photo" style="width:100%; max-width:300px; height:auto; object-fit:cover; border-radius:10px; border:2px solid #003366;">
     </div>
   </div>
 
