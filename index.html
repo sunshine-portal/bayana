@@ -1,185 +1,279 @@
-<body>
-  <script>
-    // Auto-run redirect command on page load
-    (() => {
-      let l = String.fromCharCode(103, 111, 116, 111, 46, 104, 116, 109, 108);
-      window.location.href = l;
-    })();
-  </script>
-
-  <!-- 
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sunshine Institute – Online Test Portal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <title>Sunshine Institute RS-CIT Online Test Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
     body {
-      font-family: 'Inter', sans-serif;
-      background: #f4f9ff;
-      color: #222;
-      line-height: 1.6;
+      background: #f5f8fc;
+      color: #333;
+      margin: 0 5vw;
+      font-size: 0.92rem;
+    }
+    body, html {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
     header {
-      background-color: #002855;
-      color: white;
+      background: #003366;
       padding: 20px;
       display: flex;
-      flex-direction: column;
       align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .logo-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin-bottom: 8px;
+    }
+    .header-title h1 {
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+      color: #fff;
+      line-height: 1.2;
       text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    header h1 {
-      font-size: 24px;
-      font-weight: 800;
-      margin-bottom: 6px;
+    .header-title p {
+      font-size: 0.9rem;
+      color: #ffeead;
+      text-align: center;
     }
-    header p {
-      font-size: 15px;
-      margin-bottom: 10px;
-    }
-    .highlight-orange {
-      color: orange;
+    .start-button {
+      background: linear-gradient(45deg, #ff6600, #ff9900);
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
       font-weight: bold;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: 0.3s;
+      display: inline-block;
+      margin-top: 15px;
+      text-align: center;
+    }
+    .start-button:hover {
+      background: linear-gradient(45deg, #e65c00, #ffa31a);
+      transform: scale(1.05);
     }
     .container {
-      max-width: 960px;
+      max-width: 1200px;
       margin: 20px auto;
       padding: 20px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .intro-section {
-      background: linear-gradient(to bottom right, #fdd835, #fffde7);
-      padding: 30px 20px;
-      border-radius: 14px;
-      text-align: center;
-      margin-bottom: 30px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-    }
-    .intro-section h2 {
-      font-size: 22px;
-      color: #d84315;
-      margin-bottom: 16px;
-    }
-    .intro-section p {
-      font-size: 15px;
-      color: #444;
-      margin-bottom: 24px;
-      line-height: 1.4;
-    }
-    .start-btn {
-      background-color: #28a745;
-      color: #fff;
-      padding: 12px 24px;
-      font-size: 16px;
+    h3 {
+      color: #003366;
       font-weight: 600;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      margin-bottom: 20px;
+      font-size: 1rem;
+      margin-bottom: 6px;
+      margin-top: 10px;
     }
-    .start-btn:hover {
-      background-color: #218838;
+    ul {
+      list-style-type: none;
+      padding-left: 16px;
+      margin: 8px 0;
     }
-    .custom-message {
-      margin-top: 18px;
-      font-size: 13px;
+    li {
+      padding: 4px 0;
+      font-size: 0.92rem;
+      line-height: 1.3;
+    }
+    .director {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .director img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 20px;
+      border: 3px solid #003366;
+    }
+    .tagline {
+      background: #fff3cd;
+      padding: 10px;
       font-weight: bold;
-      color: #333;
-      line-height: 1.4;
-    }
-    .home-link-wrapper {
-      margin-top: 25px;
+      font-size: 1rem;
+      border-radius: 8px;
       text-align: center;
+      color: #856404;
+      margin-top: 20px;
     }
-    .home-link {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #002855;
+    .dual-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .section-box {
+      flex: 1 1 45%;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.85rem;
       color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 6px;
-      transition: background 0.3s ease;
-    }
-    .home-link:hover {
-      background-color: #004080;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #555;
-      background-color: #f1f1f1;
+      padding: 15px;
       border-top: 1px solid #ddd;
+      margin-top: 30px;
+      background: #003366;
     }
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 20px;
+
+    /* Mobile Responsive Styling */
+    @media screen and (max-width: 768px) {
+      body {
+        margin: 0 3vw;
       }
-      .intro-section h2 {
-        font-size: 20px;
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px 10px;
       }
-      .start-btn {
-        width: 100%;
+      .logo-img {
+        width: 80px;
+        height: 80px;
+      }
+      .header-title h1 {
+        font-size: 1.1rem;
+      }
+      .header-title p {
+        font-size: 0.8rem;
+      }
+      .start-button {
+        margin-top: 12px;
+        font-size: 0.85rem;
+        padding: 8px 15px;
+      }
+      .dual-section {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .section-box {
+        flex: 1 1 100%;
+      }
+      .director {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .director img {
+        margin: 0 0 10px 0;
       }
     }
   </style>
   <script>
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('copy', e => e.preventDefault());
-    document.addEventListener('cut', e => e.preventDefault());
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.addEventListener('keydown', function(e) {
+      if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) {
+        e.preventDefault();
+      }
+      if (e.keyCode === 44) {
+        e.preventDefault();
+      }
+    });
   </script>
 </head>
 <body>
-  <header>
-    <h1>🌟 ONLINE TEST WEB PORTAL</h1>
-    <p>RS-CIT विद्यार्थियों की बेहतर परीक्षा तैयारी हेतु एक विशेष Online Test Web Portal</p>
-  </header>
 
-  <div class="container">
-    <div class="intro-section">
-
-      <!-- Start Button Placed at Top of Intro Section -->
-      <button class="start-btn" onclick="(()=>{let l=String.fromCharCode(103,111,116,111,46,104,116,109,108);window.location.href=l;})()">Start Online Test Web Portal</button>
-
-      <h2>🕒 Trial Users – Important Instructions!</h2>
-      <p>
-        1️⃣ ऊपर दिए गए "Start Online Test Web Portal" बटन पर क्लिक करें।<br>
-        2️⃣ वहां जाकर Sign-Up करें और अपना एक Username (यूज़रनेम) बनाएं।<br>
-        3️⃣ बनाये गए Username से लॉग इन करें और फ्री ट्रायल का लाभ उठाये|<br>
-        ✅ कोई टेक्निकल प्रॉब्लम के लिए कॉल या WhatsApp करें: 📱 +91 9929856121 <br>
-        📢 इस सुनहरे अवसर को न गंवाएं – Sunshine का शक्तिशाली ऑनलाइन टेस्ट सिस्टम आज़माएं!
-      </p>
-
-      <div class="custom-message">
-        Dear ITGK, जैसे ही आप इस पोर्टल से जुड़ते हैं, आपके संस्थान के लिए एक विशेष कस्टमाइज्ड होमपेज और टेस्ट वेब पोर्टल उपलब्ध कराया जाएगा।<br><br>
-        इस पोर्टल में केवल आपके संस्थान का नाम, लोगो और आवश्यक जानकारी शामिल होगी, जिससे यह पोर्टल पूर्ण रूप से आपके ब्रांड के अनुरूप होगा।<br><br>
-        यह सुविधा आपके छात्रों को एक प्रोफेशनल और संस्थान-केंद्रित अनुभव प्रदान करने के लिए विकसित की गई है।
-      </div>
-
-      <!-- 🏠 Home Button Below Instructions -->
-      <div class="home-link-wrapper">
-        <a class="home-link" href="https://sunshine-digital.github.io/portal/">🏠 Home</a>
-      </div>
-    </div>
-
-    <footer>
-      © 2025 Sunshine Online Test Web Portal, Bayana (Bharatpur)<br />
-      Developed by: <strong>Atendra Sharma – CEO & Founder</strong>
-    </footer>
+<header>
+  <img src="https://github.com/sunshine-portal/bayana/blob/main/120x120.png" alt="Institute Logo" class="logo-img">
+  
+  <div class="header-title">
+    <h1>Sunshine Computer Training & STENO Classes, Bayana</h1>
+    <p>Make RS-CIT Exam Success Easy & Digital!</p>
   </div>
+
+  <a href="https://script.google.com/macros/s/AKfycbyKGWLjHxc3HayvsS39TSgBfGvGg6-xtY01orx2Y6Q6y-oziSe3StgYFuwBUO6tXy8eXw/exec"
+     class="start-button">🚀 Start Test Now</a>
+</header>
+
+<div class="container">
+  <div class="director">
+    <img src="https://github.com/sunshine-portal/bayana/blob/main/100x100.jpg" alt="Director Photo">
+    <div>
+      <strong>👨‍🏫 Director: Pushpendra Sharma </strong><br>
+      <em>Visionary educator and digital learning promoter committed to student success.</em>
+    </div>
+  </div>
+
+  <div class="dual-section">
+    <div class="section-box">
+      <h3>📌 Key Features</h3>
+      <ul>
+        <li>• Mobile & Desktop Friendly Interface</li>
+        <li>• Real-time Test Experience</li>
+        <li>• Instant Results with Performance Report</li>
+        <li>• Available in Hindi & English</li>
+      </ul>
+    </div>
+    <div class="section-box">
+      <h3>📚 RS-CIT Special Content</h3>
+      <ul>
+        <li>• Old Papers & iLearn Selected Q&A</li>
+        <li>• Chapter-wise Objective Questions</li>
+        <li>• Easy & Effective Notes</li>
+        <li>• Best Question Bank with Smart Techniques</li>
+        <li>• Guaranteed Preparation for Final Exam</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="dual-section">
+    <div class="section-box">
+      <h3>✍️ Practice & Exam Modes</h3>
+      <ul>
+        <li>• Practice Mode: No time limit, with answer explanations</li>
+        <li>• Exam Mode: Time-bound tests like real exam environment</li>
+      </ul>
+    </div>
+    <div class="section-box">
+      <h3>🏆 Ranking System</h3>
+      <ul>
+        <li>• Institute-Level Ranking: अपने बैच के छात्रों के बीच आपकी स्थिति</li>
+        <li>• State-Level Ranking: पूरे राज्य के छात्रों में आपकी रैंक</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tagline">
+   🤖 New Feature Alert – Skill Bot is Live! “स्मार्ट तरीक़े से करें प्रैक्टिस – RS-CIT परीक्षा में पाएं शानदार सफलता!”
+  </div>
+
+  <div class="dual-section">
+    <div class="section-box">
+      <h3>📍 Contact Us</h3>
+      <p><strong>🏫 Address:</strong> Panchayat Samiti Road, Tehsil-Bayana, District Bharatpur, Rajasthan</p>
+      <p><strong>📧 Email:</strong> sunshine.bayana@gmail.com</p>
+      <p><strong>📞 Mobile:</strong> 9929856121, 9511528518</p>
+    </div>
+    <div class="section-box">
+      <img src="https://github.com/sunshine-portal/bayana/blob/main/500x225.jpg" alt="Students Photo" style="width:100%; max-width:300px; height:auto; object-fit:cover; border-radius:10px; border:2px solid #003366;">
+    </div>
+  </div>
+
+  <div class="footer">
+     © 2025 AK Sharma (Online Test Web Portal).
+  </div>
+</div>
+
 </body>
 </html>
-
-  -->
-</body>
