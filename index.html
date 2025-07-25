@@ -66,21 +66,21 @@
       color: #f0f0f0;
     }
     .start-button {
-      background: linear-gradient(45deg, #007bff, #00b4d8);
+      background: linear-gradient(45deg, #ff007f, #ff5500);
       color: #fff;
       padding: 12px 28px;
       text-decoration: none;
       border-radius: 8px;
       font-size: 1rem;
-      font-weight: 600;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: all 0.3s ease;
       margin-top: 15px;
     }
     .start-button:hover {
       transform: scale(1.05);
-      background: linear-gradient(45deg, #0056b3, #0096c7);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      background: linear-gradient(45deg, #e60073, #ff3300);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
     }
 
     /* CONTAINER */
@@ -145,12 +145,11 @@
     }
     .itkg-code {
       font-weight: bold;
-      color: #fff;
-      background: linear-gradient(45deg, #4e54c8, #8f94fb);
-      padding: 8px 14px;
+      color: #4e54c8;
+      border: 2px solid #4e54c8;
+      padding: 6px 12px;
       border-radius: 8px;
       font-size: 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
 
     /* SECTIONS */
@@ -168,6 +167,7 @@
       padding: 15px;
       box-shadow: 0 4px 14px rgba(0,0,0,0.08);
       transition: transform 0.3s ease;
+      text-align: left;
     }
     .section-box:hover {
       transform: translateY(-5px);
@@ -243,21 +243,27 @@
     @media screen and (max-width: 768px) {
       body {
         margin: 0 3vw;
-        text-align: center;
       }
-      header, .director, .dual-section, .footer-content {
+      header, .director, .footer-content {
         flex-direction: column;
         align-items: center;
         text-align: center;
+      }
+      .header-title h1 {
+        font-size: 1.4rem;
+      }
+      .header-title p {
+        font-size: 0.85rem;
+      }
+      .section-box {
+        text-align: left;
+        flex: 1 1 100%;
       }
       .director {
         gap: 15px;
       }
       .itkg-code {
         margin-top: 8px;
-      }
-      .section-box {
-        flex: 1 1 100%;
       }
     }
   </style>
