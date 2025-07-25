@@ -43,7 +43,6 @@
       border-radius: 0 0 20px 20px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.15);
       color: #fff;
-      position: relative;
       text-align: center;
     }
     .logo-img {
@@ -60,15 +59,12 @@
       background: linear-gradient(90deg, #ffe259, #ffa751);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      line-height: 1.3;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
     }
     .header-title p {
       font-size: 1rem;
       color: #f0f0f0;
     }
-
-    /* BUTTON (Professional Style) */
     .start-button {
       background: linear-gradient(45deg, #007bff, #00b4d8);
       color: #fff;
@@ -79,7 +75,6 @@
       font-weight: 600;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       transition: all 0.3s ease;
-      display: inline-block;
       margin-top: 15px;
     }
     .start-button:hover {
@@ -93,11 +88,10 @@
       max-width: 1200px;
       margin: 30px auto;
       padding: 25px;
-      background: rgba(255, 255, 255, 0.75);
+      background: rgba(255,255,255,0.75);
       backdrop-filter: blur(10px);
       border-radius: 16px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      animation: fadeIn 1.5s ease-in-out;
     }
     h3 {
       color: #4e54c8;
@@ -108,7 +102,7 @@
       padding-left: 8px;
     }
     ul {
-      list-style-type: none;
+      list-style: none;
       padding-left: 18px;
       margin: 8px 0;
     }
@@ -129,35 +123,37 @@
     /* DIRECTOR */
     .director {
       display: flex;
-      flex-wrap: wrap;
+      justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       margin-top: 20px;
       padding: 15px;
       background: #f9f9ff;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      gap: 20px;
     }
     .director img {
       width: 100px;
       height: 100px;
       object-fit: cover;
       border-radius: 50%;
-      margin-right: 20px;
       border: 3px solid #4e54c8;
     }
-    .tagline {
-      background: linear-gradient(90deg, #ffe259, #ffa751);
-      padding: 12px;
+    .director-info {
+      flex: 1;
+    }
+    .itkg-code {
       font-weight: bold;
+      color: #fff;
+      background: linear-gradient(45deg, #4e54c8, #8f94fb);
+      padding: 8px 14px;
+      border-radius: 8px;
       font-size: 1rem;
-      border-radius: 10px;
-      text-align: center;
-      color: #3a2f00;
-      margin-top: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
 
-    /* DUAL SECTIONS */
+    /* SECTIONS */
     .dual-section {
       display: flex;
       flex-wrap: wrap;
@@ -177,6 +173,19 @@
       transform: translateY(-5px);
     }
 
+    /* TAGLINE */
+    .tagline {
+      background: linear-gradient(90deg, #ffe259, #ffa751);
+      padding: 12px;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      color: #3a2f00;
+      margin-top: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
     /* FOOTER */
     .footer {
       background: linear-gradient(90deg, #4e54c8, #8f94fb);
@@ -192,13 +201,11 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      margin-bottom: 10px;
       gap: 10px;
     }
     .footer-banner {
       font-size: 1.1rem;
       font-weight: bold;
-      text-align: center;
       background: linear-gradient(90deg, #ffefba, #ffffff, #ffefba);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -222,7 +229,6 @@
     }
     .social-links span {
       font-size: 0.9rem;
-      margin-right: 8px;
     }
     .social-links a {
       color: #fff;
@@ -233,19 +239,22 @@
       color: #ffa751;
     }
 
-    /* MOBILE VIEW CENTERING */
+    /* RESPONSIVE */
     @media screen and (max-width: 768px) {
       body {
+        margin: 0 3vw;
         text-align: center;
       }
-      header, .container, .director, .dual-section, .footer-content {
+      header, .director, .dual-section, .footer-content {
         flex-direction: column;
         align-items: center;
-        justify-content: center;
         text-align: center;
       }
-      .dual-section {
+      .director {
         gap: 15px;
+      }
+      .itkg-code {
+        margin-top: 8px;
       }
       .section-box {
         flex: 1 1 100%;
@@ -278,16 +287,17 @@
 </header>
 
 <div class="container">
-  <!-- Director -->
+  <!-- Director Section -->
   <div class="director">
     <img src="https://raw.githubusercontent.com/sunshine-portal/bayana/main/100x100.jpg" alt="Director Photo">
-    <div>
+    <div class="director-info">
       <strong>👨‍🏫 Director: Pushpendra Sharma </strong><br>
       <em>Visionary educator and digital learning promoter committed to student success.</em>
     </div>
+    <div class="itkg-code">ITGK Code: 13290054</div>
   </div>
 
-  <!-- Content Sections -->
+  <!-- Features -->
   <div class="dual-section">
     <div class="section-box">
       <h3>📌 Key Features</h3>
@@ -310,7 +320,7 @@
     </div>
   </div>
 
-  <!-- More Sections -->
+  <!-- Practice Modes -->
   <div class="dual-section">
     <div class="section-box">
       <h3>✍️ Practice & Exam Modes</h3>
@@ -330,7 +340,7 @@
 
   <!-- Tagline -->
   <div class="tagline">
-   🤖 New Feature Alert – Skill Bot is Live! “स्मार्ट तरीक़े से करें प्रैक्टिस – RS-CIT परीक्षा में पाएं शानदार सफलता!”
+    🤖 New Feature Alert – Skill Bot is Live! “स्मार्ट तरीक़े से करें प्रैक्टिस – RS-CIT परीक्षा में पाएं शानदार सफलता!”
   </div>
 
   <!-- Contact Section -->
