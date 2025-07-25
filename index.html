@@ -13,8 +13,8 @@
     }
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #1b1f3a, #28314f); /* Dark background */
-      color: #eaeaea;
+      background: #f6f8fc; /* Light background for content */
+      color: #222;
       margin: 0 5vw;
       font-size: 1rem;
       line-height: 1.6;
@@ -33,7 +33,7 @@
 
     /* HEADER */
     header {
-      background: linear-gradient(90deg, #1a2749, #2c3b6f); /* Dark navy blue */
+      background: linear-gradient(90deg, #1a2749, #2c3b6f); /* Dark navy */
       padding: 25px;
       display: flex;
       align-items: center;
@@ -55,7 +55,6 @@
       padding: 4px 10px;
       border-radius: 8px;
       color: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
     }
     .logo-img {
       width: 120px;
@@ -83,22 +82,22 @@
 
     /* BUTTON */
     .start-button {
-      background: linear-gradient(90deg, #00bcd4, #0072ff);
+      background: linear-gradient(90deg, #0072ff, #00bcd4);
       color: #fff;
       padding: 14px 32px;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 50px;
       font-size: 1rem;
       font-weight: 600;
-      box-shadow: 0 4px 12px rgba(0, 198, 255, 0.4);
+      box-shadow: 0 4px 12px rgba(0, 114, 255, 0.3);
       transition: all 0.3s ease;
       display: inline-block;
       margin-top: 15px;
     }
     .start-button:hover {
-      background: linear-gradient(90deg, #0088cc, #005bb5);
+      background: linear-gradient(90deg, #005bb5, #0088cc);
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0, 198, 255, 0.6);
+      box-shadow: 0 8px 18px rgba(0, 114, 255, 0.5);
     }
 
     /* CONTAINER */
@@ -106,14 +105,13 @@
       max-width: 1200px;
       margin: 30px auto;
       padding: 25px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(8px);
+      background: #fff; /* White container */
       border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
       animation: fadeIn 1.5s ease-in-out;
     }
     h3 {
-      color: #66ccff;
+      color: #1a2749;
       font-weight: 600;
       font-size: 1.2rem;
       margin-bottom: 10px;
@@ -128,14 +126,14 @@
     li {
       padding: 6px 0;
       font-size: 0.96rem;
-      color: #e0e0e0;
+      color: #333;
       position: relative;
     }
     li::before {
       content: "✔";
       position: absolute;
       left: -18px;
-      color: #66ccff;
+      color: #0072ff;
       font-weight: bold;
     }
 
@@ -146,9 +144,9 @@
       align-items: center;
       margin-top: 20px;
       padding: 15px;
-      background: rgba(255,255,255,0.05);
+      background: #f2f6ff;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
     .director img {
       width: 100px;
@@ -156,7 +154,7 @@
       object-fit: cover;
       border-radius: 50%;
       margin-right: 20px;
-      border: 3px solid #66ccff;
+      border: 3px solid #0072ff;
     }
     .tagline {
       background: linear-gradient(90deg, #ffe259, #ffa751);
@@ -165,9 +163,9 @@
       font-size: 1rem;
       border-radius: 10px;
       text-align: center;
-      color: #1b1b1b;
+      color: #222;
       margin-top: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
     /* DUAL SECTIONS */
@@ -179,11 +177,10 @@
     }
     .section-box {
       flex: 1 1 45%;
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(8px);
+      background: #f9fbff;
       border-radius: 12px;
       padding: 15px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
       transition: transform 0.3s ease;
     }
     .section-box:hover {
@@ -264,7 +261,7 @@
     document.addEventListener('contextmenu', event => event.preventDefault());
     document.addEventListener('keydown', function(e) {
       if (e.ctrlKey && e.key === 'c') e.preventDefault();
-      if (e.keyCode === 44) e.preventDefault(); // Block PrintScreen
+      if (e.keyCode === 44) e.preventDefault();
     });
 
     // Visitor Counter - Starts from 5000
