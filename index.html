@@ -13,8 +13,8 @@
     }
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #e0f0ff, #f4ecff);
-      color: #1e1e2f;
+      background: linear-gradient(135deg, #f0f8ff, #e6f7ff); /* Lighter theme */
+      color: #1e2a40;
       margin: 0 5vw;
       font-size: 1rem;
       line-height: 1.6;
@@ -33,14 +33,14 @@
 
     /* HEADER */
     header {
-      background: #0b1a33; /* Dark Navy Blue */
+      background: linear-gradient(90deg, #5aa9f8, #7fc8ff); /* Light Blue */
       padding: 25px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       border-radius: 0 0 20px 20px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
       color: #fff;
       position: relative;
     }
@@ -51,7 +51,7 @@
       transform: translateX(-50%);
       font-size: 0.95rem;
       font-weight: bold;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.2);
       padding: 4px 10px;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
@@ -80,7 +80,7 @@
       text-align: center;
     }
 
-    /* PROFESSIONAL BUTTON */
+    /* BUTTON */
     .start-button {
       background: linear-gradient(90deg, #0072ff, #00c6ff);
       color: #fff;
@@ -100,23 +100,23 @@
       box-shadow: 0 8px 20px rgba(0, 198, 255, 0.6);
     }
 
-    /* CONTAINER & CARDS */
+    /* CONTAINER */
     .container {
       max-width: 1200px;
       margin: 30px auto;
       padding: 25px;
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
       border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
       animation: fadeIn 1.5s ease-in-out;
     }
     h3 {
-      color: #4e54c8;
+      color: #2980b9;
       font-weight: 600;
       font-size: 1.2rem;
       margin-bottom: 10px;
-      border-left: 4px solid #8f94fb;
+      border-left: 4px solid #7fc8ff;
       padding-left: 8px;
     }
     ul {
@@ -127,27 +127,27 @@
     li {
       padding: 6px 0;
       font-size: 0.96rem;
-      color: #2e2e3f;
+      color: #1f3555;
       position: relative;
     }
     li::before {
       content: "✔";
       position: absolute;
       left: -18px;
-      color: #4e54c8;
+      color: #2980b9;
       font-weight: bold;
     }
 
-    /* DIRECTOR */
+    /* DIRECTOR SECTION */
     .director {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       margin-top: 20px;
       padding: 15px;
-      background: #f9f9ff;
+      background: #f5fbff;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
     .director img {
       width: 100px;
@@ -155,7 +155,7 @@
       object-fit: cover;
       border-radius: 50%;
       margin-right: 20px;
-      border: 3px solid #4e54c8;
+      border: 3px solid #5aa9f8;
     }
     .tagline {
       background: linear-gradient(90deg, #ffe259, #ffa751);
@@ -166,9 +166,10 @@
       text-align: center;
       color: #3a2f00;
       margin-top: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
+    /* DUAL SECTIONS */
     .dual-section {
       display: flex;
       flex-wrap: wrap;
@@ -181,7 +182,7 @@
       backdrop-filter: blur(8px);
       border-radius: 12px;
       padding: 15px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
       transition: transform 0.3s ease;
     }
     .section-box:hover {
@@ -190,13 +191,25 @@
 
     /* FOOTER */
     .footer {
+      position: relative;
       text-align: center;
       font-size: 0.9rem;
       color: #ffffff;
-      padding: 15px;
+      padding: 20px;
       margin-top: 40px;
-      background: linear-gradient(90deg, #4e54c8, #8f94fb);
+      background: linear-gradient(90deg, #5aa9f8, #7fc8ff);
       border-radius: 10px;
+    }
+    .visitor-count {
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.95rem;
+      font-weight: bold;
+      background: rgba(255,255,255,0.2);
+      padding: 4px 12px;
+      border-radius: 8px;
     }
 
     /* RESPONSIVE */
@@ -207,12 +220,7 @@
       }
       header {
         flex-direction: column;
-        align-items: center;
         text-align: center;
-      }
-      .header-code {
-        top: 5px;
-        font-size: 0.8rem;
       }
       .logo-img {
         width: 90px;
@@ -257,6 +265,14 @@
     document.addEventListener('keydown', function(e) {
       if (e.ctrlKey && e.key === 'c') e.preventDefault();
       if (e.keyCode === 44) e.preventDefault(); // Block PrintScreen
+    });
+
+    // Visitor Count - Starts at 5000
+    let count = localStorage.getItem('visitorCount') || 5000;
+    count++;
+    localStorage.setItem('visitorCount', count);
+    window.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('visitorCount').textContent = `Visitor Count: ${count}`;
     });
   </script>
 </head>
@@ -335,12 +351,13 @@
       <p><strong>📞 Mobile:</strong> 9929856121, 9511528518</p>
     </div>
     <div class="section-box">
-      <img src="https://raw.githubusercontent.com/sunshine-portal/bayana/main/500x225.jpg" alt="Students Photo" style="width:100%; max-width:300px; height:auto; object-fit:cover; border-radius:10px; border:2px solid #4e54c8;">
+      <img src="https://raw.githubusercontent.com/sunshine-portal/bayana/main/500x225.jpg" alt="Students Photo" style="width:100%; max-width:300px; height:auto; object-fit:cover; border-radius:10px; border:2px solid #5aa9f8;">
     </div>
   </div>
 
   <div class="footer">
-     © 2025 AK Sharma (Online Test Web Portal).
+    <div id="visitorCount" class="visitor-count">Visitor Count: 5000</div>
+    © 2025 AK Sharma (Online Test Web Portal).
   </div>
 </div>
 
