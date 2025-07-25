@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sunshine Institute RS-CIT Online Test Portal</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Icons Library -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -105,7 +107,7 @@
       max-width: 1200px;
       margin: 30px auto;
       padding: 25px;
-      background: #fff; /* White container */
+      background: #fff;
       border-radius: 16px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.1);
       animation: fadeIn 1.5s ease-in-out;
@@ -193,7 +195,7 @@
       text-align: center;
       font-size: 0.9rem;
       color: #fff;
-      padding: 20px;
+      padding: 40px 20px 20px;
       margin-top: 40px;
       background: linear-gradient(90deg, #1a2749, #2c3b6f);
       border-radius: 10px;
@@ -208,52 +210,33 @@
       padding: 4px 10px;
       border-radius: 8px;
     }
+    .social-links {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .social-links span {
+      font-size: 0.9rem;
+      margin-right: 8px;
+    }
+    .social-links a {
+      color: #fff;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    .social-links a:hover {
+      color: #00bcd4;
+    }
 
     /* RESPONSIVE */
     @media screen and (max-width: 768px) {
-      body {
-        margin: 0 3vw;
-        font-size: 0.92rem;
-      }
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-      .logo-img {
-        width: 90px;
-        height: 90px;
-      }
-      .header-title h1 {
-        font-size: 1.3rem;
-      }
-      .start-button {
-        font-size: 0.9rem;
-        padding: 10px 18px;
-      }
-      .dual-section {
-        flex-direction: column;
-        gap: 20px;
-      }
-      .section-box {
-        flex: 1 1 100%;
-      }
-      .director {
-        flex-direction: column;
-        text-align: center;
-      }
-      .director img {
-        margin: 0 0 12px 0;
-      }
-    }
-
-    @media screen and (max-width: 400px) {
-      body {
-        margin: 0 2vw;
-        font-size: 0.85rem;
-      }
-      .logo-img {
-        width: 70px;
-        height: 70px;
+      .social-links {
+        position: static;
+        justify-content: center;
+        margin-top: 10px;
       }
     }
   </style>
@@ -354,6 +337,13 @@
 
   <div class="footer">
     <div id="visitorCount" class="visitor-count">Visitor Count: 5000</div>
+    <div class="social-links">
+      <span>Connect with us:</span>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-telegram"></i></a>
+    </div>
     © 2025 AK Sharma (Online Test Web Portal).
   </div>
 </div>
