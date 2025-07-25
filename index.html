@@ -33,15 +33,28 @@
 
     /* HEADER */
     header {
-      background: linear-gradient(90deg, #4e54c8, #8f94fb);
+      background: #0b1a33; /* Dark Navy Blue */
       padding: 25px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       border-radius: 0 0 20px 20px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
       color: #fff;
+      position: relative;
+    }
+    .header-code {
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.95rem;
+      font-weight: bold;
+      background: rgba(255,255,255,0.1);
+      padding: 4px 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
     .logo-img {
       width: 120px;
@@ -66,22 +79,25 @@
       color: #f0f0f0;
       text-align: center;
     }
+
+    /* PROFESSIONAL BUTTON */
     .start-button {
-      background: linear-gradient(45deg, #ff512f, #f09819);
+      background: linear-gradient(90deg, #0072ff, #00c6ff);
       color: #fff;
-      padding: 12px 24px;
+      padding: 14px 32px;
       text-decoration: none;
-      border-radius: 50px;
+      border-radius: 8px;
       font-size: 1rem;
-      font-weight: bold;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0, 198, 255, 0.4);
       transition: all 0.3s ease;
       display: inline-block;
       margin-top: 15px;
     }
     .start-button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 25px rgba(255, 165, 0, 0.6);
+      background: linear-gradient(90deg, #0059cc, #00a0cc);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 198, 255, 0.6);
     }
 
     /* CONTAINER & CARDS */
@@ -194,6 +210,10 @@
         align-items: center;
         text-align: center;
       }
+      .header-code {
+        top: 5px;
+        font-size: 0.8rem;
+      }
       .logo-img {
         width: 90px;
         height: 90px;
@@ -236,13 +256,14 @@
     document.addEventListener('contextmenu', event => event.preventDefault());
     document.addEventListener('keydown', function(e) {
       if (e.ctrlKey && e.key === 'c') e.preventDefault();
-      if (e.keyCode === 44) e.preventDefault(); // PrintScreen
+      if (e.keyCode === 44) e.preventDefault(); // Block PrintScreen
     });
   </script>
 </head>
 <body>
 
 <header>
+  <div class="header-code">ITGK Code: 13290054</div>
   <img src="https://raw.githubusercontent.com/sunshine-portal/bayana/main/120x120.png" alt="Institute Logo" class="logo-img">
   
   <div class="header-title">
