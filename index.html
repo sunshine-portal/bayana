@@ -15,7 +15,7 @@
     }
     body {
       font-family: 'Inter', sans-serif;
-      background: #f6f8fc; /* Light background for content */
+      background: #f6f8fc;
       color: #222;
       margin: 0 5vw;
       font-size: 1rem;
@@ -35,7 +35,7 @@
 
     /* HEADER */
     header {
-      background: linear-gradient(90deg, #1a2749, #2c3b6f); /* Dark navy */
+      background: linear-gradient(90deg, #1a2749, #2c3b6f);
       padding: 25px;
       display: flex;
       align-items: center;
@@ -191,25 +191,34 @@
 
     /* FOOTER */
     .footer {
-      position: relative;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #fff;
-      padding: 50px 20px 20px;
-      margin-top: 40px;
       background: linear-gradient(90deg, #1a2749, #2c3b6f);
+      color: #fff;
       border-radius: 10px;
+      margin-top: 40px;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
     }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+
     .footer-banner {
       font-size: 1.1rem;
       font-weight: bold;
       text-align: center;
-      margin-bottom: 10px;
       background: linear-gradient(90deg, #ffefba, #ffffff, #ffefba);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: glow 2s ease-in-out infinite;
     }
+
     @keyframes glow {
       0%, 100% {
         text-shadow: 0 0 8px #ffe259, 0 0 15px #ffa751, 0 0 25px #ffefba;
@@ -218,43 +227,41 @@
         text-shadow: 0 0 15px #ffffff, 0 0 25px #ffe259, 0 0 35px #ffa751;
       }
     }
+
     .visitor-count {
-      position: absolute;
-      top: 10px;
-      left: 20px;
-      font-size: 0.9rem;
       font-weight: bold;
       background: rgba(255,255,255,0.15);
       padding: 4px 10px;
       border-radius: 8px;
+      font-size: 0.9rem;
     }
+
     .social-links {
-      position: absolute;
-      top: 10px;
-      right: 20px;
       display: flex;
       align-items: center;
       gap: 10px;
     }
+
     .social-links span {
       font-size: 0.9rem;
       margin-right: 8px;
     }
+
     .social-links a {
       color: #fff;
       font-size: 1.2rem;
       transition: color 0.3s ease;
     }
+
     .social-links a:hover {
       color: #00bcd4;
     }
 
-    /* RESPONSIVE */
+    /* Responsive */
     @media screen and (max-width: 768px) {
-      .social-links {
-        position: static;
-        justify-content: center;
-        margin-top: 10px;
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
       }
     }
   </style>
@@ -354,14 +361,16 @@
   </div>
 
   <div class="footer">
-    <div class="footer-banner">✨ डिजिटल राजस्थान की ओर – एक सशक्त कदम! ✨</div>
-    <div id="visitorCount" class="visitor-count">Visitor Count: 5000</div>
-    <div class="social-links">
-      <span>Connect with us:</span>
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-telegram"></i></a>
+    <div class="footer-content">
+      <div id="visitorCount" class="visitor-count">Visitor Count: 5000</div>
+      <div class="footer-banner">✨ डिजिटल राजस्थान की ओर – एक सशक्त कदम! ✨</div>
+      <div class="social-links">
+        <span>Connect with us:</span>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+      </div>
     </div>
     © 2025 AK Sharma (Online Test Web Portal).
   </div>
