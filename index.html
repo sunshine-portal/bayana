@@ -36,7 +36,6 @@ body {
   font-size: 1rem;
   line-height: 1.6;
 }
-
 header, .container, .footer, .section-box, .tagline, .director {
   animation: fadeIn 1s ease-in-out both;
   transition: all 0.3s ease;
@@ -165,14 +164,18 @@ li::before {
   background: #f9f9f9;
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-  gap: 20px;
+  gap: 10px;
 }
 .director img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   border: 3px solid #ffcc00;
   background: #fff;
+}
+.director-info {
+  flex: 1;
+  margin-left: 10px;
 }
 .itkg-code {
   font-weight: bold;
@@ -182,7 +185,9 @@ li::before {
   border-radius: 12px;
   background: transparent;
   box-shadow: none;
+  margin-left: auto;
 }
+
 .dual-section {
   display: flex;
   flex-wrap: wrap;
@@ -196,13 +201,12 @@ li::before {
   padding: 20px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
   transition: all 0.4s ease;
-  opacity: 1;
 }
 .section-box:hover {
-  transform: translateY(-6px);
+  transform: scale(1.03) translateY(-5px);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
-  opacity: 0.94;
 }
+
 .tagline {
   background: linear-gradient(90deg, #fff8e1, #e3f2fd);
   padding: 14px;
