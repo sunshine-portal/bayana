@@ -3,176 +3,295 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sunshine Institute RS-CIT Online Test Portal</title>
-  <meta name="description" content="Sunshine Computer Training & STENO Classes, Bayana - Practice RS-CIT online tests with real exam experience, instant results, Hindi & English content, and smart ranking system." />
-  <meta name="keywords" content="RS-CIT Online Test, Sunshine Institute, Bayana, Computer Classes, Steno, Typing, Rajasthan Exam" />
-  <meta name="author" content="Sunshine Institute - AK Sharma" />
+  <title>Sunshine Computer Training & STENO Classes</title>
+  <meta name="description" content="Ashish Vijayvargiya Foundation - Practice RS-CIT online tests with real exam experience, instant results, Hindi & English content, and smart ranking system." />
+  <meta name="keywords" content="RS-CIT Online Test, Sunshine Computer Training & STENO Classes, Computer Classes, Steno, Typing, Rajasthan Exam" />
+  <meta name="author" content="Ashish Vijayvargiya Foundation" />
 
-  <!-- Open Graph / Social Media -->
-  <meta property="og:title" content="Sunshine RS-CIT Online Test Portal" />
+  <meta property="og:title" content="UIIT RS-CIT Online Test Portal" />
   <meta property="og:description" content="Boost your RS-CIT preparation with smart practice, instant results, and rankings." />
-  <meta property="og:image" content="https://raw.githubusercontent.com/sunshine-portal/bayana/main/500x225.jpg" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/uiitcomputer/portal/main/500x225.jpg" />
   <meta property="og:url" content="https://yourwebsite.com" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-  <!-- Theme Stylesheet (Updated Design Theme) -->
-  <style>
-    * {margin:0; padding:0; box-sizing:border-box;}
-    body {
-      font-family:'Inter',sans-serif;
-      background:linear-gradient(135deg,#f5f7fa,#c3cfe2);
-      color:#1d1d2f;
-      margin:0 5vw;
-      font-size:1rem;
-      line-height:1.6;
-      animation:fadeIn 0.8s ease-in-out;
-    }
-    @keyframes fadeIn {from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);}}
-    header {
-      background:linear-gradient(90deg,#0052d4,#4364f7,#6fb1fc);
-      padding:20px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      border-radius:0 0 18px 18px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.2);
-      color:#fff;
-    }
-    .logo-img {
-      width:110px; height:110px; border-radius:12px;
-      object-fit:cover; border:2px solid #fff;
-    }
-    h1 {
-      font-family:'Poppins',sans-serif;
-      font-size:1.7rem; margin-bottom:4px;
-      background:linear-gradient(90deg,#ff9966,#ff5e62);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-    .header-title p {font-size:1rem; color:#e6e6e6;}
-    .start-button {
-      background:linear-gradient(45deg,#28a745,#218838);
-      color:#fff;
-      padding:10px 24px;
-      text-decoration:none;
-      border-radius:8px;
-      font-size:1rem;
-      font-weight:700;
-      box-shadow:0 4px 10px rgba(0,0,0,0.3);
-      transition:transform 0.3s, background 0.3s;
-    }
-    .start-button:hover {
-      transform:scale(1.05);
-      background:linear-gradient(45deg,#218838,#1e7e34);
-    }
-    .container {
-      max-width:1200px;
-      margin:30px auto;
-      padding:20px;
-      background:rgba(255,255,255,0.92);
-      backdrop-filter:blur(8px);
-      border-radius:14px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.08);
-    }
-    h3 {
-      color:#2e3a59;
-      font-weight:600;
-      font-size:1.2rem;
-      margin-bottom:10px;
-      border-left:4px solid #6fb1fc;
-      padding-left:10px;
-    }
-    ul {
-      list-style:none;
-      padding-left:18px;
-    }
-    li {
-      padding:6px 0;
-      font-size:0.95rem;
-      color:#333;
-      position:relative;
-    }
-    li::before {
-      content:"✔";
-      position:absolute;
-      left:-18px;
-      color:#0052d4;
-      font-weight:bold;
-    }
-    .tagline {
-      background:#e0f7fa;
-      padding:12px;
-      font-weight:bold;
-      font-size:1rem;
-      border-radius:8px;
-      text-align:center;
-      color:#006064;
-      margin-top:20px;
-      box-shadow:0 3px 10px rgba(0,0,0,0.1);
-    }
-    .footer {
-      background:#0052d4;
-      color:#fff;
-      border-radius:8px;
-      margin-top:35px;
-      text-align:center;
-      padding:18px;
-      font-size:0.9rem;
-    }
-    .footer-content {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-    .footer-banner {
-      font-size:1rem;
-      font-weight:bold;
-      background:linear-gradient(90deg,#ffeeee,#ddefbb);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-    .visitor-count {
-      font-weight:bold;
-      background:rgba(255,255,255,0.15);
-      padding:4px 8px;
-      border-radius:6px;
-    }
-    .social-links {
-      display:flex;
-      gap:8px;
-    }
-    .social-links a {
-      color:#fff;
-      font-size:1.2rem;
-      transition:color 0.3s;
-    }
-    .social-links a:hover {
-      color:#ffcc00;
-    }
-    @media(max-width:768px) {
-      body {margin:0 3vw;}
-      header,.footer-content {flex-direction:column; text-align:center;}
-      h1 {font-size:1.4rem;}
-    }
-  </style>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to right top, #f0f4ff, #e6ecff);
+  color: #2c2c3e;
+  margin: 0 5vw;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+header, .container, .footer, .section-box, .tagline, .director {
+  animation: fadeIn 1s ease-in-out both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes glowEffect {
+  from {
+    text-shadow: 0 0 8px #00e6e6, 0 0 12px #00bfff, 0 0 16px #1e90ff;
+  }
+  to {
+    text-shadow: 0 0 12px #00ffff, 0 0 20px #1e90ff, 0 0 28px #1e90ff;
+  }
+}
+@keyframes slideFade {
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes bounceGlow {
+  0%, 100% {
+    transform: scale(1);
+    text-shadow: 0 0 10px #00bcd4;
+  }
+  50% {
+    transform: scale(1.05);
+    text-shadow: 0 0 16px #ff4081;
+  }
+}
+
+header {
+  background: linear-gradient(90deg, #001d4d, #0047ab);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+.logo-img {
+  width: 110px;
+  height: 110px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 3px solid #ffd700;
+  background: #fff;
+}
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
+  color: #ffffff;
+  text-shadow: 0 0 8px #00e6e6, 0 0 12px #00bfff, 0 0 16px #1e90ff;
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: glowEffect 2s ease-in-out infinite alternate;
+}
+.header-title p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffd700;
+}
+
+.start-button {
+  background: linear-gradient(45deg, #ffb700, #ff8800);
+  color: #fff;
+  padding: 12px 28px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transition: all .3s;
+}
+.start-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #ffa000, #ff6f00);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+h3 {
+  color: #003399;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  border-left: 5px solid #ffc107;
+  padding-left: 12px;
+}
+ul {
+  list-style: none;
+  padding-left: 20px;
+}
+li {
+  padding: 6px 0;
+  font-size: 0.96rem;
+  color: #2a2a2a;
+  position: relative;
+}
+li::before {
+  content: "✔";
+  position: absolute;
+  left: -18px;
+  color: #ff9800;
+  font-weight: bold;
+}
+
+.director {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  gap: 20px;
+}
+.director img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid #ffcc00;
+  background: #fff;
+}
+.itkg-code {
+  font-weight: bold;
+  color: #ff8c00;
+  border: 2px solid #ff9800;
+  padding: 6px 12px;
+  border-radius: 12px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.dual-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 25px;
+}
+.section-box {
+  flex: 1 1 45%;
+  background: #fffefc;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s ease;
+  opacity: 1;
+}
+.section-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  opacity: 0.94;
+}
+
+.tagline {
+  background: linear-gradient(90deg, #fff8e1, #e3f2fd);
+  padding: 14px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  text-align: center;
+  color: #4a148c;
+  margin-top: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  animation: bounceGlow 3s ease-in-out infinite;
+}
+
+.footer {
+  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  border-radius: 12px;
+  margin-top: 40px;
+  text-align: center;
+  padding: 24px;
+  font-size: 0.95rem;
+}
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.footer-banner {
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #fff8e1, #e0f7fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.visitor-count {
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 4px 10px;
+  border-radius: 10px;
+}
+.social-links {
+  display: flex;
+  gap: 10px;
+}
+.social-links a {
+  color: #fff;
+  font-size: 1.2rem;
+  transition: color .3s;
+}
+.social-links a:hover {
+  color: #ffd54f;
+}
+
+@media(max-width:768px){
+  body { margin: 0 3vw; }
+  header, .director, .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  h1 { font-size: 1.6rem; }
+  .section-box { flex: 1 1 100%; }
+  .container { padding: 15px 10px; }
+}
+  .container:hover,
+.director:hover,
+.section-box:hover,
+.tagline:hover,
+.footer:hover {
+  transform: scale(1.01);
+  filter: brightness(1.02);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+</style>
+
 </head>
 <body>
 
   <marquee behavior="scroll" direction="left" scrollamount="6" style="color: #b8860b; font-size: 0.95rem; font-weight: 600; font-family: 'Poppins', sans-serif; margin: 0; padding: 0;">
   🎯 RS-CIT Main Exam (03 अगस्त 2025) के लिए ढेरों शुभकामनाएं! 💐 मेहनत करो, आत्मविश्वास रखो – सफलता तुम्हारे साथ है! - Sunshine Computer Training & STENO Classes, Bayana
 </marquee>
+
+
+  
 <header>
-  <img src="https://raw.githubusercontent.com/sunshine-portal/bayana/main/120x120.png" alt="Sunshine Institute Logo" class="logo-img" loading="lazy">
+  <img class="logo-img" alt="Logo Placeholder" loading="lazy">
   <div class="header-title">
     <h1>Sunshine Computer Training & STENO Classes</h1>
     <p>Make RS-CIT Exam Success Easy & Digital!</p>
@@ -182,13 +301,14 @@
 
 <div class="container">
   <div class="director">
-    <img src="https://raw.githubusercontent.com/sunshine-portal/bayana/main/100x100.jpg" alt="Director Pushpendra Sharma" loading="lazy">
+    <img alt="Director Image Placeholder" loading="lazy">
     <div class="director-info">
-      <strong>👨‍🏫 Director: Pushpendra Sharma</strong><br>
-      <em>Promoting digital learning and student success.</em>
+      <strong>👨‍🏫 Director:  Pushpendra Sharma</strong><br>
+      <em>A visionary leader dedicated to digital learning and student success through quality computer education.</em>
     </div>
     <div class="itkg-code">ITGK Code: 13290054</div>
   </div>
+
 
   <div class="dual-section">
     <div class="section-box">
@@ -228,40 +348,75 @@
     </div>
   </div>
 
-  <div class="tagline">🤖 Skill Bot is Live – “Practice Smart & Ace RS-CIT!”</div>
+  <div class="tagline">🤖 Skill Bot Live - Smart Practice for RS-CIT Success!”</div>
 
   <div class="dual-section">
     <div class="section-box">
       <h3>📍 Contact Us</h3>
       <p><strong>🏫 Address:</strong> Panchayat Samiti Road, Tehsil-Bayana, Bharatpur, Rajasthan</p>
-      <p><strong>📧 Email:</strong> sunshine.bayana@gmail.com</p>
+      <p><strong>📧 Email:</strong> sunshine.bayana@gmail.com@gmail.com</p>
       <p><strong>📞 Mobile:</strong> 9929856121, 9511528518</p>
     </div>
     <div class="section-box">
-      <img src="https://raw.githubusercontent.com/sunshine-portal/bayana/main/500x225.jpg" alt="Students at Sunshine Institute" style="width:100%; max-width:300px; border-radius:10px; border:2px solid #4e54c8;" loading="lazy">
+      <img src="https://raw.githubusercontent.com/uiitcomputer/portal/main/500x225.jpg" alt="Students at UIIT Institute" style="width:100%; max-width:300px; border-radius:10px; border:2px solid #4e54c8;" loading="lazy">
     </div>
   </div>
 
   <div class="footer">
     <div class="footer-content">
-      <div id="visitorCount" class="visitor-count">Visitor Count: 5000</div>
+      <div id="visitorCount" class="visitor-count">Visitor Count: 100</div>
       <div class="footer-banner">✨ डिजिटल राजस्थान की ओर – एक सशक्त कदम! ✨</div>
       <div class="social-links">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-telegram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
       </div>
     </div>
-    © 2025 AK Sharma (Online Test Web Portal)
+   © 2025 AK Sharma (Online Test Web Portal)
   </div>
 </div>
 
+<!-- Visitor Count Script -->
 <script>
-  let count = parseInt(localStorage.getItem('visitorCount') || "5000", 10);
-  count++; localStorage.setItem('visitorCount', count);
-  window.addEventListener('DOMContentLoaded',()=>{document.getElementById('visitorCount').textContent=`Visitor Count: ${count}`;});
+  let count = parseInt(localStorage.getItem('visitorCount') || "5122", 10); // Starts from 5122
+  count++;
+  localStorage.setItem('visitorCount', count);
+  window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('visitorCount').textContent = `Visitor Count: ${count}`;
+  });
 </script>
 
+<!-- Security Script -->
+<script>
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('cut', e => e.preventDefault());
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('paste', e => e.preventDefault());
+  document.addEventListener('keydown', function (e) {
+    if (
+      e.ctrlKey && ['c', 'x', 'u', 'v'].includes(e.key.toLowerCase()) ||
+      (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') ||
+      e.key === 'F12'
+    ) {
+      e.preventDefault();
+    }
+  });
+  document.addEventListener('selectstart', e => e.preventDefault());
+  window.addEventListener('keyup', function (e) {
+    if (e.key === 'PrintScreen') {
+      navigator.clipboard.writeText('');
+      alert('Screenshot disabled!');
+    }
+  });
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      navigator.clipboard.writeText('');
+    }
+  });
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ once: true, duration: 800 });</script>
 </body>
 </html>
