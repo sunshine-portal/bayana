@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🧪 RS-CIT Internal Tests — Sunshine Institute</title>
+
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --primary:#0d1b4c;
+      --accent:#e91e63;
+      --bg:#fff;
+      --muted:#6b7280;
+      --radius:12px;
+
+      /* icon bg colors for 15 subjects */
+      --c1:#4cafef; --c2:#34a853; --c3:#fbbc05; --c4:#e91e63; --c5:#9c27b0;
+      --c6:#ff5722; --c7:#009688; --c8:#3f51b5; --c9:#795548; --c10:#607d8b;
+      --c11:#8bc34a; --c12:#9e9e9e; --c13:#673ab7; --c14:#2196f3; --c15:#ff9800;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:'Segoe UI',sans-serif;
+      background:linear-gradient(180deg,#f7f9fc 0%,#ffffff 70%);
+      color:var(--primary);
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    main{max-width:1000px;margin:24px auto;padding:0 16px;flex:1}
+    h2{font-size:22px;margin:0 0 18px;color:var(--accent);text-align:center}
+
+    /* Mode Toggle */
+    .mode-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .mode-toggle button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      background: #e0e0e0;
+      transition: all 0.3s ease;
+    }
+    .mode-toggle button.active-mode {
+      background: var(--accent);
+      color: white;
+      font-weight: bold;
+    }
+
+    /* ===== Grid Button Layout ===== */
+    .btn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .feature-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      text-align: left;
+    }
+    .feature-btn:hover {
+      transform: translateY(-3px);
+      background: var(--accent);
+      color:#fff;
+    }
+
+    /* circle icon */
+    .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: #fff;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+    .feature-btn:hover .icon {
+      background:#fff !important;
+      color:var(--accent) !important;
+    }
+
+    /* text layout */
+    .btn-text {
+      display:flex;
+      justify-content: space-between;   /* ✅ title left, code right */
+      align-items: center;
+      width: 100%;
+      font-size:15px;
+      font-weight:600;
+    }
+    .btn-text .title {
+      flex:1;
+    }
+    .btn-text .code {
+      font-size:13px;
+      color:var(--muted);
+      font-weight:600;
+      margin-left: 10px;
+      white-space: nowrap;
+    }
+    .feature-btn:hover .btn-text .code {
+      color:#fff;
+    }
+
+    /* subject icon colors */
+    .c1{background:var(--c1)} .c2{background:var(--c2)} .c3{background:var(--c3)}
+    .c4{background:var(--c4)} .c5{background:var(--c5)} .c6{background:var(--c6)}
+    .c7{background:var(--c7)} .c8{background:var(--c8)} .c9{background:var(--c9)}
+    .c10{background:var(--c10)} .c11{background:var(--c11)} .c12{background:var(--c12)}
+    .c13{background:var(--c13)} .c14{background:var(--c14)} .c15{background:var(--c15)}
+
+    /* ===== MOBILE RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      h2 { font-size:18px; }
+      .btn-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Header Placeholder -->
+  <header id="header"></header>
+
+  <main>
+    <h2>🧪 RS-CIT Internal Tests</h2>
+
+    <!-- Mode Toggle -->
+    <div class="mode-toggle">
+      <button id="practiceModeBtn" class="active-mode" onclick="switchMode('practice')"><i class="fa-solid fa-pen"></i> Practice Mode</button>
+      <button id="examModeBtn" onclick="switchMode('exam')"><i class="fa-solid fa-flask"></i> Exam Mode</button>
+    </div>
+
+    <div class="btn-grid">
+      <button class="feature-btn" onclick="startTest('T21')">
+        <div class="icon c1"><i class="fa-solid fa-desktop"></i></div>
+        <div class="btn-text"><span class="title">Introduction to Computer</span><span class="code">🔹T21</span></div>
+      </button>
+      <button class="feature-btn" onclick="startTest('T22')">
+        <div class="icon c2"><i class="fa-solid fa-microchip"></i></div>
+        <div class="btn-text"><span class="title">Computer System</span><span class="code">🔹T22</span></div>
+      </button>
+      <button class="feature-btn" onclick="startTest('T23')">
+        <div class="icon c3"><i class="fa-solid fa-laptop"></i></div>
+        <div class="btn-text"><span class="title">Exploring Your Computer</span><span class="code">🔹T23</span></div>
+      </button>
+      <button class="feature-btn" onclick="startTest('T24')">
+        <div class="icon c4"><i class="fa-solid fa-globe"></i></div>
+        <div class="btn-text"><span class="title">Introduction of Internet</span><span class="code">🔹T24</span></div>
+      </button>
+      <button class="feature-btn" onclick="startTest('T25')">
+        <div class="icon c5"><i class="fa-solid fa-wallet"></i></div>
+        <div class="btn-text"><span class="title">Financial Literacy & Digital Payment</span><span class="code">🔹T25</span></div>
+      </button>
+      <button class="feature-btn" onclick="startTest('T26')">
+        <div class="icon c6"><i class="fa-solid fa-network-wired"></i></div>
+        <div class="btn-text"><span class="title">Internet Applications</span><span class="code">🔹T26</span></div>
+      </button>
+      <button class="feature-btn" onclick="startTest('T27')">
+        <div class="icon c7"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <div class="btn-text"><span class="title">Mobile Devices/Smartphone</span><span class="code">🔹T27</span></div>
+      </button>
+      <button class="feature-btn" onclick="startTest('T28')">
+        <div class="icon c8"><i class="fa-solid fa-file-word"></i></div>
+        <div class="btn-text"><span class="title">Microsoft Word</span><span class="code">🔹T28</span></div>
+      </button>
+      <button class="feature-btn" onclick="startTest('T29')">
+        <div class="icon c9"><i class="fa-solid fa-file-excel"></i></div>
+        <div class="btn-text"><span class="title">Microsoft Excel</span><span class="code">🔹T29</span></div>
+      </button>
+      <button class="feature-btn" onclick="startTest('T30')">
+        <div class="icon c10"><i class="fa-solid fa-file-powerpoint"></i></div>
+        <div class="btn-text"><span class="title">MS PowerPoint</span><span class="code">🔹T30</span></div>
+      </button>
+      <button class="feature-btn" onclick="startTest('T31')">
+        <div class="icon c11"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="btn-text"><span class="title">Cyber Security & Awareness</span><span class="code">🔹T31</span></div>
+      </button>
+      <button class="feature-btn" onclick="startTest('T32')">
+        <div class="icon c12"><i class="fa-solid fa-gear"></i></div>
+        <div class="btn-text"><span class="title">Other Office Tools</span><span class="code">🔹T32</span></div>
+      </button>
+      <button class="feature-btn" onclick="startTest('T33')">
+        <div class="icon c13"><i class="fa-solid fa-laptop-code"></i></div>
+        <div class="btn-text"><span class="title">Useful Application of IT</span><span class="code">🔹T33</span></div>
+      </button>
+      <button class="feature-btn" onclick="startTest('T34')">
+        <div class="icon c14"><i class="fa-solid fa-city"></i></div>
+        <div class="btn-text"><span class="title">Citizen Centric Services</span><span class="code">🔹T34</span></div>
+      </button>
+      <button class="feature-btn" onclick="startTest('T35')">
+        <div class="icon c15"><i class="fa-solid fa-landmark"></i></div>
+        <div class="btn-text"><span class="title">eGovernance Services (Raj.)</span><span class="code">🔹T35</span></div>
+      </button>
+    </div>
+  </main>
+
+  <!-- ✅ Footer Placeholder -->
+  <footer id="footer"></footer>
+
+  <script src="protect.js"></script>
+  <script>
+    let selectedMode = "practice";
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn !== "true") location.replace("login.html");
+
+    function switchMode(mode) {
+      selectedMode = mode;
+      document.getElementById("practiceModeBtn").classList.toggle("active-mode", mode==="practice");
+      document.getElementById("examModeBtn").classList.toggle("active-mode", mode==="exam");
+    }
+
+ function goBack(){ location.href="rs-cit-module.html"; }
+
+    function startTest(code) {
+      const userData = JSON.parse(localStorage.getItem("userData"));
+      const username = userData?.username || "guest";
+      const fullname = userData?.fullname || "Guest User";
+      startRscitTest(code, `Loading ${code}_RSCIT...`, selectedMode, username, fullname);
+    }
+
+    function startRscitTest(code, message, mode, username, fullname) {
+      localStorage.setItem("test_code", code);
+      localStorage.setItem("test_message", message);
+      localStorage.setItem("test_mode", mode);
+      localStorage.setItem("test_username", username);
+      localStorage.setItem("test_fullname", fullname);
+      location.href = "exam-modes-screen.html";
+    }
+  </script>
+
+  <!-- ✅ Common Header/Footer Script -->
+  <script src="header-footer.js"></script>
+</body>
+</html>
+
+
+

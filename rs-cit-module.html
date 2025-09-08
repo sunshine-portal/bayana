@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>RSCIT Online Test Practice | RSCIT Old Paper | MCQ Quiz | RSCITExam</title>
+<meta name="description" content="Free RSCIT online test practice, RSCIT old paper download, ILEARN learning portal tips, MCQ quiz for beginners, and RSCIT exam preparation guide to improve computer efficiency skills."/>
+<meta name="keywords" content="RSCIT, RSCIT Old Paper, ILEARN, MCQ Quiz, RSCITExam, RSCIT online test practice, Free RSCIT old paper download, ILEARN learning portal tips, MCQ quiz for beginners, RSCIT exam preparation guide, Improve computer efficiency skills"/>
+
+<style>
+:root{
+  --primary:#0d1b4c;
+  --secondary:#f8bbd0;
+  --accent:#e91e63;
+  --bg:#fff;
+  --muted:#eaeaea;
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(180deg,#f7f9fc 0%,#ffffff 70%);
+  color:var(--primary);
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+
+/* ===== MAIN CONTENT ===== */
+main{max-width:1000px;margin:28px auto;padding:0 18px;flex:1}
+.card{
+  background:var(--bg);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:0 8px 20px rgba(15,23,42,0.06);
+  margin-bottom:18px;
+  border:1px solid #f1f1f1;
+}
+h1{font-size:22px;margin:0 0 8px;color:var(--accent);text-align:center}
+h2,h3{color:var(--primary);margin-top:16px}
+p.lead{color:var(--primary);margin:0 0 12px;text-align:center}
+
+/* ===== GRID ICON STYLE ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:18px;
+  margin-top:12px;
+  text-align:center;
+}
+
+.module-btn{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:20px 14px;
+  border-radius:20px;
+  cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease;
+  color:#fff;
+  min-height:140px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+  overflow:hidden;
+  animation:pulse 3s infinite;
+}
+.module-btn:hover{
+  transform:translateY(-6px) scale(1.05);
+  box-shadow:0 12px 28px rgba(0,0,0,0.25);
+}
+.module-btn .emoji{
+  font-size:32px;
+  margin-bottom:10px;
+  display:inline-block;
+  animation:emoji-bounce 2.5s infinite;
+}
+.module-btn .meta .title{
+  font-weight:600;
+  font-size:15px;
+  color:#fff;
+}
+.module-btn .meta .desc{
+  font-size:12px;
+  opacity:0.9;
+  margin-top:4px;
+}
+
+/* ✨ Shine Effect */
+.module-btn::before{
+  content:"";
+  position:absolute;
+  top:0;left:-75%;
+  width:50%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);
+  transform:skewX(-25deg);
+}
+.module-btn:hover::before{
+  animation:shine 1.5s forwards;
+}
+
+/* 🎨 Unique Gradient Colors per Module */
+.module-btn.book-chapters{background:linear-gradient(135deg,#42a5f5,#1e88e5);}
+.module-btn.internal-test{background:linear-gradient(135deg,#66bb6a,#388e3c);}
+.module-btn.old-papers{background:linear-gradient(135deg,#ffa726,#fb8c00);}
+.module-btn.important-tests{background:linear-gradient(135deg,#ab47bc,#8e24aa);}
+.module-btn.digital-zone{background:linear-gradient(135deg,#26c6da,#0097a7);}
+.module-btn.ai-skill-bot{background:linear-gradient(135deg,#ef5350,#d32f2f);}
+.module-btn.common-test{background:linear-gradient(135deg,#8d6e63,#6d4c41);}
+.module-btn.result-rank{background:linear-gradient(135deg,#ec407a,#c2185b);}
+
+/* ===== ANIMATIONS ===== */
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.04);}
+}
+@keyframes shine{
+  0%{left:-75%;}
+  100%{left:125%;}
+}
+@keyframes emoji-bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+}
+
+/* ===== OTHER STYLES ===== */
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.btn.primary{background:var(--accent);color:white}
+.btn.ghost{background:transparent;border:1px solid rgba(0,0,0,0.2);color:var(--primary)}
+
+.badge{display:inline-block;background:#fde7f0;color:var(--accent);
+  padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px}
+
+.important-list{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.important-item{
+  padding:10px;border-radius:8px;border:1px dashed rgba(25,118,210,0.12);
+  background:#fbfcff;display:flex;justify-content:space-between;align-items:center
+}
+</style>
+</head>
+<body>
+
+<header id="header"></header>
+
+<main>
+  <section class="card">
+    <h1>RSCIT Online Test Practice & Learning Modules</h1>
+    <p class="lead">Prepare with RSCIT online test practice, RSCIT old papers, ILEARN tips, and MCQ quiz modules for effective RSCIT exam preparation.</p>
+
+    <div class="grid">
+      <div class="module-btn book-chapters" onclick="openModule('book-chapters')">
+        <div class="emoji">📘</div>
+        <div class="meta">
+          <div class="title">RSCIT Book Chapter MCQ Quiz</div>
+          <div class="desc">Topicwise chapter-wise practice</div>
+        </div>
+      </div>
+      <div class="module-btn internal-test" onclick="openModule('internal-test')">
+        <div class="emoji">🧪</div>
+        <div class="meta">
+          <div class="title">RSCIT Internal Test Practice</div>
+          <div class="desc">Short quizzes to check skills</div>
+        </div>
+      </div>
+      <div class="module-btn old-papers" onclick="openModule('old-papers')">
+        <div class="emoji">📄</div>
+        <div class="meta">
+          <div class="title">RSCIT Old Paper Collection</div>
+          <div class="desc">Download & solve old papers</div>
+        </div>
+      </div>
+      <div class="module-btn important-tests" onclick="openModule('important-tests')">
+        <div class="emoji">💡</div>
+        <div class="meta">
+          <div class="title">Important RSCIT Exam Tests</div>
+          <div class="desc">High-yield practice sets</div>
+        </div>
+      </div>
+      <div class="module-btn digital-zone" onclick="openModule('digital-zone')">
+        <div class="emoji">📖</div>
+        <div class="meta">
+          <div class="title">ILEARN Digital Learning Zone</div>
+          <div class="desc">Interactive lessons & guides</div>
+        </div>
+      </div>
+      <div class="module-btn ai-skill-bot" onclick="openModule('ai-skill-bot')">
+        <div class="emoji">🤖</div>
+        <div class="meta">
+          <div class="title">AI Skill MCQ Quiz</div>
+          <div class="desc">Smart exam practice</div>
+        </div>
+      </div>
+      <div class="module-btn common-test" onclick="openModule('common-test')">
+        <div class="emoji">🟢</div>
+        <div class="meta">
+          <div class="title">स्पेशल कॉमन RSCIT TEST</div>
+          <div class="desc">Full syllabus mock test</div>
+        </div>
+      </div>
+      <div class="module-btn result-rank" onclick="openModule('result-rank')">
+        <div class="emoji">📢</div>
+        <div class="meta">
+          <div class="title">View RSCIT Result & Rank</div>
+          <div class="desc">Check score & performance</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Why Choose Our RSCIT Exam Preparation?</h2>
+    <ul>
+      <li>Free RSCIT old paper download and practice.</li>
+      <li>MCQ quiz for beginners and advanced learners.</li>
+      <li>ILEARN learning portal tips for computer skills.</li>
+      <li>Step-by-step RSCIT exam preparation guide.</li>
+    </ul>
+
+    <div style="margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div class="important-list" style="flex:1;min-width:220px">
+        <div class="important-item">
+          <div>📢 Announcements</div>
+          <div style="font-size:13px;color:var(--primary)">No new alerts</div>
+        </div>
+      <div class="important-item">
+  <div>🔔 Quick Links</div>
+  <div style="display:flex;gap:8px">
+    <a href="#" class="btn ghost" onclick="return false;">RSCIT Exam Schedule</a>
+    <a href="#" class="btn ghost" onclick="return false;">Contact Support</a>
+  </div>
+</div>
+
+      <div style="min-width:240px;text-align:right">
+        <div class="badge">Student Mode</div>
+        <div style="margin-top:10px;color:var(--primary);font-size:13px">Tip: Use timed tests for real RSCIT exam preparation.</div>
+      </div>
+    </div>
+  </section>
+  <section id="contentArea" class="card" style="display:none"></section>
+</main>
+
+<footer id="footer"></footer>
+  
+<script src="protect.js"></script>
+<script>
+if(localStorage.getItem("isLoggedIn")!=="true")location.replace("login.html");
+
+function goBack(){location.href="dashboard.html";}
+function openResult(){location.href='results.html';}
+
+function openProfile(){alert("Profile Page Open होगा");}
+function openSettings(){alert("Settings Page Open होगा");}
+
+function openModule(key){
+  const area=document.getElementById('contentArea');
+  area.style.display='block';
+  area.innerHTML=renderModule(key);
+  window.scrollTo({top:area.offsetTop-20,behavior:'smooth'});
+}
+function renderModule(key){
+  switch(key){
+    case 'book-chapters':location.href='book-chapters.html';return'';
+    case 'internal-test':location.href='internal-tests.html';return'';
+    case 'old-papers':location.href='old-papers.html';return'';
+    case 'important-tests':location.href='rscit-important-test.html';return '';
+    case 'digital-zone':location.href='digital-learning.html';return'';
+    case 'ai-skill-bot':location.href='ai-skill-bot.html';return'';
+    case 'common-test':return `<h2>🟢 स्पेशल कॉमन RSCIT TEST</h2><p class="lead">Full syllabus mock test before final exam.</p>`;
+    case 'result-rank':location.href='performance-report.html';return'';
+    case 'schedule':return `<h2>🗓️ RSCIT Exam Schedule</h2><p class="lead">Upcoming classes and mock tests.</p>`;
+    case 'contact':return `<h2>📞 Contact Support</h2><p class="lead">For help regarding RSCIT exam preparation.</p>`;
+    default:return `<p>Module not found.</p>`;
+  }
+}
+</script>
+<script src="header-footer.js"></script>
+</body>
+</html>
+

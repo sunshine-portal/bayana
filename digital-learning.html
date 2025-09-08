@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Digital Learning Zone — Sunshine Institute</title>
+  <style>
+    :root{
+      --primary:#1b2a59;   /* Navy Blue */
+      --accent:#e91e63;   /* Pink Accent */
+      --bg-gradient: linear-gradient(180deg, #fde2ec 0%, #ffffff 100%);
+      --card-bg:#ffffff;
+      --card-border:#f5c3d1;
+      --radius:14px;
+      --shadow:0 6px 16px rgba(0,0,0,0.08);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:'Segoe UI',sans-serif;
+      background: var(--bg-gradient);
+      color:var(--primary);
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    main{
+      max-width:1000px;
+      margin:32px auto;
+      padding:0 16px;
+      flex:1;
+    }
+    h2{
+      font-size:26px;
+      margin:0 0 28px;
+      color:var(--primary);
+      text-align:center;
+    }
+
+    .btn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .module-btn {
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      padding: 14px 18px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--primary);
+      box-shadow: var(--shadow);
+    }
+    .module-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(233,30,99,0.35);
+      border-color: var(--accent);
+    }
+    .module-btn .title {
+      flex: 1;
+      text-align: left;
+    }
+    .module-btn .code {
+      margin-left: 12px;
+      white-space: nowrap;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    /* ===== MOBILE RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      h2{font-size:20px;}
+      .module-btn{font-size:13px;padding:12px;}
+    }
+  </style>
+</head>
+<body>
+
+<header id="header"></header>
+
+<main>
+  <h2>🌸 Digital Learning Zone Topics 🌸</h2>
+  <div class="btn-grid" id="topicList"></div>
+</main>
+
+<footer id="footer"></footer>
+
+<script src="protect.js"></script>
+<script>
+  // ✅ Login Check
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  if (isLoggedIn !== "true") location.replace("login.html");
+
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const username = userData?.username || "guest";
+  const fullname = userData?.fullname || "";
+
+  const topics = [
+    { title: "1. Introduction to Computer", code: "T21" },
+    { title: "2. Computer System", code: "T22" },
+    { title: "3. Exploring Your Computer", code: "T23" },
+    { title: "4. Introduction of Internet", code: "T24" },
+    { title: "5. Financial Literacy & Digital Payment Applications", code: "T25" },
+    { title: "6. Internet Applications", code: "T26" },
+    { title: "7. Working with Mobile Devices/Smartphone", code: "T27" },
+    { title: "8. Microsoft Word", code: "T28" },
+    { title: "9. Microsoft Excel", code: "T29" },
+    { title: "10. MS PowerPoint", code: "T30" },
+    { title: "11. Cyber Security & Awareness", code: "T31" },
+    { title: "12. Other Office Tools", code: "T32" },
+    { title: "13. Useful Application of IT", code: "T33" },
+    { title: "14. Exploring Common Citizen Centric Services", code: "T34" },
+    { title: "15. Major eGovernance Services and Schemes for Citizens of Raj.", code: "T35" }
+  ];
+
+  const topicList = document.getElementById("topicList");
+  topics.forEach(topic => {
+    const btn = document.createElement("button");
+    btn.className = "module-btn";
+    btn.innerHTML = `<span class="title">${topic.title}</span><span class="code">🔹${topic.code}</span>`;
+    btn.onclick = () => startRscitTest(topic.code, `Loading ${topic.code}...`, "Dlearn", username, fullname);
+    topicList.appendChild(btn);
+  });
+
+  function goBack(){ location.href="rs-cit-module.html"; }
+
+  function startRscitTest(testCode, loadingMessage, mode, username, fullname){
+    localStorage.setItem("test_code", testCode);
+    localStorage.setItem("test_username", username);
+    localStorage.setItem("test_fullname", fullname);
+    location.href = "digital-exam-screen.html";
+  }
+</script>
+<script src="header-footer.js"></script>
+</body>
+</html>

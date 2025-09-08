@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Login / Signup</title>
+  <style>
+    :root{
+      --primary:#0d1b4c;
+      --secondary:#f8bbd0;
+      --accent:#e91e63;
+      --bg:#fff;
+      --muted:#6b7280;
+      --radius:12px;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffeef5, #ffffff);
+      padding: 30px;
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      min-height:90vh;
+      padding-top: 150px;   /* 🔹 Yeh line add karo */
+    }
+
+    /* ✅ Header Styles */
+header {
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  position: fixed;   /* 🔹 fixed kar diya */
+  top: 0;            /* 🔹 top se chipak gaya */
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 0;     /* 🔹 koi gap nahi */
+}
+
+
+.logo-row img {
+  height: 38px;
+}
+
+.title-tagline {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* Title center me rahega */
+  gap: 15px;
+}
+
+.title-tagline span {
+  display: block;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.title-tagline .tagline {
+  font-size: 13px;
+  color: var(--secondary);
+  margin-top: 2px;
+}
+
+    /* ✅ Footer Styles */
+    footer{
+      background:var(--primary);
+      color:#fff;
+      text-align:center;
+      padding:10px;
+      font-size:13px;
+      margin-top:auto;
+    }
+
+    @media (max-width: 600px) {
+      header{flex-direction: column;align-items: center;text-align:center;}
+      .logo-row{justify-content:center;}
+      .title-tagline span{font-size:16px;}
+      .title-tagline .tagline{font-size:12px;}
+    }
+
+    /* ✅ Form Styles */
+    h2 {
+      text-align: center;
+      color: #001f4d;
+    }
+
+    form {
+      max-width: 400px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border: 2px solid #001f4d15;
+    }
+
+    input, select {
+      padding: 10px;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .password-wrapper input {
+      padding-right: 40px;
+    }
+
+    .password-wrapper span {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 18px;
+      color: #001f4d;
+    }
+
+    button {
+      padding: 10px;
+      margin-top: 6px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button[type="submit"] {
+      background: #001f4d;
+      color: white;
+    }
+
+    button[type="submit"]:hover {
+      background: #003377;
+    }
+
+    .alt-btn {
+      background: #ffb6c1;
+      color: #001f4d;
+      font-weight: bold;
+    }
+
+    .alt-btn:hover {
+      background: #ff99ad;
+    }
+
+    .message {
+      text-align: center;
+      font-size: 16px;
+      color: #dc3545;
+    }
+
+    .success {
+      color: green;
+    }
+
+    #signupForm {
+      display: none;
+    }
+
+    .terms {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+    }
+
+    .terms input[type="checkbox"] {
+      transform: scale(1.2);
+      margin-right: 8px;
+    }
+
+    .terms a {
+      color: #001f4d;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-row">
+    <img src="https://raw.githubusercontent.com/sunshinebayana/portal/main/logo-192.png" alt="Logo">
+  </div>
+  <div class="title-tagline">
+    <div>
+      <span>Sunshine Computer Training & STENO Classes, Bayana</span>
+      <div class="tagline">Master Typing, Steno & Computer Skills 🚀</div>
+    </div>
+    <button class="home-btn" onclick="goHome()">🏠 Home</button>
+  </div>
+</header>
+
+
+  <div id="loginMessage" class="message" style="display: none;"></div>
+
+  <!-- Login Form -->
+  <div id="loginForm">
+    <h2>Login</h2>
+    <form onsubmit="loginSubmit(event)">
+      <input type="text" id="loginUsername" placeholder="Username / Mobile" required>
+      <div class="password-wrapper">
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <span onclick="toggleLoginPassword()">👁️</span>
+      </div>
+      <button type="submit">Login</button>
+      <button type="button" class="alt-btn" onclick="showSignup()">Signup</button>
+    </form>
+  </div>
+
+  <!-- Signup Form -->
+  <div id="signupForm">
+    <h2>Signup</h2>
+    <form onsubmit="signupSubmit(event)">
+      <input type="text" id="fullName" placeholder="Full Name" required>
+      <input type="text" id="city" placeholder="City" required>
+      <select id="course" required>
+        <option value="" disabled selected hidden>📘 Select Course</option>
+        <option>Typing</option>
+        <option>Steno</option>
+        <option>RS-CIT</option>
+        <option>Tally</option>
+        <option>All</option>
+      </select>
+      <input type="text" id="signupUsername" placeholder="Mobile" required>
+
+      <div class="password-wrapper">
+        <input type="password" id="signupPassword" placeholder="Password" required oninput="validatePasswordStrength(this.value)">
+        <span onclick="togglePassword()">👁️</span>
+      </div>
+
+      <div class="password-wrapper">
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+        <span onclick="toggleConfirmPassword()">👁️</span>
+      </div>
+
+      <div style="margin-top: 15px; display: flex; align-items: center; font-size: 15px; flex-wrap: nowrap;">
+        <input type="checkbox" id="agreeTerms" style="transform: scale(1.2); margin-right: 8px;">
+        <label for="agreeTerms" style="white-space: nowrap;">
+          I have read and agree to&nbsp;
+          <a href="#">Terms</a>
+        </label>
+      </div>
+
+      <div id="signupMessage" class="message"></div>
+
+      <button type="submit" id="signupBtn">Register</button>
+      <button type="button" class="alt-btn" onclick="showLogin()">Back to Login</button>
+    </form>
+  </div>
+
+  <!-- ✅ Footer -->
+  <footer>
+    @ 2025 AK Sharma · Sunshine Institute — RS-CIT Practice Portal
+  </footer>
+
+<script src="protect.js"></script>
+<script>
+  function goHome(){ location.href = "dashboard.html"; }
+
+  // ✅ Auto-login check
+  window.onload = function () {
+    if (localStorage.getItem("isLoggedIn") === "true" && localStorage.getItem("userData")) {
+      location.replace("dashboard.html");
+    } else {
+      showLogin();
+    }
+  };
+
+  function showSignup() {
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("signupForm").style.display = "block";
+  }
+
+  function showLogin() {
+    document.getElementById("signupForm").style.display = "none";
+    document.getElementById("loginForm").style.display = "block";
+  }
+
+  function toggleLoginPassword() {
+    const pass = document.getElementById("loginPassword");
+    pass.type = pass.type === "password" ? "text" : "password";
+  }
+
+  function togglePassword() {
+    const pass = document.getElementById("signupPassword");
+    pass.type = pass.type === "password" ? "text" : "password";
+  }
+
+  function toggleConfirmPassword() {
+    const pass = document.getElementById("confirmPassword");
+    pass.type = pass.type === "password" ? "text" : "password";
+  }
+
+  function validatePasswordStrength(password) {
+    // Optional: Add strength logic here
+  }
+
+  //---------------------------------------------
+  function loginSubmit(e, forceLogin = false) {
+    e.preventDefault();
+
+    const username = document.getElementById("loginUsername").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
+    const msgBox = document.getElementById("loginMessage");
+
+    msgBox.style.display = "block";
+    msgBox.classList.remove("success");
+    msgBox.innerHTML = "";
+
+    if (!username || !password) {
+      msgBox.innerText = "❌ Username or password missing!";
+      return;
+    }
+
+    msgBox.innerText = "🔄 Checking credentials...";
+
+    const loginUrl = `${BASE_URL}?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&forceLogin=${forceLogin}`;
+
+    fetch(loginUrl)
+      .then(res => res.json())
+      .then(data => {
+        console.log("🔍 Login Response:", data);
+
+        if (data.success) {
+          msgBox.innerText = data.message;
+          msgBox.classList.add("success");
+
+          if (data.userData) {
+            localStorage.setItem("userData", JSON.stringify(data.userData));
+          }
+
+          localStorage.setItem("isLoggedIn", "true");
+
+          setTimeout(() => {
+            location.replace("dashboard.html");
+          }, 800);
+
+        } else {
+          if (data.alreadyLoggedIn) {
+            msgBox.innerHTML = `
+              ⚠️ ${data.message}<br><br>
+              <button id="forceLoginBtn" style="background:red;color:white;padding:6px 12px;border:none;border-radius:5px;cursor:pointer;">
+                Force Login
+              </button>
+            `;
+            document.getElementById("forceLoginBtn").addEventListener("click", () => {
+              loginSubmit(e, true);
+            });
+          } else {
+            msgBox.innerText = data.message || "❌ Invalid username or password.";
+            msgBox.classList.remove("success");
+          }
+        }
+      })
+      .catch(err => {
+        console.error("❌ Login error:", err);
+        msgBox.innerText = "⚠️ Server error. Try again later.";
+      });
+  }
+
+  //---------------------------------------------------
+  function signupSubmit(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById("signupBtn");
+    const msgBox = document.getElementById("signupMessage");
+    msgBox.innerText = "";
+    msgBox.classList.remove("success");
+
+    btn.disabled = true;
+    btn.innerText = "Registering...";
+
+    const fullName = document.getElementById("fullName").value.trim();
+    const city = document.getElementById("city").value.trim();
+    const course = document.getElementById("course").value;
+    const mobile = document.getElementById("signupUsername").value.trim();
+    const password = document.getElementById("signupPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const agree = document.getElementById("agreeTerms").checked;
+
+    if (!agree) {
+      msgBox.innerText = "❌ You must agree to the Terms before registering.";
+      btn.disabled = false;
+      btn.innerText = "Register";
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      msgBox.innerText = "❌ Passwords do not match!";
+      btn.disabled = false;
+      btn.innerText = "Register";
+      return;
+    }
+
+    const usernameRegex = /^\d{10}$/;
+    if (!usernameRegex.test(mobile)) {
+      msgBox.innerText = "❌ Please enter a valid 10-digit mobile number.";
+      btn.disabled = false;
+      btn.innerText = "Register";
+      return;
+    }
+
+    if (/\s/.test(mobile)) {
+      msgBox.innerText = "❌ Mobile number should not contain spaces.";
+      btn.disabled = false;
+      btn.innerText = "Register";
+      return;
+    }
+
+    const allSameDigit = /^(\d)\1{9}$/;
+    if (allSameDigit.test(mobile)) {
+      msgBox.innerText = "❌ Mobile number cannot have all digits same.";
+      btn.disabled = false;
+      btn.innerText = "Register";
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("fullName", fullName);
+    formData.append("city", city);
+    formData.append("course", course);
+    formData.append("mobile", mobile);
+    formData.append("username", mobile);
+    formData.append("password", password);
+
+    fetch(BASE_URL, {
+      method: "POST",
+      body: formData
+    })
+    .then(async res => {
+      const text = await res.text();
+      if (text.includes("✅")) {
+        msgBox.innerText = text;
+        msgBox.classList.add("success");
+
+        setTimeout(() => {
+          showLogin();
+          document.querySelector("#signupForm form").reset();
+          msgBox.innerText = "";
+          msgBox.classList.remove("success");
+        }, 2000);
+      } else {
+        msgBox.innerText = text;
+      }
+    })
+    .catch(err => {
+      console.error("Signup error:", err);
+      msgBox.innerText = "⚠️ Something went wrong! Check console for error.";
+    })
+    .finally(() => {
+      btn.disabled = false;
+      btn.innerText = "Register";
+    });
+  }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
