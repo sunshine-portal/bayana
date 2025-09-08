@@ -109,20 +109,42 @@ h1 {
   color: #ffd700;
 }
 .start-button {
-  background: linear-gradient(45deg, #ffb700, #ff8800);
+  background: linear-gradient(45deg, #4fc3f7, #81d4fa); /* Light blue gradient */
   color: #fff;
   padding: 12px 28px;
   text-decoration: none;
-  border-radius: 10px;
+  border-radius: 12px;
   font-size: 1rem;
   font-weight: 700;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-  transition: all .3s;
+  box-shadow: 0 6px 20px rgba(0, 191, 255, 0.4), 0 0 10px rgba(0, 191, 255, 0.3);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
 }
+
+.start-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(45deg);
+  transition: all 0.5s;
+}
+
+.start-button:hover::before {
+  top: -70%;
+  left: -70%;
+}
+
 .start-button:hover {
-  transform: scale(1.05);
-  background: linear-gradient(45deg, #ffa000, #ff6f00);
+  transform: scale(1.08);
+  background: linear-gradient(45deg, #29b6f6, #4fc3f7);
+  box-shadow: 0 8px 24px rgba(0, 191, 255, 0.6), 0 0 14px rgba(0, 191, 255, 0.4);
 }
+
 
 .container {
   max-width: 1200px;
@@ -289,7 +311,8 @@ li::before {
     <h1>Sunshine Computer Training & STENO Classes</h1>
     <p>Make RS-CIT Exam Success Easy & Digital!</p>
   </div>
-  <a href="https://script.google.com/macros/s/AKfycbyKGWLjHxc3HayvsS39TSgBfGvGg6-xtY01orx2Y6Q6y-oziSe3StgYFuwBUO6tXy8eXw/exec" class="start-button">🚀 Start Test Now</a>
+  <a href="login.html" class="start-button">🔑 Login Here</a>
+
 </header>
 
 <div class="container">
@@ -415,4 +438,5 @@ li::before {
 <script>AOS.init({ once: true, duration: 800 });</script>
 </body>
 </html>
+
 
