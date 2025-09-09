@@ -30,18 +30,29 @@ document.addEventListener("paste", function (e) {
     e.preventDefault();
 });
 
-// 4. Redirect if accessed directly via URL
+// protect.js
 (function () {
-    let allowedHost = "sunshine-portal.github.io/bayana/";
+    let allowedHost = "sunshine-portal.github.io";   // ✅ only hostname
     let loginURL = "https://sunshine-portal.github.io/bayana/login.html";
 
-    // Agar file direct URL se access ho ya protect.js open kiya jaye
+    const currentPage = window.location.pathname.split("/").pop();
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+    // Agar galat host se open ho ya direct protect.js load ho
     if (
-        document.referrer === "" || 
-        document.referrer === null || 
-        window.location.hostname !== allowedHost || 
+        document.referrer === "" ||
+        document.referrer === null ||
+        window.location.hostname !== allowedHost ||
         window.location.pathname.endsWith("protect.js")
     ) {
-        window.location.href = loginURL;
+        // ✅ Agar already login page par ho to dobara redirect mat karo
+        if (currentPage !== "login.html") {
+            window.location.replace(loginURL);
+        }
+    }
+
+    // ✅ Agar login nahi hai aur koi aur page khola gaya hai (dashboard etc.)
+    if (!isLoggedIn && currentPage !== "login.html") {
+        window.location.replace(loginURL);
     }
 })();
