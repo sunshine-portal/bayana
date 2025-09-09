@@ -276,18 +276,27 @@ header {
     window.location.href = "https://sunshine-portal.github.io/bayana/";
   }
 
-  // ✅ Auto-login check
- window.onload = function () {
+ // ✅ Auto-login check (login.html ke liye only)
+window.addEventListener("DOMContentLoaded", function () {
   const currentPage = window.location.pathname.split("/").pop();
 
-  if (localStorage.getItem("isLoggedIn") === "true" 
-      && localStorage.getItem("userData") 
-      && currentPage !== "dashboard.html") {
-    location.replace("dashboard.html");
-  } else if (currentPage === "login.html") {
-    showLogin();
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  const hasUser = localStorage.getItem("userData");
+
+  // Sirf login.html ya index.html par hi redirect chale
+  if (currentPage === "" || currentPage === "index.html" || currentPage === "login.html") {
+    if (isLoggedIn && hasUser) {
+      // ✅ Redirect to dashboard
+      if (!window.location.href.includes("dashboard.html")) {
+        window.location.href = "dashboard.html";
+      }
+    } else {
+      // ✅ Login form dikhana hai
+      showLogin();
+    }
   }
-};
+});
+
 
 
   function showSignup() {
@@ -479,6 +488,7 @@ header {
 </script>
 </body>
 </html>
+
 
 
 
