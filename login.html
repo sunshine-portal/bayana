@@ -277,13 +277,18 @@ header {
   }
 
   // ✅ Auto-login check
-  window.onload = function () {
-    if (localStorage.getItem("isLoggedIn") === "true" && localStorage.getItem("userData")) {
-      location.replace("dashboard.html");
-    } else {
-      showLogin();
-    }
-  };
+ window.onload = function () {
+  const currentPage = window.location.pathname.split("/").pop();
+
+  if (localStorage.getItem("isLoggedIn") === "true" 
+      && localStorage.getItem("userData") 
+      && currentPage !== "dashboard.html") {
+    location.replace("dashboard.html");
+  } else if (currentPage === "login.html") {
+    showLogin();
+  }
+};
+
 
   function showSignup() {
     document.getElementById("loginForm").style.display = "none";
@@ -474,6 +479,7 @@ header {
 </script>
 </body>
 </html>
+
 
 
 
