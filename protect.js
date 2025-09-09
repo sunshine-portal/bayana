@@ -32,8 +32,8 @@ document.addEventListener("paste", function (e) {
 
 // 4. Redirect if accessed directly via URL
 (function () {
-    let allowedHost = "sunshinebayana.github.io";
-    let loginURL = "https://sunshinebayana.github.io/portal/login.html";
+    let allowedHost = "sunshine-portal.github.io/bayana/";
+    let loginURL = "https://sunshine-portal.github.io/bayana/login.html";
 
     // Agar file direct URL se access ho ya protect.js open kiya jaye
     if (
