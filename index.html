@@ -28,7 +28,7 @@
 }
 body {
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(to right top, #f0f4ff, #e6ecff);
+  background: linear-gradient(to right top, #ffe6f0, #fff0f5); /* 🌸 Light pink gradient */
   color: #2c2c3e;
   margin: 0 5vw;
   font-size: 1rem;
@@ -51,28 +51,27 @@ header:hover, .container:hover, .footer:hover, .section-box:hover, .tagline:hove
 }
 @keyframes glowEffect {
   from {
-    text-shadow: 0 0 8px #00e6e6, 0 0 12px #00bfff, 0 0 16px #1e90ff;
+    text-shadow: 0 0 8px #ff80ab, 0 0 12px #ff4081, 0 0 16px #f50057;
   }
   to {
-    text-shadow: 0 0 12px #00ffff, 0 0 20px #1e90ff, 0 0 28px #1e90ff;
+    text-shadow: 0 0 12px #ff99cc, 0 0 20px #ff4081, 0 0 28px #f50057;
   }
 }
 @keyframes bounceGlow {
   0%, 100% {
     transform: scale(1);
-    text-shadow: 0 0 10px #00bcd4;
+    text-shadow: 0 0 10px #ff80ab;
   }
   50% {
     transform: scale(1.05);
-    text-shadow: 0 0 16px #ff4081;
+    text-shadow: 0 0 16px #f50057;
   }
 }
 header {
-  position: sticky;         /* Header को sticky बनाता है */
-  top: 0;                   /* Scroll होते ही यह ऊपर चिपक जाएगा */
-  z-index: 1000;            /* Header सबसे ऊपर दिखे */
-
-  background: linear-gradient(90deg, #001d4d, #0047ab);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(90deg, #d81b60, #ec407a); /* Pink Header */
   padding: 20px;
   display: flex;
   align-items: center;
@@ -94,7 +93,7 @@ h1 {
   font-family: 'Poppins', sans-serif;
   font-size: 1.7rem;
   color: #ffffff;
-  text-shadow: 0 0 8px #00e6e6, 0 0 12px #00bfff, 0 0 16px #1e90ff;
+  text-shadow: 0 0 8px #ff80ab, 0 0 12px #ff4081, 0 0 16px #f50057;
   font-weight: 700;
   letter-spacing: 1px;
   animation: glowEffect 2s ease-in-out infinite alternate;
@@ -102,17 +101,17 @@ h1 {
 .header-title p {
   font-size: 1rem;
   font-weight: 500;
-  color: #ffd700;
+  color: #ffd1dc;
 }
 .start-button {
-  background: linear-gradient(45deg, #4fc3f7, #81d4fa); /* Light blue gradient */
+  background: linear-gradient(45deg, #ff80ab, #f48fb1); /* Pink gradient button */
   color: #fff;
   padding: 12px 28px;
   text-decoration: none;
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 700;
-  box-shadow: 0 6px 20px rgba(0, 191, 255, 0.4), 0 0 10px rgba(0, 191, 255, 0.3);
+  box-shadow: 0 6px 20px rgba(255, 64, 129, 0.4), 0 0 10px rgba(255, 64, 129, 0.3);
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
@@ -134,8 +133,8 @@ h1 {
 }
 .start-button:hover {
   transform: scale(1.08);
-  background: linear-gradient(45deg, #29b6f6, #4fc3f7);
-  box-shadow: 0 8px 24px rgba(0, 191, 255, 0.6), 0 0 14px rgba(0, 191, 255, 0.4);
+  background: linear-gradient(45deg, #f06292, #ec407a);
+  box-shadow: 0 8px 24px rgba(255, 64, 129, 0.6), 0 0 14px rgba(255, 64, 129, 0.4);
 }
 .container {
   max-width: 1200px;
@@ -147,11 +146,11 @@ h1 {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 h3 {
-  color: #003399;
+  color: #d81b60;
   font-weight: 600;
   font-size: 1.2rem;
   margin-bottom: 10px;
-  border-left: 5px solid #ffc107;
+  border-left: 5px solid #ff80ab;
   padding-left: 12px;
 }
 ul {
@@ -168,7 +167,7 @@ li::before {
   content: "✔";
   position: absolute;
   left: -18px;
-  color: #ff9800;
+  color: #ec407a;
   font-weight: bold;
 }
 .director {
@@ -178,7 +177,7 @@ li::before {
   flex-wrap: wrap;
   margin-top: 20px;
   padding: 15px;
-  background: #f9f9f9;
+  background: #fff0f5;
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   gap: 10px;
@@ -187,7 +186,7 @@ li::before {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 3px solid #ffcc00;
+  border: 3px solid #ff80ab;
   background: #fff;
 }
 .director-info {
@@ -196,8 +195,8 @@ li::before {
 }
 .itkg-code {
   font-weight: bold;
-  color: #ff8c00;
-  border: 2px solid #ff9800;
+  color: #ec407a;
+  border: 2px solid #ff80ab;
   padding: 6px 12px;
   border-radius: 12px;
   background: transparent;
@@ -212,7 +211,7 @@ li::before {
 }
 .section-box {
   flex: 1 1 45%;
-  background: #fffefc;
+  background: #fff5f7; /* Light pink box */
   border-radius: 16px;
   padding: 20px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
@@ -223,19 +222,19 @@ li::before {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
 }
 .tagline {
-  background: linear-gradient(90deg, #fff8e1, #e3f2fd);
+  background: linear-gradient(90deg, #ffe4ec, #fce4ec);
   padding: 14px;
   font-weight: 600;
   font-size: 1.1rem;
   border-radius: 12px;
   text-align: center;
-  color: #4a148c;
+  color: #ad1457;
   margin-top: 25px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   animation: bounceGlow 3s ease-in-out infinite;
 }
 .footer {
-  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+  background: linear-gradient(90deg, #8e2de2, #ec407a); /* Pink-Purple footer */
   color: #fff;
   border-radius: 12px;
   margin-top: 40px;
@@ -253,7 +252,7 @@ li::before {
 .footer-banner {
   font-size: 1rem;
   font-weight: 600;
-  background: linear-gradient(90deg, #fff8e1, #e0f7fa);
+  background: linear-gradient(90deg, #ffe6f0, #fce4ec);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -273,7 +272,7 @@ li::before {
   transition: color .3s;
 }
 .social-links a:hover {
-  color: #ffd54f;
+  color: #ff80ab;
 }
 @media(max-width:768px){
   body { margin: 0 3vw; }
@@ -289,7 +288,7 @@ li::before {
 </head>
 <body>
 
-<marquee behavior="scroll" direction="left" scrollamount="6" style="color: #b8860b; font-size: 0.95rem; font-weight: 600; font-family: 'Poppins', sans-serif; margin: 0; padding: 0;">
+<marquee behavior="scroll" direction="left" scrollamount="6" style="color: #c2185b; font-size: 0.95rem; font-weight: 600; font-family: 'Poppins', sans-serif; margin: 0; padding: 0;">
 🎯 मेहनत करो, आत्मविश्वास रखो – सफलता तुम्हारे साथ है! - Sunshine Computer Training & STENO Classes, Bayana
 </marquee>
 <header>
@@ -345,16 +344,16 @@ li::before {
       </ul>
     </div>
   </div>
-  <div class="tagline">🤖 Skill Bot Live - Smart Practice for RS-CIT Success!”</div>
+  <div class="tagline">🤖 Skill Bot Live - Smart Practice for RS-CIT Success!</div>
   <div class="dual-section">
     <div class="section-box">
       <h3>📍 Contact Us</h3>
       <p><strong>🏫 Address:</strong> Panchayat Samiti Road, Tehsil-Bayana, Bharatpur, Rajasthan</p>
-      <p><strong>📧 Email:</strong> sunshine.bayana@gmail.com@gmail.com</p>
+      <p><strong>📧 Email:</strong> sunshine.bayana@gmail.com</p>
       <p><strong>📞 Mobile:</strong> 9929856121, 9511528518</p>
     </div>
     <div class="section-box">
-      <img src="https://raw.githubusercontent.com/uiitcomputer/portal/main/500x225.jpg" alt="Students at Sunshine Institute" style="width:100%; max-width:300px; border-radius:10px; border:2px solid #4e54c8;" loading="lazy">
+      <img src="https://raw.githubusercontent.com/uiitcomputer/portal/main/500x225.jpg" alt="Students at Sunshine Institute" style="width:100%; max-width:300px; border-radius:10px; border:2px solid #ec407a;" loading="lazy">
     </div>
   </div>
 <!-------------------------------->
@@ -374,7 +373,7 @@ li::before {
 </div>
 <!-- Visitor Count Script -->
 <script>
-  let count = parseInt(localStorage.getItem('visitorCount') || "5122", 10); // Starts from 5122
+  let count = parseInt(localStorage.getItem('visitorCount') || "5122", 10); 
   count++;
   localStorage.setItem('visitorCount', count);
   window.addEventListener('DOMContentLoaded', () => {
