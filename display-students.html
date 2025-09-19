@@ -71,7 +71,7 @@
     const reportArea = document.getElementById("reportArea");
     const userData = JSON.parse(localStorage.getItem("userData"));
     const username = userData?.username?.trim() || "";
-
+function goBack(){location.href="admin-report.html";}
     function createUserTable(users) {
       if (!users || users.length === 0) {
         return `<div class="error-box">⚠ No user data found.</div>`;
