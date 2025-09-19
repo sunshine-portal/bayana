@@ -241,7 +241,6 @@ h2{margin-bottom:25px;font-size:22px;color:var(--accent);text-align:center;}
   <p>Access the secure admin dashboard.</p>
 </div>
 
-
 </div>
 </main>
 </div>
@@ -267,9 +266,10 @@ function showMessage(){
   setTimeout(()=>{msg.style.display="none";},4000);
 }
 
-// Apply click event on all cards except RS-CIT
+// Allow only RS-CIT and Admin Panel, block others
 document.querySelectorAll(".card").forEach(card=>{
-  if(!card.innerText.includes("RS-CIT")){
+  let title = card.querySelector("h3").innerText;
+  if(title!=="RS-CIT" && title!=="Admin Panel"){
     card.addEventListener("click",showMessage);
   }
 });
@@ -280,4 +280,3 @@ document.querySelectorAll(".card").forEach(card=>{
 
 </body>
 </html>
-
