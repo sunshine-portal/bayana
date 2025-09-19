@@ -81,7 +81,6 @@
   </style>
 </head>
 <body>
-  <!-- ✅ Header -->
   <header id="header"></header>
 
   <h2>👤 User Profile Report</h2>
@@ -91,64 +90,71 @@
 
   <script src="protect.js"></script>
   <script>
-    const userData = JSON.parse(localStorage.getItem("userData"));
-    const username = userData?.username?.trim() || "";
+  const reportArea = document.getElementById("reportArea");
 
-    function loadUserProfile() {
-      if (!username) {
-        document.getElementById("reportArea").innerHTML =
-          `<div class="error-box">❌ User not found. Please login again.</div>`;
-        return;
-      }
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const username = userData?.username?.trim() || "";
 
-      // ✅ yahan action=displaystudentdata pass kiya gaya
-      fetch(`${BASE_URL}?action=displaystudentdata&username=${encodeURIComponent(username)}`)
-        .then(res => res.json())
-        .then(data => {
-          if (!data.success) {
-            document.getElementById("reportArea").innerHTML =
-              `<div class="error-box">⚠ ${data.message || "Error fetching profile."}</div>`;
-            return;
-          }
+  function createProfileCard(u) {
+    return `
+      <div class="card">
+        <div class="card-header">📌 ${u.fullName || "User Details"}</div>
+        <div class="card-body">
+          <table>
+            <tr><th>Full Name</th><td>${u.fullName || "-"}</td></tr>
+            <tr><th>Mobile</th><td>${u.mobile || "-"}</td></tr>
+            <tr><th>City</th><td>${u.city || "-"}</td></tr>
+            <tr><th>Username</th><td>${u.username || "-"}</td></tr>
+            <tr><th>Password</th><td>${u.password || "-"}</td></tr>
+            <tr><th>Payment Status</th><td>${u.paymentStatus || "-"}</td></tr>
+          </table>
+        </div>
+      </div>
+    `;
+  }
 
-          // ✅ Agar backend message de ki admin-only feature hai
-          if (data.adminOnly === true) {
-            document.getElementById("reportArea").innerHTML =
-              `<div class="error-box">⚠ यह फीचर केवल Admin use कर सकता है</div>`;
-            return;
-          }
-
-          const u = data.user; // backend se "user" object
-
-          const profileCard = `
-            <div class="card">
-              <div class="card-header">📌 Your Details</div>
-              <div class="card-body">
-                <table>
-                  <tr><th>Full Name</th><td>${u.fullName || "-"}</td></tr>
-                  <tr><th>Mobile</th><td>${u.mobile || "-"}</td></tr>
-                  <tr><th>City</th><td>${u.city || "-"}</td></tr>
-                  <tr><th>Username</th><td>${u.username || "-"}</td></tr>
-                  <tr><th>Password</th><td>${u.password || "-"}</td></tr>
-                  <tr><th>Payment Status</th><td>${u.paymentStatus || "-"}</td></tr>
-                </table>
-              </div>
-            </div>
-          `;
-
-          document.getElementById("reportArea").innerHTML = profileCard;
-        })
-        .catch(err => {
-          console.error("Error:", err);
-          document.getElementById("reportArea").innerHTML =
-            `<div class="error-box">⚠ Error loading profile. Please try again later.</div>`;
-        });
+  function loadUserProfile() {
+    if (!username) {
+      reportArea.innerHTML = `<div class="error-box">❌ User not found. Please login again.</div>`;
+      return;
     }
 
-    loadUserProfile();
-  </script>
+    fetch(`${BASE_URL}?action=displaystudentdata&username=${encodeURIComponent(username)}`)
+      .then(res => res.json())
+      .then(data => {
+        if (!data.success) {
+          reportArea.innerHTML = `<div class="error-box">⚠ ${data.message || "Error fetching profile."}</div>`;
+          return;
+        }
 
-  <!-- ✅ Footer -->
+        if (data.adminOnly === true) {
+          // ✅ Admin sees all users
+          if (Array.isArray(data.users) && data.users.length) {
+            reportArea.innerHTML = data.users.map(u => createProfileCard(u)).join("");
+          } else {
+            reportArea.innerHTML = `<div class="error-box">⚠ No user records found.</div>`;
+          }
+          return;
+        }
+
+        // ✅ Non-admin user profile
+        const u = data.users?.find(u => u.username === username);
+        if (!u) {
+          reportArea.innerHTML = `<div class="error-box">❌ User data not found.</div>`;
+          return;
+        }
+        reportArea.innerHTML = createProfileCard(u);
+
+      })
+      .catch(err => {
+        console.error("Error:", err);
+        reportArea.innerHTML = `<div class="error-box">⚠ Error loading profile. Please try again later.</div>`;
+      });
+  }
+
+  loadUserProfile();
+</script>
+
   <footer id="footer"></footer>
   <script src="header-footer.js"></script>
 </body>
