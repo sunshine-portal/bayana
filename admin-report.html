@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Detailed Student's Report — Admin Panel</title>
+<style>
+:root{
+  --primary:#0d1b4c;
+  --accent:#e91e63;
+  --bg:#fff;
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(180deg,#f7f9fc 0%,#ffffff 70%);
+  color:var(--primary);
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
+main{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  text-align:center;
+}
+h1{
+  font-size:24px;
+  margin-bottom:20px;
+  color:var(--accent);
+}
+.btn{
+  display:inline-block;
+  margin:10px;
+  padding:14px 22px;
+  border-radius:var(--radius);
+  border:none;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .25s ease;
+  color:#fff;
+}
+.btn.display{
+  background:linear-gradient(135deg,#ab47bc,#8e24aa);
+}
+.btn.modify{
+  background:linear-gradient(135deg,#42a5f5,#1e88e5);
+}
+.btn.results{
+  background:linear-gradient(135deg,#66bb6a,#388e3c);
+}
+.btn:hover{
+  transform:translateY(-4px) scale(1.03);
+  box-shadow:0 8px 18px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+<body>
+<header id="header"></header>
+<main>
+  <h1>Detailed Student's Report — Admin Panel</h1>
+  <button class="btn display" onclick="openModule('display')">Display All Student Data</button>
+  <button class="btn modify" onclick="openModule('modify')">Modify Student's Data</button>
+  <button class="btn results" onclick="openModule('results')">All Student's Test Result</button>
+</main>
+
+<footer id="footer"></footer>
+
+<script src="protect.js"></script>
+<script>
+if(localStorage.getItem("isLoggedIn")!=="true"){
+  location.replace("login.html");
+}
+function openModule(key){
+  switch(key){
+    case 'display': location.href = 'display-students.html'; break;
+    case 'modify': location.href = 'modify-student.html'; break;
+    case 'results': location.href = 'all-results.html'; break;
+    default: alert("Module not found.");
+  }
+}
+</script>
+<script src="header-footer.js"></script>
+</body>
+</html>
