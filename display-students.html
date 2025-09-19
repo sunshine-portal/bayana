@@ -114,43 +114,45 @@
   }
 
   function loadUserProfile() {
-    if (!username) {
-      reportArea.innerHTML = `<div class="error-box">❌ User not found. Please login again.</div>`;
-      return;
-    }
-
-    fetch(`${BASE_URL}?action=displaystudentdata&username=${encodeURIComponent(username)}`)
-      .then(res => res.json())
-      .then(data => {
-        if (!data.success) {
-          reportArea.innerHTML = `<div class="error-box">⚠ ${data.message || "Error fetching profile."}</div>`;
-          return;
-        }
-
-        if (data.adminOnly === true) {
-          // ✅ Admin sees all users
-          if (Array.isArray(data.users) && data.users.length) {
-            reportArea.innerHTML = data.users.map(u => createProfileCard(u)).join("");
-          } else {
-            reportArea.innerHTML = `<div class="error-box">⚠ No user records found.</div>`;
-          }
-          return;
-        }
-
-        // ✅ Non-admin user profile
-        const u = data.users?.find(u => u.username === username);
-        if (!u) {
-          reportArea.innerHTML = `<div class="error-box">❌ User data not found.</div>`;
-          return;
-        }
-        reportArea.innerHTML = createProfileCard(u);
-
-      })
-      .catch(err => {
-        console.error("Error:", err);
-        reportArea.innerHTML = `<div class="error-box">⚠ Error loading profile. Please try again later.</div>`;
-      });
+  if (!username) {
+    reportArea.innerHTML = `<div class="error-box">❌ User not found. Please login again.</div>`;
+    return;
   }
+
+  fetch(`${BASE_URL}?action=displaystudentdata&username=${encodeURIComponent(username)}`)
+    .then(res => res.json())
+    .then(data => {
+      if (!data.success) {
+        reportArea.innerHTML = `<div class="error-box">⚠ ${data.message || "Error fetching profile."}</div>`;
+        return;
+      }
+
+      if (data.adminOnly === true) {
+        if (Array.isArray(data.users) && data.users.length) {
+          reportArea.innerHTML = data.users.map(u => createProfileCard(u)).join("");
+        } else {
+          reportArea.innerHTML = `<div class="error-box">⚠ No user records found.</div>`;
+        }
+        return;
+      }
+
+      // ✅ Non-admin user: normalize username comparison
+      const u = data.users?.find(
+        user => user.username?.trim().toLowerCase() === username.trim().toLowerCase()
+      );
+
+      if (!u) {
+        reportArea.innerHTML = `<div class="error-box">❌ User data not found or username mismatch.</div>`;
+        return;
+      }
+
+      reportArea.innerHTML = createProfileCard(u);
+    })
+    .catch(err => {
+      console.error("Error:", err);
+      reportArea.innerHTML = `<div class="error-box">⚠ Error loading profile. Please try again later.</div>`;
+    });
+}
 
   loadUserProfile();
 </script>
