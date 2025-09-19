@@ -15,14 +15,14 @@
   h2 {
     text-align: center;
     color: #001f4d;
-    margin: 25px 0;
-    font-size: 28px;
+    margin: 20px 0;
+    font-size: 26px;
     font-weight: bold;
   }
   .container {
     max-width: 1000px;
     margin: auto;
-    padding: 15px;
+    padding: 10px;
     overflow-x: auto;
   }
   table {
@@ -31,58 +31,68 @@
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
   }
   th, td {
-    padding: 14px 18px;  /* thoda extra spacing */
+    padding: 10px 14px; /* kam spacing */
     text-align: left;
     border-bottom: 1px solid #e3e6f0;
-    font-size: 15px;
+    font-size: 14px;
   }
   th {
     background: linear-gradient(90deg, #001f4d, #ff6699);
     color: #fff;
     font-weight: 700;
-    text-transform: uppercase;   /* sab headings capital */
-    letter-spacing: 1px;         /* words ke beech thoda gap */
-    padding-top: 16px;           /* upar space */
-    padding-bottom: 16px;        /* neeche space */
+    text-transform: uppercase;
+    letter-spacing: 0.5px; 
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  tbody tr:nth-child(odd) {
+    background-color: #f9fbff; /* light blue */
+  }
+  tbody tr:nth-child(even) {
+    background-color: #eef3fb; /* thoda dark shade */
+  }
+  tbody tr:hover {
+    background-color: #dbe7ff; /* hover effect */
+    transition: background 0.3s;
   }
   tr:last-child td {
     border-bottom: none;
   }
   .error-box {
     text-align: center;
-    padding: 20px;
+    padding: 15px;
     background: #ffe6e6;
     border: 1px solid #ff9999;
     border-radius: 10px;
     color: #cc0000;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 15px;
   }
   .pagination {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 15px;
-    font-size: 14px;
+    margin-top: 12px;
+    font-size: 13px;
   }
   .pagination button {
-    padding: 6px 12px;
-    margin: 0 5px;
+    padding: 5px 10px;
+    margin: 0 4px;
     border: none;
     border-radius: 6px;
     background: #001f4d;
     color: #fff;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
   }
   .pagination button:disabled {
     background: #ccc;
     cursor: not-allowed;
   }
 </style>
-
 </head>
 <body>
   <header id="header"></header>
