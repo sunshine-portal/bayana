@@ -73,43 +73,45 @@
     const username = userData?.username?.trim() || "";
 function goBack(){location.href="admin-report.html";}
     function createUserTable(users) {
-      if (!users || users.length === 0) {
-        return `<div class="error-box">⚠ No user data found.</div>`;
-      }
+  if (!users || users.length === 0) {
+    return `<div class="error-box">⚠ No user data found.</div>`;
+  }
 
-      // Table header
-      let tableHTML = `
-        <table>
-          <thead>
-            <tr>
-              <th>Full Name</th>
-              <th>Mobile</th>
-              <th>City</th>
-              <th>Username</th>
-              <th>Password</th>
-              <th>Payment Status</th>
-            </tr>
-          </thead>
-          <tbody>
-      `;
+  // Table header with S.No
+  let tableHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Full Name</th>
+          <th>Mobile</th>
+          <th>City</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Payment Status</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
 
-      // Table rows
-      users.forEach(u => {
-        tableHTML += `
-          <tr>
-            <td>${u.fullName || "-"}</td>
-            <td>${u.mobile || "-"}</td>
-            <td>${u.city || "-"}</td>
-            <td>${u.username || "-"}</td>
-            <td>${u.password || "-"}</td>
-            <td>${u.paymentStatus || "-"}</td>
-          </tr>
-        `;
-      });
+  // Table rows with numbering
+  users.forEach((u, index) => {
+    tableHTML += `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${u.fullName || "-"}</td>
+        <td>${u.mobile || "-"}</td>
+        <td>${u.city || "-"}</td>
+        <td>${u.username || "-"}</td>
+        <td>${u.password || "-"}</td>
+        <td>${u.paymentStatus || "-"}</td>
+      </tr>
+    `;
+  });
 
-      tableHTML += `</tbody></table>`;
-      return tableHTML;
-    }
+  tableHTML += `</tbody></table>`;
+  return tableHTML;
+}
 
     function loadUserProfile() {
       if (!username) {
