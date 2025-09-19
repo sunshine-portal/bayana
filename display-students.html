@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RS-CIT User Profile Report</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f4ff;
+      color: #333;
+    }
+    h2 {
+      text-align: center;
+      color: #001f4d;
+      margin: 25px 0;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 15px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+    }
+    .card-header {
+      background: linear-gradient(90deg, #001f4d, #ff6699);
+      color: #fff;
+      padding: 14px 18px;
+      font-size: 20px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-body {
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: auto;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid #e3e6f0;
+      font-size: 15px;
+    }
+    th {
+      background: #f8f9ff;
+      font-weight: 600;
+      color: #001f4d;
+      width: 40%;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    .error-box {
+      text-align: center;
+      padding: 20px;
+      background: #ffe6e6;
+      border: 1px solid #ff9999;
+      border-radius: 10px;
+      color: #cc0000;
+      font-weight: 600;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <!-- ✅ Header -->
+  <header id="header"></header>
+
+  <h2>👤 User Profile Report</h2>
+  <div class="container">
+    <div id="reportArea">⏳ Loading user profile...</div>
+  </div>
+
+  <script src="protect.js"></script>
+  <script>
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    const username = userData?.username?.trim() || "";
+
+    function loadUserProfile() {
+      if (!username) {
+        document.getElementById("reportArea").innerHTML =
+          `<div class="error-box">❌ User not found. Please login again.</div>`;
+        return;
+      }
+
+      fetch(`${BASE_URL}?action=getuserprofile&username=${encodeURIComponent(username)}`)
+        .then(res => res.json())
+        .then(data => {
+          if (!data.success) {
+            document.getElementById("reportArea").innerHTML =
+              `<div class="error-box">⚠ ${data.message || "Error fetching profile."}</div>`;
+            return;
+          }
+
+          // ✅ Agar backend message de ki admin-only feature hai
+          if (data.adminOnly === true) {
+            document.getElementById("reportArea").innerHTML =
+              `<div class="error-box">⚠ यह फीचर केवल Admin use कर सकता है</div>`;
+            return;
+          }
+
+          const u = data.user; // backend se "user" object
+
+          const profileCard = `
+            <div class="card">
+              <div class="card-header">📌 Your Details</div>
+              <div class="card-body">
+                <table>
+                  <tr><th>Full Name</th><td>${u.fullName || "-"}</td></tr>
+                  <tr><th>Mobile</th><td>${u.mobile || "-"}</td></tr>
+                  <tr><th>City</th><td>${u.city || "-"}</td></tr>
+                  <tr><th>Username</th><td>${u.username || "-"}</td></tr>
+                  <tr><th>Password</th><td>${u.password || "-"}</td></tr>
+                  <tr><th>Payment Status</th><td>${u.paymentStatus || "-"}</td></tr>
+                </table>
+              </div>
+            </div>
+          `;
+
+          document.getElementById("reportArea").innerHTML = profileCard;
+        })
+        .catch(err => {
+          console.error("Error:", err);
+          document.getElementById("reportArea").innerHTML =
+            `<div class="error-box">⚠ Error loading profile. Please try again later.</div>`;
+        });
+    }
+
+    loadUserProfile();
+  </script>
+
+  <!-- ✅ Footer -->
+  <footer id="footer"></footer>
+  <script src="header-footer.js"></script>
+</body>
+</html>
