@@ -1,1 +1,283 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Sunshine Dashboard</title><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><style>:root{--primary:#0d1b4c;--secondary:#f8bbd0;--accent:#e91e63;--bg:#fff;--muted:#6b7280;--icon1:#3f51b5;--icon2:#009688;--icon3:#ff5722;--icon4:#9c27b0;--icon5:#4caf50;--icon6:#f44336;--icon7:#2196f3;--icon8:#ff9800;--icon9:#673ab7;--icon10:#607d8b}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--primary);display:flex;flex-direction:column;min-height:100vh}.dashboard{display:flex;flex:1;min-height:calc(100vh - 60px)}.sidebar{width:220px;background:#fff;border-right:1px solid #eee;padding:20px 10px;box-shadow:2px 0 6px rgba(0,0,0,0.05)}.sidebar h3{font-size:14px;margin-bottom:15px;color:var(--accent);text-transform:uppercase;letter-spacing:.5px}.sidebar a{display:block;padding:10px 15px;margin:5px 0;color:var(--primary);text-decoration:none;border-radius:6px;font-size:14px;transition:.3s}.sidebar a:hover{background:var(--secondary);color:var(--accent)}main{flex:1;padding:25px}h2{margin-bottom:25px;font-size:22px;color:var(--accent);text-align:center}.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}.card{background:var(--bg);padding:20px;border-radius:16px;text-align:center;box-shadow:0 4px 10px rgba(233,30,99,0.15);cursor:pointer;border:1px solid #f1f1f1;transition:.3s}.card:hover{transform:scale(1.05);box-shadow:0 8px 16px rgba(13,27,76,0.2)}.card h3{font-size:16px;color:var(--primary);margin-top:10px}.card p{font-size:13px;color:var(--muted)}.icon-circle{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;color:#fff}.icon-circle .material-icons{font-size:28px}#messageBox{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;padding:12px 20px;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.2);display:none;font-size:14px;z-index:999}@media(max-width:768px){.sidebar{display:none}main{padding:15px}h2{font-size:18px}.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{border-radius:20px;padding:15px 10px;font-size:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 8px rgba(0,0,0,0.1)}.card h3{font-size:13px;margin:8px 0 0 0;text-align:center}.card p{display:none}.icon-circle{width:65px;height:65px}.icon-circle .material-icons{font-size:30px}}</style></head><body><a id="top"></a><header id="header"></header><div class="dashboard"><aside class="sidebar"><h3>Navigation</h3><a href="rs-cit-module.html"><span class="material-icons">menu_book</span> RS-CIT</a><a href="#"><span class="material-icons">keyboard</span> Typing Tutor</a><a href="#"><span class="material-icons">mic</span> Stenographer</a><a href="#"><span class="material-icons">assignment</span> RSMSSB LDC</a><a href="#"><span class="material-icons">menu_book</span> REET (Main)</a><a href="#"><span class="material-icons">build</span> Class IV Exams</a><a href="advance-ms-excel.html"><span class="material-icons">table_chart</span> Advance MS Excel</a><a href="c-programming.html"><span class="material-icons">code</span> C Programming</a><a href="admin-panel.html"><span class="material-icons">settings</span> Admin Panel</a></aside><main><h2>Choose Your Preparation Module</h2><div class="card-grid"><div class="card" onclick="location.href='rs-cit-module.html'"><div class="icon-circle" style="background:var(--icon1)"><span class="material-icons">menu_book</span></div><h3>RS-CIT</h3><p>Start your RS-CIT practice test now!</p></div><div class="card"><div class="icon-circle" style="background:var(--icon2)"><span class="material-icons">computer</span></div><h3>Computer Efficiency</h3><p>Practice to improve your computer skills.</p></div><div class="card"><div class="icon-circle" style="background:var(--icon3)"><span class="material-icons">keyboard</span></div><h3>Typing Tutor</h3><p>Boost your typing speed and accuracy.</p></div><div class="card"><div class="icon-circle" style="background:var(--icon4)"><span class="material-icons">mic</span></div><h3>Stenographer</h3><p>Prepare with dictation & shorthand modules.</p></div><div class="card"><div class="icon-circle" style="background:var(--icon5)"><span class="material-icons">assignment</span></div><h3>RSMSSB LDC</h3><p>Get ready for Rajasthan LDC recruitment.</p></div><div class="card"><div class="icon-circle" style="background:var(--icon6)"><span class="material-icons">menu_book</span></div><h3>REET (Main)</h3><p>Test your knowledge for REET exams.</p></div><div class="card"><div class="icon-circle" style="background:var(--icon7)"><span class="material-icons">build</span></div><h3>Class IV</h3><p>Practice for Group-D job recruitment exams.</p></div><div class="card"><div class="icon-circle" style="background:var(--icon8)"><span class="material-icons">table_chart</span></div><h3>MS Excel</h3><p>Master Advanced MS Excel in 30 days.</p></div><div class="card"><div class="icon-circle" style="background:var(--icon9)"><span class="material-icons">code</span></div><h3>C Language</h3><p>Learn the fundamentals of C Language programming.</p></div><div class="card"><div class="icon-circle" style="background:var(--icon10)"><span class="material-icons">settings</span></div><h3>Admin Panel</h3><p>Access the secure admin dashboard.</p></div></div></main></div><div id="messageBox">Ye feature abhi aapke liye available nahi hai. Isse use karne ke liye please apna plan upgrade karein. ✨</div><footer id="footer"></footer><script src="protect.js"></script><script>if(localStorage.getItem("isLoggedIn")!=="true")location.replace("login.html");function goBack(){location.href="rs-cit-module.html"}function showMessage(){const msg=document.getElementById("messageBox");msg.style.display="block";setTimeout(()=>{msg.style.display="none"},4000)}document.querySelectorAll(".card").forEach(card=>{if(!card.innerText.includes("RS-CIT"))card.addEventListener("click",showMessage)});</script><script src="header-footer.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sunshine Dashboard</title>
+
+<!-- Google Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#0d1b4c;
+  --secondary:#f8bbd0;
+  --accent:#e91e63;
+  --bg:#fff;
+  --muted:#6b7280;
+
+  /* Icon Colors */
+  --icon1:#3f51b5;
+  --icon2:#009688;
+  --icon3:#ff5722;
+  --icon4:#9c27b0;
+  --icon5:#4caf50;
+  --icon6:#f44336;
+  --icon7:#2196f3;
+  --icon8:#ff9800;
+  --icon9:#673ab7;
+  --icon10:#607d8b;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--primary);display:flex;flex-direction:column;min-height:100vh;}
+.dashboard{display:flex;flex:1;min-height:calc(100vh - 60px);}
+.sidebar{
+  width:220px;
+  background:#fff;
+  border-right:1px solid #eee;
+  padding:20px 10px;
+  box-shadow:2px 0 6px rgba(0,0,0,0.05);
+}
+.sidebar h3{
+  font-size:14px;
+  margin-bottom:15px;
+  color:var(--accent);
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+.sidebar a{
+  display:block;
+  padding:10px 15px;
+  margin:5px 0;
+  color:var(--primary);
+  text-decoration:none;
+  border-radius:6px;
+  font-size:14px;
+  transition:.3s;
+}
+.sidebar a:hover{background:var(--secondary);color:var(--accent);}
+main{flex:1;padding:25px;}
+h2{margin-bottom:25px;font-size:22px;color:var(--accent);text-align:center;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+.card{
+  background:var(--bg);
+  padding:20px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 4px 10px rgba(233,30,99,0.15);
+  cursor:pointer;
+  border:1px solid #f1f1f1;
+  transition:.3s;
+}
+.card:hover{transform:scale(1.05);box-shadow:0 8px 16px rgba(13,27,76,0.2);}
+.card h3{font-size:16px;color:var(--primary);margin-top:10px;}
+.card p{font-size:13px;color:var(--muted);}
+
+/* Icon Circle Style */
+.icon-circle{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto;
+  color:#fff;
+}
+.icon-circle .material-icons{font-size:28px;}
+
+/* Message Box */
+#messageBox{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--accent);
+  color:#fff;
+  padding:12px 20px;
+  border-radius:8px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  display:none;
+  font-size:14px;
+  z-index:999;
+}
+
+/* MOBILE STYLES */
+@media(max-width:768px){
+ .sidebar{display:none;}
+ main{padding:15px;}
+ h2{font-size:18px;}
+
+ /* Mobile app like grid buttons */
+ .card-grid{
+   display:grid;
+   grid-template-columns:repeat(3,1fr);
+   gap:15px;
+ }
+ .card{
+   border-radius:20px;
+   padding:15px 10px;
+   font-size:12px;
+   display:flex;
+   flex-direction:column;
+   align-items:center;
+   justify-content:center;
+   box-shadow:0 4px 8px rgba(0,0,0,0.1);
+ }
+ .card h3{
+   font-size:13px;
+   margin:8px 0 0 0;
+   text-align:center;
+ }
+ .card p{display:none;} /* hide description on mobile */
+ .icon-circle{
+   width:65px;
+   height:65px;
+ }
+ .icon-circle .material-icons{font-size:30px;}
+}
+</style>
+</head>
+<body>
+<a id="top"></a>
+
+<!-- Header placeholder -->
+<header id="header"></header>
+
+<div class="dashboard">
+<aside class="sidebar">
+<h3>Navigation</h3>
+<a href="rs-cit-module.html"><span class="material-icons">menu_book</span> RS-CIT</a>
+<a href="#"><span class="material-icons">keyboard</span> Typing Tutor</a>
+<a href="#"><span class="material-icons">mic</span> Stenographer</a>
+<a href="#"><span class="material-icons">assignment</span> RSMSSB LDC</a>
+<a href="#"><span class="material-icons">menu_book</span> REET (Main)</a>
+<a href="#"><span class="material-icons">build</span> Class IV Exams</a>
+<a href="advance-ms-excel.html"><span class="material-icons">table_chart</span> Advance MS Excel</a>
+<a href="c-programming.html"><span class="material-icons">code</span> C Programming</a>
+<a href="admin-panel.html"><span class="material-icons">settings</span> Admin Panel</a>
+</aside>
+<main>
+<h2>Choose Your Preparation Module</h2>
+<div class="card-grid">
+
+<div class="card" onclick="location.href='rs-cit-module.html'">
+  <div class="icon-circle" style="background:var(--icon1);">
+    <span class="material-icons">menu_book</span>
+  </div>
+  <h3>RS-CIT</h3>
+  <p>Start your RS-CIT practice test now!</p>
+</div>
+
+<div class="card">
+  <div class="icon-circle" style="background:var(--icon2);">
+    <span class="material-icons">computer</span>
+  </div>
+  <h3>Computer Efficiency</h3>
+  <p>Practice to improve your computer skills.</p>
+</div>
+
+<div class="card">
+  <div class="icon-circle" style="background:var(--icon3);">
+    <span class="material-icons">keyboard</span>
+  </div>
+  <h3>Typing Tutor</h3>
+  <p>Boost your typing speed and accuracy.</p>
+</div>
+
+<div class="card">
+  <div class="icon-circle" style="background:var(--icon4);">
+    <span class="material-icons">mic</span>
+  </div>
+  <h3>Stenographer</h3>
+  <p>Prepare with dictation & shorthand modules.</p>
+</div>
+
+<div class="card">
+  <div class="icon-circle" style="background:var(--icon5);">
+    <span class="material-icons">assignment</span>
+  </div>
+  <h3>RSMSSB LDC</h3>
+  <p>Get ready for Rajasthan LDC recruitment.</p>
+</div>
+
+<div class="card">
+  <div class="icon-circle" style="background:var(--icon6);">
+    <span class="material-icons">menu_book</span>
+  </div>
+  <h3>REET (Main)</h3>
+  <p>Test your knowledge for REET exams.</p>
+</div>
+
+<div class="card">
+  <div class="icon-circle" style="background:var(--icon7);">
+    <span class="material-icons">build</span>
+  </div>
+  <h3>Class IV</h3>
+  <p>Practice for Group-D job recruitment exams.</p>
+</div>
+
+<div class="card">
+  <div class="icon-circle" style="background:var(--icon8);">
+    <span class="material-icons">table_chart</span>
+  </div>
+  <h3>MS Excel</h3>
+  <p>Master Advanced MS Excel in 30 days.</p>
+</div>
+
+<div class="card">
+  <div class="icon-circle" style="background:var(--icon9);">
+    <span class="material-icons">code</span>
+  </div>
+  <h3>C Language</h3>
+  <p>Learn the fundamentals of C Language programming.</p>
+</div>
+
+<div class="card" onclick="location.href='admin-report.html'">
+  <div class="icon-circle" style="background:var(--icon10);">
+    <span class="material-icons">settings</span>
+  </div>
+  <h3>Admin Panel</h3>
+  <p>Access the secure admin dashboard.</p>
+</div>
+
+
+</div>
+</main>
+</div>
+
+<!-- Message Box -->
+<div id="messageBox">Ye feature abhi aapke liye available nahi hai. Isse use karne ke liye please apna plan upgrade karein. ✨</div>
+
+<!-- Footer placeholder -->
+<footer id="footer"></footer>
+
+<script src="protect.js"></script>
+<script>
+// Keep user login protection
+if(localStorage.getItem("isLoggedIn")!=="true")location.replace("login.html");
+
+// Page-specific function
+function goBack(){location.href="rs-cit-module.html";}
+
+// Message display function
+function showMessage(){
+  const msg=document.getElementById("messageBox");
+  msg.style.display="block";
+  setTimeout(()=>{msg.style.display="none";},4000);
+}
+
+// Apply click event on all cards except RS-CIT
+document.querySelectorAll(".card").forEach(card=>{
+  if(!card.innerText.includes("RS-CIT")){
+    card.addEventListener("click",showMessage);
+  }
+});
+</script>
+
+<!-- Common Header/Footer Script -->
+<script src="header-footer.js"></script>
+
+</body>
+</html>
+
