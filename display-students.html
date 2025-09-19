@@ -4,80 +4,85 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RS-CIT User Profile Report</title>
-  <style>
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f0f4ff;
-      color: #333;
-    }
-    h2 {
-      text-align: center;
-      color: #001f4d;
-      margin: 25px 0;
-      font-size: 28px;
-      font-weight: bold;
-    }
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 15px;
-      overflow-x: auto;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-    th, td {
-      padding: 12px 15px;
-      text-align: left;
-      border-bottom: 1px solid #e3e6f0;
-      font-size: 15px;
-    }
-    th {
-      background: linear-gradient(90deg, #001f4d, #ff6699);
-      color: #fff;
-      font-weight: 600;
-    }
-    tr:last-child td {
-      border-bottom: none;
-    }
-    .error-box {
-      text-align: center;
-      padding: 20px;
-      background: #ffe6e6;
-      border: 1px solid #ff9999;
-      border-radius: 10px;
-      color: #cc0000;
-      font-weight: 600;
-      font-size: 16px;
-    }
-    .pagination {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 15px;
-      font-size: 14px;
-    }
-    .pagination button {
-      padding: 6px 12px;
-      margin: 0 5px;
-      border: none;
-      border-radius: 6px;
-      background: #001f4d;
-      color: #fff;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .pagination button:disabled {
-      background: #ccc;
-      cursor: not-allowed;
-    }
-  </style>
+ <style>
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0f4ff;
+    color: #333;
+  }
+  h2 {
+    text-align: center;
+    color: #001f4d;
+    margin: 25px 0;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 15px;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  th, td {
+    padding: 14px 18px;  /* thoda extra spacing */
+    text-align: left;
+    border-bottom: 1px solid #e3e6f0;
+    font-size: 15px;
+  }
+  th {
+    background: linear-gradient(90deg, #001f4d, #ff6699);
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;   /* sab headings capital */
+    letter-spacing: 1px;         /* words ke beech thoda gap */
+    padding-top: 16px;           /* upar space */
+    padding-bottom: 16px;        /* neeche space */
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+  .error-box {
+    text-align: center;
+    padding: 20px;
+    background: #ffe6e6;
+    border: 1px solid #ff9999;
+    border-radius: 10px;
+    color: #cc0000;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  .pagination button {
+    padding: 6px 12px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 6px;
+    background: #001f4d;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .pagination button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+</style>
+
 </head>
 <body>
   <header id="header"></header>
