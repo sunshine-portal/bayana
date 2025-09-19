@@ -20,50 +20,28 @@
       font-weight: bold;
     }
     .container {
-      max-width: 800px;
+      max-width: 1000px;
       margin: auto;
       padding: 15px;
-    }
-    .card {
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      margin-bottom: 30px;
-      overflow: hidden;
-      transition: transform 0.2s ease;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-    }
-    .card-header {
-      background: linear-gradient(90deg, #001f4d, #ff6699);
-      color: #fff;
-      padding: 14px 18px;
-      font-size: 20px;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .card-body {
-      padding: 20px;
+      overflow-x: auto;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      table-layout: auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
     th, td {
+      padding: 12px 15px;
       text-align: left;
-      padding: 10px;
       border-bottom: 1px solid #e3e6f0;
       font-size: 15px;
     }
     th {
-      background: #f8f9ff;
+      background: linear-gradient(90deg, #001f4d, #ff6699);
+      color: #fff;
       font-weight: 600;
-      color: #001f4d;
-      width: 40%;
     }
     tr:last-child td {
       border-bottom: none;
@@ -94,22 +72,43 @@
     const userData = JSON.parse(localStorage.getItem("userData"));
     const username = userData?.username?.trim() || "";
 
-    function createProfileCard(u) {
-      return `
-        <div class="card">
-          <div class="card-header">📌 ${u.fullName || "User Details"}</div>
-          <div class="card-body">
-            <table>
-              <tr><th>Full Name</th><td>${u.fullName || "-"}</td></tr>
-              <tr><th>Mobile</th><td>${u.mobile || "-"}</td></tr>
-              <tr><th>City</th><td>${u.city || "-"}</td></tr>
-              <tr><th>Username</th><td>${u.username || "-"}</td></tr>
-              <tr><th>Password</th><td>${u.password || "-"}</td></tr>
-              <tr><th>Payment Status</th><td>${u.paymentStatus || "-"}</td></tr>
-            </table>
-          </div>
-        </div>
+    function createUserTable(users) {
+      if (!users || users.length === 0) {
+        return `<div class="error-box">⚠ No user data found.</div>`;
+      }
+
+      // Table header
+      let tableHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Full Name</th>
+              <th>Mobile</th>
+              <th>City</th>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Payment Status</th>
+            </tr>
+          </thead>
+          <tbody>
       `;
+
+      // Table rows
+      users.forEach(u => {
+        tableHTML += `
+          <tr>
+            <td>${u.fullName || "-"}</td>
+            <td>${u.mobile || "-"}</td>
+            <td>${u.city || "-"}</td>
+            <td>${u.username || "-"}</td>
+            <td>${u.password || "-"}</td>
+            <td>${u.paymentStatus || "-"}</td>
+          </tr>
+        `;
+      });
+
+      tableHTML += `</tbody></table>`;
+      return tableHTML;
     }
 
     function loadUserProfile() {
@@ -126,13 +125,9 @@
             return;
           }
 
+          // ✅ Admin sees all users
           if (data.adminOnly === true) {
-            // ✅ Admin sees all users
-            if (Array.isArray(data.users) && data.users.length) {
-              reportArea.innerHTML = data.users.map(u => createProfileCard(u)).join("");
-            } else {
-              reportArea.innerHTML = `<div class="error-box">⚠ No user records found.</div>`;
-            }
+            reportArea.innerHTML = createUserTable(data.users);
             return;
           }
 
@@ -143,7 +138,7 @@
             return;
           }
 
-          reportArea.innerHTML = createProfileCard(u);
+          reportArea.innerHTML = createUserTable([u]);
         })
         .catch(err => {
           console.error("Error:", err);
