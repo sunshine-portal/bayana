@@ -101,7 +101,8 @@
         return;
       }
 
-      fetch(`${BASE_URL}?action=getuserprofile&username=${encodeURIComponent(username)}`)
+      // ✅ yahan action=displaystudentdata pass kiya gaya
+      fetch(`${BASE_URL}?action=displaystudentdata&username=${encodeURIComponent(username)}`)
         .then(res => res.json())
         .then(data => {
           if (!data.success) {
