@@ -256,6 +256,11 @@
           </select>
       ` : "";
 
+      // Delete button only for admin
+      const deleteButtonHTML = (user.username === "admin") ? `
+        <button class="delete-btn" onclick="deleteRecord('${user.username}')">🗑 Delete Record</button>
+      ` : "";
+
       formArea.innerHTML = `
         <div class="form-box">
           <h3>📝 Modify Record</h3>
@@ -277,7 +282,7 @@
 
           <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
             <button class="update-btn" onclick="updateRecord('${user.username}')">✅ Update Record</button>
-            <button class="delete-btn" onclick="deleteRecord('${user.username}')">🗑 Delete Record</button>
+            ${deleteButtonHTML}
             <button class="back-btn" onclick="loadUserProfile()">⬅ Back to List</button>
           </div>
         </div>
@@ -291,7 +296,6 @@
         mobile: document.getElementById("mobile").value.trim(),
         city: document.getElementById("city").value.trim(),
         password: document.getElementById("password").value.trim(),
-        // Only get paymentStatus if element exists
         paymentStatus: document.getElementById("paymentStatus") ? document.getElementById("paymentStatus").value.trim() : undefined,
       };
 
