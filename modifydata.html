@@ -244,49 +244,67 @@
     }
 
     function modifyRecord(user) {
-      // Hide table and show only form
       reportArea.innerHTML = "";
 
-      // Only show payment status if the user being modified is "admin"
-      const paymentStatusHTML = (user.username === "admin") ? `
-          <label>Payment Status</label>
-          <select id="paymentStatus">
-            <option value="Confirm" ${user.paymentStatus === "Confirm" ? "selected" : ""}>Confirm</option>
-            <option value="Not Confirm" ${user.paymentStatus === "Not Confirm" ? "selected" : ""}>Not Confirm</option>
-          </select>
-      ` : "";
+      // Admin user: all fields + delete + payment status
+      if (user.username === "admin") {
+        formArea.innerHTML = `
+          <div class="form-box">
+            <h3>📝 Modify Record (Admin)</h3>
+            <p>Update details for <strong style="color:#001f4d">${user.username}</strong></p>
+            
+            <label>Full Name</label>
+            <input type="text" id="fullName" value="${user.fullName || ""}" placeholder="Enter full name">
 
-      // Delete button only for admin
-      const deleteButtonHTML = (user.username === "admin") ? `
-        <button class="delete-btn" onclick="deleteRecord('${user.username}')">🗑 Delete Record</button>
-      ` : "";
+            <label>Mobile</label>
+            <input type="text" id="mobile" value="${user.mobile || ""}" placeholder="Enter mobile number">
 
-      formArea.innerHTML = `
-        <div class="form-box">
-          <h3>📝 Modify Record</h3>
-          <p>Update details for <strong style="color:#001f4d">${user.username}</strong></p>
-          
-          <label>Full Name</label>
-          <input type="text" id="fullName" value="${user.fullName || ""}" placeholder="Enter full name">
+            <label>City</label>
+            <input type="text" id="city" value="${user.city || ""}" placeholder="Enter city">
 
-          <label>Mobile</label>
-          <input type="text" id="mobile" value="${user.mobile || ""}" placeholder="Enter mobile number">
+            <label>Password</label>
+            <input type="text" id="password" value="${user.password || ""}" placeholder="Enter password">
 
-          <label>City</label>
-          <input type="text" id="city" value="${user.city || ""}" placeholder="Enter city">
+            <label>Payment Status</label>
+            <select id="paymentStatus">
+              <option value="Confirm" ${user.paymentStatus === "Confirm" ? "selected" : ""}>Confirm</option>
+              <option value="Not Confirm" ${user.paymentStatus === "Not Confirm" ? "selected" : ""}>Not Confirm</option>
+            </select>
 
-          <label>Password</label>
-          <input type="text" id="password" value="${user.password || ""}" placeholder="Enter password">
-
-          ${paymentStatusHTML}
-
-          <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
-            <button class="update-btn" onclick="updateRecord('${user.username}')">✅ Update Record</button>
-            ${deleteButtonHTML}
-            <button class="back-btn" onclick="loadUserProfile()">⬅ Back to List</button>
+            <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
+              <button class="update-btn" onclick="updateRecord('${user.username}')">✅ Update Record</button>
+              <button class="delete-btn" onclick="deleteRecord('${user.username}')">🗑 Delete Record</button>
+              <button class="back-btn" onclick="loadUserProfile()">⬅ Back to List</button>
+            </div>
           </div>
-        </div>
-      `;
+        `;
+      } 
+      // Normal user: same as before (no delete, no payment status)
+      else {
+        formArea.innerHTML = `
+          <div class="form-box">
+            <h3>📝 Modify Record</h3>
+            <p>Update details for <strong style="color:#001f4d">${user.username}</strong></p>
+            
+            <label>Full Name</label>
+            <input type="text" id="fullName" value="${user.fullName || ""}" placeholder="Enter full name">
+
+            <label>Mobile</label>
+            <input type="text" id="mobile" value="${user.mobile || ""}" placeholder="Enter mobile number">
+
+            <label>City</label>
+            <input type="text" id="city" value="${user.city || ""}" placeholder="Enter city">
+
+            <label>Password</label>
+            <input type="text" id="password" value="${user.password || ""}" placeholder="Enter password">
+
+            <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
+              <button class="update-btn" onclick="updateRecord('${user.username}')">✅ Update Record</button>
+              <button class="back-btn" onclick="loadUserProfile()">⬅ Back to List</button>
+            </div>
+          </div>
+        `;
+      }
     }
 
     function updateRecord(username) {
