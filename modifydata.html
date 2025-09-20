@@ -104,30 +104,39 @@
   }
   .form-box {
     margin-top: 20px;
-    padding: 15px;
+    padding: 20px;
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
   }
   .form-box h3 {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     color: #001f4d;
+    font-size: 20px;
+  }
+  .form-box p {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    color: #555;
   }
   .form-box label {
     display: block;
-    margin-top: 10px;
+    margin-top: 12px;
     font-weight: 600;
+    font-size: 14px;
   }
-  .form-box input {
+  .form-box input, 
+  .form-box select {
     width: 100%;
-    padding: 8px;
-    margin-top: 5px;
+    padding: 9px;
+    margin-top: 6px;
     border-radius: 6px;
     border: 1px solid #ccc;
     font-size: 14px;
+    background: #fafafa;
   }
   .form-box button {
-    margin-top: 12px;
+    margin-top: 15px;
     padding: 8px 14px;
     border: none;
     border-radius: 6px;
@@ -239,20 +248,32 @@
       reportArea.innerHTML = "";
       formArea.innerHTML = `
         <div class="form-box">
-          <h3>Modify Record (Username: ${user.username})</h3>
+          <h3>📝 Modify Record</h3>
+          <p>Update details for <strong style="color:#001f4d">${user.username}</strong></p>
+          
           <label>Full Name</label>
-          <input type="text" id="fullName" value="${user.fullName || ""}">
+          <input type="text" id="fullName" value="${user.fullName || ""}" placeholder="Enter full name">
+
           <label>Mobile</label>
-          <input type="text" id="mobile" value="${user.mobile || ""}">
+          <input type="text" id="mobile" value="${user.mobile || ""}" placeholder="Enter mobile number">
+
           <label>City</label>
-          <input type="text" id="city" value="${user.city || ""}">
+          <input type="text" id="city" value="${user.city || ""}" placeholder="Enter city">
+
           <label>Password</label>
-          <input type="text" id="password" value="${user.password || ""}">
+          <input type="text" id="password" value="${user.password || ""}" placeholder="Enter password">
+
           <label>Payment Status</label>
-          <input type="text" id="paymentStatus" value="${user.paymentStatus || ""}">
-          <button class="update-btn" onclick="updateRecord('${user.username}')">Update Record</button>
-          <button class="delete-btn" onclick="deleteRecord('${user.username}')">Delete Record</button>
-          <button class="back-btn" onclick="loadUserProfile()">⬅ Back to List</button>
+          <select id="paymentStatus">
+            <option value="Confirm" ${user.paymentStatus === "Confirm" ? "selected" : ""}>Confirm</option>
+            <option value="Not Confirm" ${user.paymentStatus === "Not Confirm" ? "selected" : ""}>Not Confirm</option>
+          </select>
+
+          <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="update-btn" onclick="updateRecord('${user.username}')">✅ Update Record</button>
+            <button class="delete-btn" onclick="deleteRecord('${user.username}')">🗑 Delete Record</button>
+            <button class="back-btn" onclick="loadUserProfile()">⬅ Back to List</button>
+          </div>
         </div>
       `;
     }
