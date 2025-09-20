@@ -4,160 +4,160 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RS-CIT User Profile Report</title>
- <style>
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f0f4ff;
-    color: #333;
-  }
-  h2 {
-    text-align: center;
-    color: #001f4d;
-    margin: 20px 0;
-    font-size: 26px;
-    font-weight: bold;
-  }
-  .container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 10px;
-    overflow-x: auto;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    overflow: hidden;
-  }
-  th, td {
-    padding: 10px 14px;
-    text-align: left;
-    border-bottom: 1px solid #e3e6f0;
-    font-size: 14px;
-  }
-  th {
-    background: linear-gradient(135deg, #f7971e, #ffd200);
-    color: #222;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 14px 18px;
-    border-bottom: 2px solid #e68a00;
-    box-shadow: inset 0 -2px 0 rgba(255,255,255,0.3);
-  }
-  tbody tr:nth-child(odd) {
-    background-color: #f9fbff;
-  }
-  tbody tr:nth-child(even) {
-    background-color: #eef3fb;
-  }
-  tbody tr:hover {
-    background-color: #dbe7ff;
-    transition: background 0.3s;
-  }
-  tr:last-child td {
-    border-bottom: none;
-  }
-  .error-box {
-    text-align: center;
-    padding: 15px;
-    background: #ffe6e6;
-    border: 1px solid #ff9999;
-    border-radius: 10px;
-    color: #cc0000;
-    font-weight: 600;
-    font-size: 15px;
-  }
-  .pagination {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 12px;
-    font-size: 13px;
-  }
-  .pagination button {
-    padding: 5px 10px;
-    margin: 0 4px;
-    border: none;
-    border-radius: 6px;
-    background: #001f4d;
-    color: #fff;
-    cursor: pointer;
-    font-size: 13px;
-  }
-  .pagination button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-  }
-  .modify-btn {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 6px;
-    background: #ff9800;
-    color: #fff;
-    cursor: pointer;
-    font-size: 13px;
-  }
-  .form-box {
-    margin-top: 20px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-  }
-  .form-box h3 {
-    margin-bottom: 10px;
-    color: #001f4d;
-    font-size: 20px;
-  }
-  .form-box p {
-    margin: 0 0 15px 0;
-    font-size: 14px;
-    color: #555;
-  }
-  .form-box label {
-    display: block;
-    margin-top: 12px;
-    font-weight: 600;
-    font-size: 14px;
-  }
-  .form-box input, 
-  .form-box select {
-    width: 100%;
-    padding: 9px;
-    margin-top: 6px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    background: #fafafa;
-  }
-  .form-box button {
-    margin-top: 15px;
-    padding: 8px 14px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  .update-btn {
-    background: #28a745;
-    color: #fff;
-  }
-  .delete-btn {
-    background: #dc3545;
-    color: #fff;
-    margin-left: 10px;
-  }
-  .back-btn {
-    background: #001f4d;
-    color: #fff;
-    margin-left: 10px;
-  }
-</style>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f4ff;
+      color: #333;
+    }
+    h2 {
+      text-align: center;
+      color: #001f4d;
+      margin: 20px 0;
+      font-size: 26px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    th, td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid #e3e6f0;
+      font-size: 14px;
+    }
+    th {
+      background: linear-gradient(135deg, #f7971e, #ffd200);
+      color: #222;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 14px 18px;
+      border-bottom: 2px solid #e68a00;
+      box-shadow: inset 0 -2px 0 rgba(255,255,255,0.3);
+    }
+    tbody tr:nth-child(odd) {
+      background-color: #f9fbff;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #eef3fb;
+    }
+    tbody tr:hover {
+      background-color: #dbe7ff;
+      transition: background 0.3s;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    .error-box {
+      text-align: center;
+      padding: 15px;
+      background: #ffe6e6;
+      border: 1px solid #ff9999;
+      border-radius: 10px;
+      color: #cc0000;
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      font-size: 13px;
+    }
+    .pagination button {
+      padding: 5px 10px;
+      margin: 0 4px;
+      border: none;
+      border-radius: 6px;
+      background: #001f4d;
+      color: #fff;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .pagination button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .modify-btn {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 6px;
+      background: #ff9800;
+      color: #fff;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .form-box {
+      margin-top: 20px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .form-box h3 {
+      margin-bottom: 10px;
+      color: #001f4d;
+      font-size: 20px;
+    }
+    .form-box p {
+      margin: 0 0 15px 0;
+      font-size: 14px;
+      color: #555;
+    }
+    .form-box label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .form-box input, 
+    .form-box select {
+      width: 100%;
+      padding: 9px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      background: #fafafa;
+    }
+    .form-box button {
+      margin-top: 15px;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .update-btn {
+      background: #28a745;
+      color: #fff;
+    }
+    .delete-btn {
+      background: #dc3545;
+      color: #fff;
+      margin-left: 10px;
+    }
+    .back-btn {
+      background: #001f4d;
+      color: #fff;
+      margin-left: 10px;
+    }
+  </style>
 </head>
 <body>
   <header id="header"></header>
@@ -172,8 +172,9 @@
   <script>
     const reportArea = document.getElementById("reportArea");
     const formArea = document.getElementById("formArea");
-    const userData = JSON.parse(localStorage.getItem("userData"));
+    const userData = JSON.parse(localStorage.getItem("userData")) || {};
     const username = userData?.username?.trim() || "";
+    const isAdmin = userData?.role === "admin"; // Check if current user is admin
 
     let currentPage = 1;
     const recordsPerPage = 10;
@@ -201,7 +202,7 @@
               <th>Username</th>
               <th>Password</th>
               <th>Payment Status</th>
-              <th>Modify</th>
+              ${isAdmin ? "<th>Modify</th>" : ""}
             </tr>
           </thead>
           <tbody>
@@ -217,7 +218,7 @@
             <td>${u.username || "-"}</td>
             <td>${u.password || "-"}</td>
             <td>${u.paymentStatus || "-"}</td>
-            <td><button class="modify-btn" onclick='modifyRecord(${JSON.stringify(u)})'>Modify</button></td>
+            ${isAdmin ? `<td><button class="modify-btn" onclick='modifyRecord(${JSON.stringify(u)})'>Modify</button></td>` : ""}
           </tr>
         `;
       });
@@ -244,6 +245,8 @@
     }
 
     function modifyRecord(user) {
+      if (!isAdmin) return; // Prevent non-admins from modifying
+
       // Hide table and show only form
       reportArea.innerHTML = "";
       formArea.innerHTML = `
