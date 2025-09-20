@@ -246,13 +246,13 @@
     function modifyRecord(user) {
       reportArea.innerHTML = "";
 
-      // FIX: Admin detection (ignore case and trim)
       const isAdmin = user.username?.trim().toLowerCase() === "admin";
 
       let paymentStatusHTML = "";
       let deleteButtonHTML = "";
 
       if (isAdmin) {
+        // For admin, all fields editable and delete button shown
         paymentStatusHTML = `
           <label>Payment Status</label>
           <select id="paymentStatus">
@@ -261,6 +261,17 @@
           </select>
         `;
         deleteButtonHTML = `<button class="delete-btn" onclick="deleteRecord('${user.username}')">🗑 Delete Record</button>`;
+      } else {
+        // For normal users, show payment status if exists
+        if(user.paymentStatus) {
+          paymentStatusHTML = `
+            <label>Payment Status</label>
+            <select id="paymentStatus">
+              <option value="Confirm" ${user.paymentStatus === "Confirm" ? "selected" : ""}>Confirm</option>
+              <option value="Not Confirm" ${user.paymentStatus === "Not Confirm" ? "selected" : ""}>Not Confirm</option>
+            </select>
+          `;
+        }
       }
 
       formArea.innerHTML = `
