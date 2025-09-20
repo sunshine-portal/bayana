@@ -246,6 +246,16 @@
     function modifyRecord(user) {
       // Hide table and show only form
       reportArea.innerHTML = "";
+
+      // Only show payment status if the user being modified is "admin"
+      const paymentStatusHTML = (user.username === "admin") ? `
+          <label>Payment Status</label>
+          <select id="paymentStatus">
+            <option value="Confirm" ${user.paymentStatus === "Confirm" ? "selected" : ""}>Confirm</option>
+            <option value="Not Confirm" ${user.paymentStatus === "Not Confirm" ? "selected" : ""}>Not Confirm</option>
+          </select>
+      ` : "";
+
       formArea.innerHTML = `
         <div class="form-box">
           <h3>📝 Modify Record</h3>
@@ -263,11 +273,7 @@
           <label>Password</label>
           <input type="text" id="password" value="${user.password || ""}" placeholder="Enter password">
 
-          <label>Payment Status</label>
-          <select id="paymentStatus">
-            <option value="Confirm" ${user.paymentStatus === "Confirm" ? "selected" : ""}>Confirm</option>
-            <option value="Not Confirm" ${user.paymentStatus === "Not Confirm" ? "selected" : ""}>Not Confirm</option>
-          </select>
+          ${paymentStatusHTML}
 
           <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
             <button class="update-btn" onclick="updateRecord('${user.username}')">✅ Update Record</button>
@@ -285,7 +291,8 @@
         mobile: document.getElementById("mobile").value.trim(),
         city: document.getElementById("city").value.trim(),
         password: document.getElementById("password").value.trim(),
-        paymentStatus: document.getElementById("paymentStatus").value.trim(),
+        // Only get paymentStatus if element exists
+        paymentStatus: document.getElementById("paymentStatus") ? document.getElementById("paymentStatus").value.trim() : undefined,
       };
 
       fetch(`${BASE_URL}?action=updateStudent`, {
