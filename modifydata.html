@@ -143,12 +143,17 @@
     color: #fff;
     margin-left: 10px;
   }
+  .back-btn {
+    background: #001f4d;
+    color: #fff;
+    margin-left: 10px;
+  }
 </style>
 </head>
 <body>
   <header id="header"></header>
 
-  <h2>👤 User Profile Report</h2>
+  <h2>👤 User Profile Modify </h2>
   <div class="container">
     <div id="reportArea">⏳ Loading user profile...</div>
     <div id="formArea"></div>
@@ -230,6 +235,8 @@
     }
 
     function modifyRecord(user) {
+      // Hide table and show only form
+      reportArea.innerHTML = "";
       formArea.innerHTML = `
         <div class="form-box">
           <h3>Modify Record (Username: ${user.username})</h3>
@@ -245,6 +252,7 @@
           <input type="text" id="paymentStatus" value="${user.paymentStatus || ""}">
           <button class="update-btn" onclick="updateRecord('${user.username}')">Update Record</button>
           <button class="delete-btn" onclick="deleteRecord('${user.username}')">Delete Record</button>
+          <button class="back-btn" onclick="loadUserProfile()">⬅ Back to List</button>
         </div>
       `;
     }
@@ -309,6 +317,7 @@
           if (data.adminOnly === true) {
             allUsers = data.users;
             reportArea.innerHTML = createUserTable(allUsers, currentPage);
+            formArea.innerHTML = "";
             return;
           }
 
@@ -320,6 +329,7 @@
 
           allUsers = [u];
           reportArea.innerHTML = createUserTable(allUsers, currentPage);
+          formArea.innerHTML = "";
         })
         .catch(err => {
           console.error("Error:", err);
