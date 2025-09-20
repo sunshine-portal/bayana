@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RS-CIT User Profile Report</title>
+ <style>
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0f4ff;
+    color: #333;
+  }
+  h2 {
+    text-align: center;
+    color: #001f4d;
+    margin: 20px 0;
+    font-size: 26px;
+    font-weight: bold;
+  }
+  .container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 10px;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+  th, td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #e3e6f0;
+    font-size: 14px;
+  }
+  th {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+    color: #222;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 14px 18px;
+    border-bottom: 2px solid #e68a00;
+    box-shadow: inset 0 -2px 0 rgba(255,255,255,0.3);
+  }
+  tbody tr:nth-child(odd) {
+    background-color: #f9fbff;
+  }
+  tbody tr:nth-child(even) {
+    background-color: #eef3fb;
+  }
+  tbody tr:hover {
+    background-color: #dbe7ff;
+    transition: background 0.3s;
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+  .error-box {
+    text-align: center;
+    padding: 15px;
+    background: #ffe6e6;
+    border: 1px solid #ff9999;
+    border-radius: 10px;
+    color: #cc0000;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    font-size: 13px;
+  }
+  .pagination button {
+    padding: 5px 10px;
+    margin: 0 4px;
+    border: none;
+    border-radius: 6px;
+    background: #001f4d;
+    color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .pagination button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  .modify-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 6px;
+    background: #ff9800;
+    color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .form-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .form-box h3 {
+    margin-bottom: 12px;
+    color: #001f4d;
+  }
+  .form-box label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+  .form-box input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  .form-box button {
+    margin-top: 12px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .update-btn {
+    background: #28a745;
+    color: #fff;
+  }
+  .delete-btn {
+    background: #dc3545;
+    color: #fff;
+    margin-left: 10px;
+  }
+</style>
+</head>
+<body>
+  <header id="header"></header>
+
+  <h2>👤 User Profile Report</h2>
+  <div class="container">
+    <div id="reportArea">⏳ Loading user profile...</div>
+    <div id="formArea"></div>
+  </div>
+
+  <script src="protect.js"></script>
+  <script>
+    const reportArea = document.getElementById("reportArea");
+    const formArea = document.getElementById("formArea");
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    const username = userData?.username?.trim() || "";
+
+    let currentPage = 1;
+    const recordsPerPage = 10;
+    let allUsers = [];
+
+    function goBack(){location.href="admin-report.html";}
+
+    function createUserTable(users, page = 1) {
+      if (!users || users.length === 0) {
+        return `<div class="error-box">⚠ No user data found.</div>`;
+      }
+
+      const startIndex = (page - 1) * recordsPerPage;
+      const endIndex = startIndex + recordsPerPage;
+      const paginatedUsers = users.slice(startIndex, endIndex);
+
+      let tableHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Full Name</th>
+              <th>Mobile</th>
+              <th>City</th>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Payment Status</th>
+              <th>Modify</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      paginatedUsers.forEach((u, index) => {
+        tableHTML += `
+          <tr>
+            <td>${startIndex + index + 1}</td>
+            <td>${u.fullName || "-"}</td>
+            <td>${u.mobile || "-"}</td>
+            <td>${u.city || "-"}</td>
+            <td>${u.username || "-"}</td>
+            <td>${u.password || "-"}</td>
+            <td>${u.paymentStatus || "-"}</td>
+            <td><button class="modify-btn" onclick='modifyRecord(${JSON.stringify(u)})'>Modify</button></td>
+          </tr>
+        `;
+      });
+
+      tableHTML += `</tbody></table>`;
+
+      const totalPages = Math.ceil(users.length / recordsPerPage);
+      tableHTML += `
+        <div class="pagination">
+          <div>Total Records: ${users.length} | Page ${page} of ${totalPages}</div>
+          <div>
+            <button onclick="changePage(${page - 1})" ${page === 1 ? "disabled" : ""}>Previous</button>
+            <button onclick="changePage(${page + 1})" ${page === totalPages ? "disabled" : ""}>Next</button>
+          </div>
+        </div>
+      `;
+
+      return tableHTML;
+    }
+
+    function changePage(page) {
+      currentPage = page;
+      reportArea.innerHTML = createUserTable(allUsers, currentPage);
+    }
+
+    function modifyRecord(user) {
+      formArea.innerHTML = `
+        <div class="form-box">
+          <h3>Modify Record (Username: ${user.username})</h3>
+          <label>Full Name</label>
+          <input type="text" id="fullName" value="${user.fullName || ""}">
+          <label>Mobile</label>
+          <input type="text" id="mobile" value="${user.mobile || ""}">
+          <label>City</label>
+          <input type="text" id="city" value="${user.city || ""}">
+          <label>Password</label>
+          <input type="text" id="password" value="${user.password || ""}">
+          <label>Payment Status</label>
+          <input type="text" id="paymentStatus" value="${user.paymentStatus || ""}">
+          <button class="update-btn" onclick="updateRecord('${user.username}')">Update Record</button>
+          <button class="delete-btn" onclick="deleteRecord('${user.username}')">Delete Record</button>
+        </div>
+      `;
+    }
+
+    function updateRecord(username) {
+      const updatedData = {
+        username: username,
+        fullName: document.getElementById("fullName").value.trim(),
+        mobile: document.getElementById("mobile").value.trim(),
+        city: document.getElementById("city").value.trim(),
+        password: document.getElementById("password").value.trim(),
+        paymentStatus: document.getElementById("paymentStatus").value.trim(),
+      };
+
+      fetch(`${BASE_URL}?action=updateStudent`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(updatedData)
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message || "Record updated successfully!");
+        loadUserProfile();
+        formArea.innerHTML = "";
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Error updating record.");
+      });
+    }
+
+    function deleteRecord(username) {
+      if (!confirm("Are you sure you want to delete this record?")) return;
+
+      fetch(`${BASE_URL}?action=deleteStudent&username=${encodeURIComponent(username)}`)
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message || "Record deleted successfully!");
+        loadUserProfile();
+        formArea.innerHTML = "";
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Error deleting record.");
+      });
+    }
+
+    function loadUserProfile() {
+      if (!username) {
+        reportArea.innerHTML = `<div class="error-box">❌ User not found. Please login again.</div>`;
+        return;
+      }
+
+      fetch(`${BASE_URL}?action=displaystudentdata&username=${encodeURIComponent(username)}`)
+        .then(res => res.json())
+        .then(data => {
+          if (!data.success) {
+            reportArea.innerHTML = `<div class="error-box">⚠ ${data.message || "Error fetching profile."}</div>`;
+            return;
+          }
+
+          if (data.adminOnly === true) {
+            allUsers = data.users;
+            reportArea.innerHTML = createUserTable(allUsers, currentPage);
+            return;
+          }
+
+          const u = data.users[0];
+          if (!u) {
+            reportArea.innerHTML = `<div class="error-box">❌ User data not found.</div>`;
+            return;
+          }
+
+          allUsers = [u];
+          reportArea.innerHTML = createUserTable(allUsers, currentPage);
+        })
+        .catch(err => {
+          console.error("Error:", err);
+          reportArea.innerHTML = `<div class="error-box">⚠ Error loading profile. Please try again later.</div>`;
+        });
+    }
+
+    loadUserProfile();
+  </script>
+
+  <footer id="footer"></footer>
+  <script src="header-footer.js"></script>
+</body>
+</html>
