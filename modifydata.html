@@ -125,6 +125,10 @@
     const username = userData?.username?.trim() || "";
 
     let allUsers = [];
+function goBack() {
+  // Redirect to admin report page or previous page
+  location.href = "admin-report.html";
+}
 
     function modifyRecord(user) {
       formArea.innerHTML = `
