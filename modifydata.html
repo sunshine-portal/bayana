@@ -192,7 +192,7 @@
         return;
       }
 
-      fetch(`${BASE_URL}?action=displaystudentdata&username=${encodeURIComponent(username)}`)
+      fetch(`${BASE_URL}?action=modifystudentdata&username=${encodeURIComponent(username)}`)
         .then(res => res.json())
         .then(data => {
           if (!data.success) {
