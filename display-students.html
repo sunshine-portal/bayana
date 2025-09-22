@@ -113,6 +113,57 @@
     cursor: pointer;
     font-size: 14px;
   }
+
+  /* ✅ Custom Confirmation Dialog */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  .modal-box p {
+    font-size: 15px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 500;
+  }
+  .modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .modal-buttons button {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .btn-yes {
+    background: #dc3545;
+    color: #fff;
+  }
+  .btn-cancel {
+    background: #6c757d;
+    color: #fff;
+  }
+  @keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+  }
 </style>
 </head>
 <body>
@@ -120,8 +171,18 @@
 
   <h2>👤 User Profile Report </h2>
   <div class="container">
-    <button class="back-btn" onclick="goBack()">⬅ Go Back</button>
     <div id="reportArea">⏳ Loading user profile...</div>
+  </div>
+
+  <!-- ✅ Confirmation Dialog -->
+  <div id="confirmModal" class="modal-overlay">
+    <div class="modal-box">
+      <p>Are you sure you want to delete this record?</p>
+      <div class="modal-buttons">
+        <button class="btn-yes" id="confirmYes">Yes</button>
+        <button class="btn-cancel" id="confirmCancel">Cancel</button>
+      </div>
+    </div>
   </div>
 
   <script src="protect.js"></script>
@@ -133,6 +194,8 @@
     let currentPage = 1;
     const recordsPerPage = 10;
     let allUsers = [];
+
+    let deleteTargetUser = null; // store username to delete
 
     function goBack() {
       location.href = "admin-report.html";
@@ -174,7 +237,7 @@
             <td>${u.username || "-"}</td>
             <td>${u.password || "-"}</td>
             <td>${u.paymentStatus || "-"}</td>
-            <td><button class="delete-btn" onclick='deleteRecord("${u.username}")'>Delete</button></td>
+            <td><button class="delete-btn" onclick='openConfirmModal("${u.username}")'>Delete</button></td>
           </tr>
         `;
       });
@@ -200,20 +263,37 @@
       reportArea.innerHTML = createUserTable(allUsers, currentPage);
     }
 
-    function deleteRecord(username) {
-      if (!confirm("Are you sure you want to delete this record?")) return;
+    // ✅ Open custom confirmation modal
+    function openConfirmModal(user) {
+      deleteTargetUser = user;
+      document.getElementById("confirmModal").style.display = "flex";
+    }
 
-      fetch(`${BASE_URL}?action=deleteStudent&username=${encodeURIComponent(username)}`)
+    // ✅ Close modal
+    function closeConfirmModal() {
+      document.getElementById("confirmModal").style.display = "none";
+      deleteTargetUser = null;
+    }
+
+    // ✅ Delete record function
+    function confirmDelete() {
+      if (!deleteTargetUser) return;
+      fetch(`${BASE_URL}?action=deleteStudent&username=${encodeURIComponent(deleteTargetUser)}`)
       .then(res => res.json())
       .then(data => {
         alert(data.message || "Record deleted successfully!");
+        closeConfirmModal();
         loadUserProfile();
       })
       .catch(err => {
         console.error(err);
         alert("Error deleting record.");
+        closeConfirmModal();
       });
     }
+
+    document.getElementById("confirmYes").addEventListener("click", confirmDelete);
+    document.getElementById("confirmCancel").addEventListener("click", closeConfirmModal);
 
     function loadUserProfile() {
       if (!username) {
@@ -229,7 +309,6 @@
             return;
           }
 
-          // Admin check: only if backend returns multiple users, assume admin
           if (!data.adminOnly) {
             reportArea.innerHTML = `<div class="error-box">⚠ This feature is only available for Admin users.</div>`;
             return;
