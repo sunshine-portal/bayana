@@ -146,20 +146,33 @@
     gap: 10px;
   }
   .modal-buttons button {
-    padding: 6px 14px;
+    padding: 8px 16px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
+    transition: all 0.2s ease;
   }
   .btn-yes {
     background: #dc3545;
     color: #fff;
   }
+  .btn-yes:hover {
+    background: #b02a37;
+  }
   .btn-cancel {
     background: #6c757d;
     color: #fff;
   }
+  .btn-cancel:hover {
+    background: #565e64;
+  }
+  /* ✅ Click effect */
+  .modal-buttons button:active {
+    transform: scale(0.92);
+    opacity: 0.8;
+  }
+
   @keyframes fadeIn {
     from {opacity: 0; transform: scale(0.9);}
     to {opacity: 1; transform: scale(1);}
