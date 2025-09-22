@@ -35,6 +35,16 @@
       font-size: 15px;
       margin-bottom: 15px;
     }
+    .admin-notice {
+      text-align: center;
+      margin-bottom: 15px;
+      font-weight: 600;
+      color: #155724;
+      background: #d4edda;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #c3e6cb;
+    }
     .form-box {
       margin-top: 20px;
       padding: 20px;
@@ -104,6 +114,11 @@
 
   <h2>👤 User Profile Modify </h2>
   <div class="container" id="containerArea">
+    <!-- Admin notice -->
+    <div id="adminNotice" class="admin-notice" style="display:none">
+      ✅ You are logged in as Admin. Search and modify student records.
+    </div>
+
     <!-- Search box will be displayed only for Admin -->
     <div id="searchContainer" style="display:none" class="search-box">
       <input type="text" id="searchUsername" placeholder="Enter username to search">
@@ -119,6 +134,7 @@
     const formArea = document.getElementById("formArea");
     const searchContainer = document.getElementById("searchContainer");
     const searchInput = document.getElementById("searchUsername");
+    const adminNotice = document.getElementById("adminNotice");
     const userData = JSON.parse(localStorage.getItem("userData"));
     const username = userData?.username?.trim() || "";
 
@@ -205,8 +221,9 @@
             return;
           }
 
-          // ✅ Admin users: show search box
+          // ✅ Admin users: show search box and admin notice
           searchContainer.style.display = "flex";
+          adminNotice.style.display = "block";
           allUsers = data.users || [];
           formArea.innerHTML = "";
         })
