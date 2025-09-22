@@ -4,166 +4,193 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RS-CIT User Profile Report</title>
- <style>
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f0f4ff;
-    color: #333;
-  }
-  h2 {
-    text-align: center;
-    color: #001f4d;
-    margin: 20px 0;
-    font-size: 26px;
-    font-weight: bold;
-  }
-  .container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 10px;
-    overflow-x: auto;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    overflow: hidden;
-  }
-  th, td {
-    padding: 10px 14px;
-    text-align: left;
-    border-bottom: 1px solid #e3e6f0;
-    font-size: 14px;
-  }
-  th {
-    background: linear-gradient(135deg, #f7971e, #ffd200);
-    color: #222;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 14px 18px;
-    border-bottom: 2px solid #e68a00;
-    box-shadow: inset 0 -2px 0 rgba(255,255,255,0.3);
-  }
-  tbody tr:nth-child(odd) {
-    background-color: #f9fbff;
-  }
-  tbody tr:nth-child(even) {
-    background-color: #eef3fb;
-  }
-  tbody tr:hover {
-    background-color: #dbe7ff;
-    transition: background 0.3s;
-  }
-  tr:last-child td {
-    border-bottom: none;
-  }
-  .error-box {
-    text-align: center;
-    padding: 15px;
-    background: #ffe6e6;
-    border: 1px solid #ff9999;
-    border-radius: 10px;
-    color: #cc0000;
-    font-weight: 600;
-    font-size: 15px;
-  }
-  .pagination {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 12px;
-    font-size: 13px;
-  }
-  .pagination button {
-    padding: 5px 10px;
-    margin: 0 4px;
-    border: none;
-    border-radius: 6px;
-    background: #001f4d;
-    color: #fff;
-    cursor: pointer;
-    font-size: 13px;
-  }
-  .pagination button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-  }
-  .modify-btn {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 6px;
-    background: #ff9800;
-    color: #fff;
-    cursor: pointer;
-    font-size: 13px;
-  }
-  .form-box {
-    margin-top: 20px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-  }
-  .form-box h3 {
-    margin-bottom: 10px;
-    color: #001f4d;
-    font-size: 20px;
-  }
-  .form-box p {
-    margin: 0 0 15px 0;
-    font-size: 14px;
-    color: #555;
-  }
-  .form-box label {
-    display: block;
-    margin-top: 12px;
-    font-weight: 600;
-    font-size: 14px;
-  }
-  .form-box input, 
-  .form-box select {
-    width: 100%;
-    padding: 9px;
-    margin-top: 6px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    background: #fafafa;
-  }
-  .form-box button {
-    margin-top: 15px;
-    padding: 8px 14px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  .update-btn {
-    background: #28a745;
-    color: #fff;
-  }
-  .delete-btn {
-    background: #dc3545;
-    color: #fff;
-    margin-left: 10px;
-  }
-  .back-btn {
-    background: #001f4d;
-    color: #fff;
-    margin-left: 10px;
-  }
-</style>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f4ff;
+      color: #333;
+    }
+    h2 {
+      text-align: center;
+      color: #001f4d;
+      margin: 20px 0;
+      font-size: 26px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    th, td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid #e3e6f0;
+      font-size: 14px;
+    }
+    th {
+      background: linear-gradient(135deg, #f7971e, #ffd200);
+      color: #222;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 14px 18px;
+      border-bottom: 2px solid #e68a00;
+      box-shadow: inset 0 -2px 0 rgba(255,255,255,0.3);
+    }
+    tbody tr:nth-child(odd) {
+      background-color: #f9fbff;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #eef3fb;
+    }
+    tbody tr:hover {
+      background-color: #dbe7ff;
+      transition: background 0.3s;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    .error-box {
+      text-align: center;
+      padding: 15px;
+      background: #ffe6e6;
+      border: 1px solid #ff9999;
+      border-radius: 10px;
+      color: #cc0000;
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      font-size: 13px;
+    }
+    .pagination button {
+      padding: 5px 10px;
+      margin: 0 4px;
+      border: none;
+      border-radius: 6px;
+      background: #001f4d;
+      color: #fff;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .pagination button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .modify-btn {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 6px;
+      background: #ff9800;
+      color: #fff;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .form-box {
+      margin-top: 20px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .form-box h3 {
+      margin-bottom: 10px;
+      color: #001f4d;
+      font-size: 20px;
+    }
+    .form-box p {
+      margin: 0 0 15px 0;
+      font-size: 14px;
+      color: #555;
+    }
+    .form-box label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .form-box input, 
+    .form-box select {
+      width: 100%;
+      padding: 9px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      background: #fafafa;
+    }
+    .form-box button {
+      margin-top: 15px;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .update-btn {
+      background: #28a745;
+      color: #fff;
+    }
+    .delete-btn {
+      background: #dc3545;
+      color: #fff;
+      margin-left: 10px;
+    }
+    .back-btn {
+      background: #001f4d;
+      color: #fff;
+      margin-left: 10px;
+    }
+    .search-box {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .search-box input {
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 250px;
+      font-size: 14px;
+    }
+    .search-box button {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: none;
+      background: #001f4d;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
   <header id="header"></header>
 
   <h2>👤 User Profile Modify </h2>
   <div class="container">
+    <div class="search-box">
+      <input type="text" id="searchUsername" placeholder="Enter username to search">
+      <button onclick="searchStudent()">🔍 Search Student</button>
+    </div>
+
     <div id="reportArea">⏳ Loading user profile...</div>
     <div id="formArea"></div>
   </div>
@@ -172,6 +199,7 @@
   <script>
     const reportArea = document.getElementById("reportArea");
     const formArea = document.getElementById("formArea");
+    const searchInput = document.getElementById("searchUsername");
     const userData = JSON.parse(localStorage.getItem("userData"));
     const username = userData?.username?.trim() || "";
 
@@ -278,44 +306,39 @@
     }
 
     function updateRecord(username) {
-  // ✅ Prepare updated data including action
-  const updatedData = {
-    action: "updatestudent",
-    username: username,
-    fullName: document.getElementById("fullName").value.trim(),
-    mobile: document.getElementById("mobile").value.trim(),
-    city: document.getElementById("city").value.trim(),
-    password: document.getElementById("password").value.trim(),
-    paymentStatus: document.getElementById("paymentStatus").value.trim(),
-  };
+      const updatedData = {
+        action: "updatestudent",
+        username: username,
+        fullName: document.getElementById("fullName").value.trim(),
+        mobile: document.getElementById("mobile").value.trim(),
+        city: document.getElementById("city").value.trim(),
+        password: document.getElementById("password").value.trim(),
+        paymentStatus: document.getElementById("paymentStatus").value.trim(),
+      };
 
-  // ✅ Send POST request to backend
-  fetch(BASE_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(updatedData)
-  })
-  .then(async res => {
-    // ✅ Check if response is JSON
-    const text = await res.text();
-    try {
-      return JSON.parse(text);
-    } catch (e) {
-      throw new Error("Invalid JSON response from server: " + text);
+      fetch(BASE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedData)
+      })
+      .then(async res => {
+        const text = await res.text();
+        try {
+          return JSON.parse(text);
+        } catch (e) {
+          throw new Error("Invalid JSON response from server: " + text);
+        }
+      })
+      .then(data => {
+        alert(data.message || "Record updated successfully!");
+        loadUserProfile();
+        formArea.innerHTML = "";
+      })
+      .catch(err => {
+        console.error("Update record error:", err);
+        alert("Error updating record. Check console for details.");
+      });
     }
-  })
-  .then(data => {
-    // ✅ Display message from backend
-    alert(data.message || "Record updated successfully!");
-    loadUserProfile();
-    formArea.innerHTML = "";
-  })
-  .catch(err => {
-    // ✅ Detailed error logging
-    console.error("Update record error:", err);
-    alert("Error updating record. Check console for details.");
-  });
-}
 
     function deleteRecord(username) {
       if (!confirm("Are you sure you want to delete this record?")) return;
@@ -347,7 +370,6 @@
             return;
           }
 
-          // Admin check: only if backend returns multiple users, assume admin
           if (!data.adminOnly) {
             reportArea.innerHTML = `<div class="error-box">⚠ This feature is only available for Admin users.</div>`;
             formArea.innerHTML = "";
@@ -362,6 +384,22 @@
           console.error("Error:", err);
           reportArea.innerHTML = `<div class="error-box">⚠ Error loading profile. Please try again later.</div>`;
         });
+    }
+
+    function searchStudent() {
+      const searchUsername = searchInput.value.trim();
+      if (!searchUsername) {
+        alert("Please enter a username to search.");
+        return;
+      }
+
+      const user = allUsers.find(u => u.username.toLowerCase() === searchUsername.toLowerCase());
+      if (!user) {
+        alert("User not found!");
+        return;
+      }
+
+      modifyRecord(user);
     }
 
     loadUserProfile();
