@@ -15,7 +15,7 @@
   h2 {
     text-align: center;
     color: #001f4d;
-    margin: 20px 0;
+    margin: 20px 0 10px 0;
     font-size: 26px;
     font-weight: bold;
   }
@@ -34,30 +34,29 @@
     overflow: hidden;
   }
   th, td {
-    padding: 10px 14px; /* kam spacing */
+    padding: 10px 14px;
     text-align: left;
     border-bottom: 1px solid #e3e6f0;
     font-size: 14px;
   }
-th {
-  background: linear-gradient(135deg, #f7971e, #ffd200);
-  color: #222;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 14px 18px;
-  border-bottom: 2px solid #e68a00;
-  box-shadow: inset 0 -2px 0 rgba(255,255,255,0.3);
-}
-
+  th {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+    color: #222;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 14px 18px;
+    border-bottom: 2px solid #e68a00;
+    box-shadow: inset 0 -2px 0 rgba(255,255,255,0.3);
+  }
   tbody tr:nth-child(odd) {
-    background-color: #f9fbff; /* light blue */
+    background-color: #f9fbff;
   }
   tbody tr:nth-child(even) {
-    background-color: #eef3fb; /* thoda dark shade */
+    background-color: #eef3fb;
   }
   tbody tr:hover {
-    background-color: #dbe7ff; /* hover effect */
+    background-color: #dbe7ff;
     transition: background 0.3s;
   }
   tr:last-child td {
@@ -94,13 +93,34 @@ th {
     background: #ccc;
     cursor: not-allowed;
   }
+  .delete-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 6px;
+    background: #dc3545;
+    color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .back-btn {
+    display: inline-block;
+    margin: 10px auto;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    background: #001f4d;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+  }
 </style>
 </head>
 <body>
   <header id="header"></header>
 
-  <h2>👤 User Profile Report</h2>
+  <h2>👤 User Profile Report </h2>
   <div class="container">
+    <button class="back-btn" onclick="goBack()">⬅ Go Back</button>
     <div id="reportArea">⏳ Loading user profile...</div>
   </div>
 
@@ -114,7 +134,9 @@ th {
     const recordsPerPage = 10;
     let allUsers = [];
 
-    function goBack(){location.href="admin-report.html";}
+    function goBack() {
+      location.href = "admin-report.html";
+    }
 
     function createUserTable(users, page = 1) {
       if (!users || users.length === 0) {
@@ -136,6 +158,7 @@ th {
               <th>Username</th>
               <th>Password</th>
               <th>Payment Status</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -151,13 +174,13 @@ th {
             <td>${u.username || "-"}</td>
             <td>${u.password || "-"}</td>
             <td>${u.paymentStatus || "-"}</td>
+            <td><button class="delete-btn" onclick='deleteRecord("${u.username}")'>Delete</button></td>
           </tr>
         `;
       });
 
       tableHTML += `</tbody></table>`;
 
-      // Pagination controls
       const totalPages = Math.ceil(users.length / recordsPerPage);
       tableHTML += `
         <div class="pagination">
@@ -177,6 +200,21 @@ th {
       reportArea.innerHTML = createUserTable(allUsers, currentPage);
     }
 
+    function deleteRecord(username) {
+      if (!confirm("Are you sure you want to delete this record?")) return;
+
+      fetch(`${BASE_URL}?action=deleteStudent&username=${encodeURIComponent(username)}`)
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message || "Record deleted successfully!");
+        loadUserProfile();
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Error deleting record.");
+      });
+    }
+
     function loadUserProfile() {
       if (!username) {
         reportArea.innerHTML = `<div class="error-box">❌ User not found. Please login again.</div>`;
@@ -191,19 +229,13 @@ th {
             return;
           }
 
-          if (data.adminOnly === true) {
-            allUsers = data.users;
-            reportArea.innerHTML = createUserTable(allUsers, currentPage);
+          // Admin check: only if backend returns multiple users, assume admin
+          if (!data.adminOnly) {
+            reportArea.innerHTML = `<div class="error-box">⚠ This feature is only available for Admin users.</div>`;
             return;
           }
 
-          const u = data.users[0];
-          if (!u) {
-            reportArea.innerHTML = `<div class="error-box">❌ User data not found.</div>`;
-            return;
-          }
-
-          allUsers = [u];
+          allUsers = data.users || [];
           reportArea.innerHTML = createUserTable(allUsers, currentPage);
         })
         .catch(err => {
