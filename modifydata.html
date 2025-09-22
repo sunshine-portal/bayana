@@ -103,8 +103,9 @@
   <header id="header"></header>
 
   <h2>👤 User Profile Modify </h2>
-  <div class="container">
-    <div class="search-box">
+  <div class="container" id="containerArea">
+    <!-- Search box will be displayed only for Admin -->
+    <div id="searchContainer" style="display:none" class="search-box">
       <input type="text" id="searchUsername" placeholder="Enter username to search">
       <button onclick="searchStudent()">🔍 Search Student</button>
     </div>
@@ -114,15 +115,14 @@
 
   <script src="protect.js"></script>
   <script>
+    const containerArea = document.getElementById("containerArea");
     const formArea = document.getElementById("formArea");
+    const searchContainer = document.getElementById("searchContainer");
     const searchInput = document.getElementById("searchUsername");
     const userData = JSON.parse(localStorage.getItem("userData"));
     const username = userData?.username?.trim() || "";
 
     let allUsers = [];
-    function goBack() {
-      location.href = "admin-report.html";
-    }
 
     function modifyRecord(user) {
       formArea.innerHTML = `
@@ -205,6 +205,8 @@
             return;
           }
 
+          // ✅ Admin users: show search box
+          searchContainer.style.display = "flex";
           allUsers = data.users || [];
           formArea.innerHTML = "";
         })
