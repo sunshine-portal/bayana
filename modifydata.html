@@ -278,20 +278,22 @@
     }
 
     function updateRecord(username) {
-      const updatedData = {
-        username: username,
-        fullName: document.getElementById("fullName").value.trim(),
-        mobile: document.getElementById("mobile").value.trim(),
-        city: document.getElementById("city").value.trim(),
-        password: document.getElementById("password").value.trim(),
-        paymentStatus: document.getElementById("paymentStatus").value.trim(),
-      };
+     const updatedData = {
+  action: "updatestudent",   // ✅ add this
+  username: username,
+  fullName: document.getElementById("fullName").value.trim(),
+  mobile: document.getElementById("mobile").value.trim(),
+  city: document.getElementById("city").value.trim(),
+  password: document.getElementById("password").value.trim(),
+  paymentStatus: document.getElementById("paymentStatus").value.trim(),
+};
 
-      fetch(`${BASE_URL}?action=updateStudent`, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(updatedData)
-      })
+fetch(BASE_URL, {   // query string ?action=updateStudent remove karo
+  method: "POST",
+  headers: {"Content-Type": "application/json"},
+  body: JSON.stringify(updatedData)
+})
+
       .then(res => res.json())
       .then(data => {
         alert(data.message || "Record updated successfully!");
