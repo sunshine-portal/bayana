@@ -93,34 +93,93 @@
     background: #ccc;
     cursor: not-allowed;
   }
-  .delete-btn {
+  .modify-btn {
     padding: 5px 10px;
     border: none;
     border-radius: 6px;
-    background: #dc3545;
+    background: #ff9800;
     color: #fff;
     cursor: pointer;
     font-size: 13px;
+  }
+  .form-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .form-box h3 {
+    margin-bottom: 10px;
+    color: #001f4d;
+    font-size: 20px;
+  }
+  .form-box p {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    color: #555;
+  }
+  .form-box label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .form-box input, 
+  .form-box select {
+    width: 100%;
+    padding: 9px;
+    margin-top: 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background: #fafafa;
+  }
+  .form-box button {
+    margin-top: 15px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .update-btn {
+    background: #28a745;
+    color: #fff;
+  }
+  .delete-btn {
+    background: #dc3545;
+    color: #fff;
+    margin-left: 10px;
+  }
+  .back-btn {
+    background: #001f4d;
+    color: #fff;
+    margin-left: 10px;
   }
 </style>
 </head>
 <body>
   <header id="header"></header>
 
-  <h2>👤 User Profile Report </h2>
+  <h2>👤 User Profile Modify </h2>
   <div class="container">
     <div id="reportArea">⏳ Loading user profile...</div>
+    <div id="formArea"></div>
   </div>
 
   <script src="protect.js"></script>
   <script>
     const reportArea = document.getElementById("reportArea");
+    const formArea = document.getElementById("formArea");
     const userData = JSON.parse(localStorage.getItem("userData"));
     const username = userData?.username?.trim() || "";
 
     let currentPage = 1;
     const recordsPerPage = 10;
     let allUsers = [];
+
+    function goBack(){location.href="admin-report.html";}
 
     function createUserTable(users, page = 1) {
       if (!users || users.length === 0) {
@@ -142,7 +201,7 @@
               <th>Username</th>
               <th>Password</th>
               <th>Payment Status</th>
-              <th>Delete</th>
+              <th>Modify</th>
             </tr>
           </thead>
           <tbody>
@@ -158,7 +217,7 @@
             <td>${u.username || "-"}</td>
             <td>${u.password || "-"}</td>
             <td>${u.paymentStatus || "-"}</td>
-            <td><button class="delete-btn" onclick='deleteRecord("${u.username}")'>Delete</button></td>
+            <td><button class="modify-btn" onclick='modifyRecord(${JSON.stringify(u)})'>Modify</button></td>
           </tr>
         `;
       });
@@ -184,6 +243,80 @@
       reportArea.innerHTML = createUserTable(allUsers, currentPage);
     }
 
+    function modifyRecord(user) {
+      reportArea.innerHTML = "";
+      formArea.innerHTML = `
+        <div class="form-box">
+          <h3>📝 Modify Record</h3>
+          <p>Update details for <strong style="color:#001f4d">${user.username}</strong></p>
+          
+          <label>Full Name</label>
+          <input type="text" id="fullName" value="${user.fullName || ""}" placeholder="Enter full name">
+
+          <label>Mobile</label>
+          <input type="text" id="mobile" value="${user.mobile || ""}" placeholder="Enter mobile number">
+
+          <label>City</label>
+          <input type="text" id="city" value="${user.city || ""}" placeholder="Enter city">
+
+          <label>Password</label>
+          <input type="text" id="password" value="${user.password || ""}" placeholder="Enter password">
+
+          <label>Payment Status</label>
+          <select id="paymentStatus">
+            <option value="Confirm" ${user.paymentStatus === "Confirm" ? "selected" : ""}>Confirm</option>
+            <option value="Not Confirm" ${user.paymentStatus === "Not Confirm" ? "selected" : ""}>Not Confirm</option>
+          </select>
+
+          <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="update-btn" onclick="updateRecord('${user.username}')">✅ Update Record</button>
+            <button class="delete-btn" onclick="deleteRecord('${user.username}')">🗑 Delete Record</button>
+            <button class="back-btn" onclick="loadUserProfile()">⬅ Back to List</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function updateRecord(username) {
+  // ✅ Prepare updated data including action
+  const updatedData = {
+    action: "updatestudent",
+    username: username,
+    fullName: document.getElementById("fullName").value.trim(),
+    mobile: document.getElementById("mobile").value.trim(),
+    city: document.getElementById("city").value.trim(),
+    password: document.getElementById("password").value.trim(),
+    paymentStatus: document.getElementById("paymentStatus").value.trim(),
+  };
+
+  // ✅ Send POST request to backend
+  fetch(BASE_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updatedData)
+  })
+  .then(async res => {
+    // ✅ Check if response is JSON
+    const text = await res.text();
+    try {
+      return JSON.parse(text);
+    } catch (e) {
+      throw new Error("Invalid JSON response from server: " + text);
+    }
+  })
+  .then(data => {
+    // ✅ Display message from backend
+    alert(data.message || "Record updated successfully!");
+    loadUserProfile();
+    formArea.innerHTML = "";
+  })
+  .catch(err => {
+    // ✅ Detailed error logging
+    console.error("Update record error:", err);
+    alert("Error updating record. Check console for details.");
+  });
+}
+
     function deleteRecord(username) {
       if (!confirm("Are you sure you want to delete this record?")) return;
 
@@ -192,6 +325,7 @@
       .then(data => {
         alert(data.message || "Record deleted successfully!");
         loadUserProfile();
+        formArea.innerHTML = "";
       })
       .catch(err => {
         console.error(err);
@@ -216,11 +350,13 @@
           // Admin check: only if backend returns multiple users, assume admin
           if (!data.adminOnly) {
             reportArea.innerHTML = `<div class="error-box">⚠ This feature is only available for Admin users.</div>`;
+            formArea.innerHTML = "";
             return;
           }
 
           allUsers = data.users || [];
           reportArea.innerHTML = createUserTable(allUsers, currentPage);
+          formArea.innerHTML = "";
         })
         .catch(err => {
           console.error("Error:", err);
