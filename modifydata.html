@@ -84,6 +84,12 @@
     .update-btn {
       background: #28a745;
       color: #fff;
+      transition: transform 0.1s ease;
+    }
+    /* ✅ Button push effect */
+    .update-btn:active {
+      transform: scale(0.95);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
     .search-box {
       display: flex;
@@ -106,6 +112,14 @@
       color: #fff;
       cursor: pointer;
       font-size: 14px;
+    }
+    /* ✅ Loading message */
+    .loading-message {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #001f4d;
     }
   </style>
 </head>
@@ -175,6 +189,13 @@
     }
 
     function updateRecord(username) {
+      const updateBtn = document.querySelector(".update-btn");
+      updateBtn.disabled = true; // disable button while processing
+      updateBtn.innerText = "⏳ Updating...";
+
+      // ✅ Show processing message
+      formArea.insertAdjacentHTML("beforeend", `<div id="loadingMsg" class="loading-message">Processing... Please wait</div>`);
+
       const updatedData = {
         action: "modifystudentdata",
         loginUsername: loginUsername,   // ✅ send logged-in username for admin check
@@ -198,6 +219,15 @@
       .catch(err => {
         console.error("Update record error:", err);
         alert("Error updating record. Check console for details.");
+      })
+      .finally(() => {
+        // ✅ Reset button & remove processing message
+        if (updateBtn) {
+          updateBtn.disabled = false;
+          updateBtn.innerText = "✅ Update Record";
+        }
+        const loadingMsg = document.getElementById("loadingMsg");
+        if (loadingMsg) loadingMsg.remove();
       });
     }
 
