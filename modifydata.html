@@ -130,19 +130,14 @@
 
   <script src="protect.js"></script>
   <script>
-    const containerArea = document.getElementById("containerArea");
     const formArea = document.getElementById("formArea");
     const searchContainer = document.getElementById("searchContainer");
     const searchInput = document.getElementById("searchUsername");
     const adminNotice = document.getElementById("adminNotice");
     const userData = JSON.parse(localStorage.getItem("userData"));
-    const username = userData?.username?.trim() || "";
+    const loginUsername = userData?.username?.trim() || "";
 
     let allUsers = [];
-
-    function goBack() {
-      location.href = "admin-report.html";
-    }
 
     function modifyRecord(user) {
       formArea.innerHTML = `
@@ -177,7 +172,8 @@
 
     function updateRecord(username) {
       const updatedData = {
-        action: "updatestudent",
+        action: "modifystudentdata",
+        loginUsername: loginUsername,   // ✅ send logged-in username for admin check
         username: username,
         fullName: document.getElementById("fullName").value.trim(),
         mobile: document.getElementById("mobile").value.trim(),
@@ -188,16 +184,11 @@
 
       fetch(BASE_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedData)
+        body: new URLSearchParams(updatedData)  // ✅ send as form-data for Apps Script
       })
-      .then(async res => {
-        const text = await res.text();
-        try { return JSON.parse(text); } 
-        catch (e) { throw new Error("Invalid JSON response from server: " + text); }
-      })
-      .then(data => {
-        alert(data.message || "Record updated successfully!");
+      .then(res => res.text())
+      .then(msg => {
+        alert(msg);
         formArea.innerHTML = "";
       })
       .catch(err => {
@@ -208,16 +199,14 @@
 
     // ✅ Load profile and check admin from backend
     function loadUserProfile() {
-      if (!username) {
+      if (!loginUsername) {
         formArea.innerHTML = `<div class="error-box">❌ User not found. Please login again.</div>`;
         return;
       }
 
-      // Send username to backend for validation
       fetch(BASE_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "checkadmin", username: username })
+        body: new URLSearchParams({ action: "checkadmin", username: loginUsername })
       })
       .then(res => res.json())
       .then(data => {
@@ -227,13 +216,11 @@
         }
 
         if (data.isAdmin) {
-          // ✅ Admin user
           searchContainer.style.display = "flex";
           adminNotice.style.display = "block";
           allUsers = data.users || [];
           formArea.innerHTML = "";
         } else {
-          // ❌ Not Admin
           formArea.innerHTML = `<div class="error-box">⚠ This feature is only available for Admin users.</div>`;
         }
       })
