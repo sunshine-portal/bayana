@@ -206,35 +206,41 @@
       });
     }
 
+    // ✅ Load profile and check admin from backend
     function loadUserProfile() {
       if (!username) {
         formArea.innerHTML = `<div class="error-box">❌ User not found. Please login again.</div>`;
         return;
       }
 
-      fetch(`${BASE_URL}?action=modifystudentdata&username=${encodeURIComponent(username)}`)
-        .then(res => res.json())
-        .then(data => {
-          if (!data.success) {
-            formArea.innerHTML = `<div class="error-box">⚠ ${data.message || "Error fetching profile."}</div>`;
-            return;
-          }
+      // Send username to backend for validation
+      fetch(BASE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "checkadmin", username: username })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (!data.success) {
+          formArea.innerHTML = `<div class="error-box">⚠ ${data.message || "Error validating user."}</div>`;
+          return;
+        }
 
-          if (!data.adminOnly) {
-            formArea.innerHTML = `<div class="error-box">⚠ This feature is only available for Admin users.</div>`;
-            return;
-          }
-
-          // ✅ Admin users: show search box and admin notice
+        if (data.isAdmin) {
+          // ✅ Admin user
           searchContainer.style.display = "flex";
           adminNotice.style.display = "block";
           allUsers = data.users || [];
           formArea.innerHTML = "";
-        })
-        .catch(err => {
-          console.error("Error:", err);
-          formArea.innerHTML = `<div class="error-box">⚠ Error loading profile. Please try again later.</div>`;
-        });
+        } else {
+          // ❌ Not Admin
+          formArea.innerHTML = `<div class="error-box">⚠ This feature is only available for Admin users.</div>`;
+        }
+      })
+      .catch(err => {
+        console.error("Error:", err);
+        formArea.innerHTML = `<div class="error-box">⚠ Error loading profile. Please try again later.</div>`;
+      });
     }
 
     function searchStudent() {
