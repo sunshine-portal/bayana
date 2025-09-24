@@ -111,13 +111,13 @@
         tableHTML += `
           <tr>
             <td>${index + 1}</td>
-            <td>${u.testDate || "-"}</td>
-            <td>${u.learnerName || "-"}</td>
-            <td>${u.maxMarks || "-"}</td>
-            <td>${u.obtainedMarks || "-"}</td>
-            <td>${u.percentage || "-"}</td>
-            <td>${u.rank || "-"}</td>
-            <td>${u.testCode || "-"}</td>
+            <td>${u.testDate ?? "-"}</td>
+            <td>${u.learnerName ?? "-"}</td>
+            <td>${u.maxMarks ?? "-"}</td>
+            <td>${u.obtainedMarks ?? "-"}</td>
+            <td>${u.percentage ?? "-"}</td>
+            <td>${u.rank ?? "-"}</td>
+            <td>${u.testCode ?? "-"}</td>
           </tr>
         `;
       });
