@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RS-CIT Student Profile Report</title>
+  <title>RS-CIT Student Test Result Report</title>
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
@@ -74,7 +74,7 @@
 <body>
   <header id="header"></header>
 
-  <h2>👤 इंस्टिट्यूट के  सभी Learner's  की RS-CIT टेस्ट रिजल्ट की रिपोर्ट - 2025</h2>
+  <h2>👤 इंस्टिट्यूट के सभी Learner's RS-CIT टेस्ट रिजल्ट रिपोर्ट - 2025</h2>
   <div class="container">
     <div id="reportArea">⏳ Loading student Test Result...</div>
   </div>
@@ -85,9 +85,9 @@
     const userData = JSON.parse(localStorage.getItem("userData"));
     const username = userData?.username?.trim() || "";
 
-    function createUserTable(users) {
-      if (!users || users.length === 0) {
-        return `<div class="error-box">⚠ No student data found.</div>`;
+    function createTestResultTable(results) {
+      if (!results || results.length === 0) {
+        return `<div class="error-box">⚠ No test result data found.</div>`;
       }
 
       let tableHTML = `
@@ -95,27 +95,29 @@
           <thead>
             <tr>
               <th>S.No</th>
-              <th>Full Name</th>
-              <th>Mobile</th>
-              <th>City</th>
-              <th>Username</th>
-              <th>Password</th>
-              <th>Payment Status</th>
+              <th>Test Date</th>
+              <th>Learner's Name</th>
+              <th>Max Marks</th>
+              <th>Obtained Marks</th>
+              <th>Result (Pass/Fail)</th>
+              <th>Test Time (Minutes)</th>
+              <th>Test Code</th>
             </tr>
           </thead>
           <tbody>
       `;
 
-      users.forEach((u, index) => {
+      results.forEach((r, index) => {
         tableHTML += `
           <tr>
             <td>${index + 1}</td>
-            <td>${u.fullName || "-"}</td>
-            <td>${u.mobile || "-"}</td>
-            <td>${u.city || "-"}</td>
-            <td>${u.username || "-"}</td>
-            <td>${u.password || "-"}</td>
-            <td>${u.paymentStatus || "-"}</td>
+            <td>${r.testDate || "-"}</td>
+            <td>${r.learnerName || "-"}</td>
+            <td>${r.maxMarks || "-"}</td>
+            <td>${r.obtainedMarks || "-"}</td>
+            <td>${r.result || "-"}</td>
+            <td>${r.testTimeMinutes || "-"}</td>
+            <td>${r.testCode || "-"}</td>
           </tr>
         `;
       });
@@ -124,17 +126,17 @@
       return tableHTML;
     }
 
-    function loadStudentProfile() {
+    function loadStudentResults() {
       if (!username) {
         reportArea.innerHTML = `<div class="error-box">❌ User not found. Please login again.</div>`;
         return;
       }
 
-      fetch(`${BASE_URL}?action=displaystudentdata&username=${encodeURIComponent(username)}`)
+      fetch(`${BASE_URL}?action=resultdisplay&username=${encodeURIComponent(username)}`)
         .then(res => res.json())
         .then(data => {
           if (!data.success) {
-            reportArea.innerHTML = `<div class="error-box">⚠ ${data.message || "Error fetching profile."}</div>`;
+            reportArea.innerHTML = `<div class="error-box">⚠ ${data.message || "Error fetching test results."}</div>`;
             return;
           }
 
@@ -143,16 +145,16 @@
             return;
           }
 
-          const students = data.users || [];
-          reportArea.innerHTML = createUserTable(students);
+          const results = data.users || [];
+          reportArea.innerHTML = createTestResultTable(results);
         })
         .catch(err => {
           console.error("Error:", err);
-          reportArea.innerHTML = `<div class="error-box">⚠ Error loading student profiles. Please try again later.</div>`;
+          reportArea.innerHTML = `<div class="error-box">⚠ Error loading test results. Please try again later.</div>`;
         });
     }
 
-    loadStudentProfile();
+    loadStudentResults();
     function goBack() { location.href = "admin-report.html"; }
   </script>
 
