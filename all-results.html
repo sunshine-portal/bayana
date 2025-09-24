@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RS-CIT User Profile Report</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f4ff;
+      color: #333;
+    }
+    h2 {
+      text-align: center;
+      color: #001f4d;
+      margin: 20px 0;
+      font-size: 26px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 10px;
+    }
+    .error-box {
+      text-align: center;
+      padding: 15px;
+      background: #ffe6e6;
+      border: 1px solid #ff9999;
+      border-radius: 10px;
+      color: #cc0000;
+      font-weight: 600;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+    .admin-notice {
+      text-align: center;
+      margin-bottom: 15px;
+      font-weight: 600;
+      color: #155724;
+      background: #d4edda;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #c3e6cb;
+    }
+    .form-box {
+      margin-top: 20px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .form-box h3 {
+      margin-bottom: 10px;
+      color: #001f4d;
+      font-size: 20px;
+    }
+    .form-box label {
+      display: block;
+      margin-top: 12px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .form-box input, 
+    .form-box select {
+      width: 100%;
+      padding: 9px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      background: #fafafa;
+    }
+    .form-box button {
+      margin-top: 15px;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .update-btn {
+      background: #28a745;
+      color: #fff;
+      transition: transform 0.1s ease;
+    }
+    /* ✅ Button push effect */
+    .update-btn:active {
+      transform: scale(0.95);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .search-box {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .search-box input {
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 250px;
+      font-size: 14px;
+    }
+    .search-box button {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: none;
+      background: #001f4d;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    /* ✅ Loading message */
+    .loading-message {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #001f4d;
+    }
+  </style>
+</head>
+<body>
+  <header id="header"></header>
+
+  <h2>👤 User Profile Modify </h2>
+  <div class="container" id="containerArea">
+    <!-- Admin notice -->
+    <div id="adminNotice" class="admin-notice" style="display:none">
+      ✅ You are logged in as Admin. Search and modify student records.
+    </div>
+
+    <!-- Search box will be displayed only for Admin -->
+    <div id="searchContainer" style="display:none" class="search-box">
+      <input type="text" id="searchUsername" placeholder="Enter username to search">
+      <button onclick="searchStudent()">🔍 Search Student</button>
+    </div>
+
+    <div id="formArea"></div>
+  </div>
+
+  <script src="protect.js"></script>
+  <script>
+    const formArea = document.getElementById("formArea");
+    const searchContainer = document.getElementById("searchContainer");
+    const searchInput = document.getElementById("searchUsername");
+    const adminNotice = document.getElementById("adminNotice");
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    const loginUsername = userData?.username?.trim() || "";
+
+    let allUsers = [];
+
+    function goBack() {
+      location.href = "admin-report.html";
+    }
+
+    function modifyRecord(user) {
+      formArea.innerHTML = `
+        <div class="form-box">
+          <h3>📝 Modify Record</h3>
+          <p>Update details for <strong style="color:#001f4d">${user.username}</strong></p>
+          
+          <label>Full Name</label>
+          <input type="text" id="fullName" value="${user.fullName || ""}" placeholder="Enter full name">
+
+          <label>Mobile</label>
+          <input type="text" id="mobile" value="${user.mobile || ""}" placeholder="Enter mobile number">
+
+          <label>City</label>
+          <input type="text" id="city" value="${user.city || ""}" placeholder="Enter city">
+
+          <label>Password</label>
+          <input type="text" id="password" value="${user.password || ""}" placeholder="Enter password">
+
+          <label>Payment Status</label>
+          <select id="paymentStatus">
+            <option value="Confirm" ${user.paymentStatus === "Confirm" ? "selected" : ""}>Confirm</option>
+            <option value="Not Confirm" ${user.paymentStatus === "Not Confirm" ? "selected" : ""}>Not Confirm</option>
+          </select>
+
+          <div style="margin-top:18px;">
+            <button class="update-btn" onclick="updateRecord('${user.username}')">✅ Update Record</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function updateRecord(username) {
+      const updateBtn = document.querySelector(".update-btn");
+      updateBtn.disabled = true; // disable button while processing
+      updateBtn.innerText = "⏳ Updating...";
+
+      // ✅ Show processing message
+      formArea.insertAdjacentHTML("beforeend", `<div id="loadingMsg" class="loading-message">Processing... Please wait</div>`);
+
+      const updatedData = {
+        action: "modifystudentdata",
+        loginUsername: loginUsername,   // ✅ send logged-in username for admin check
+        username: username,
+        fullName: document.getElementById("fullName").value.trim(),
+        mobile: document.getElementById("mobile").value.trim(),
+        city: document.getElementById("city").value.trim(),
+        password: document.getElementById("password").value.trim(),
+        paymentStatus: document.getElementById("paymentStatus").value.trim(),
+      };
+
+      fetch(BASE_URL, {
+        method: "POST",
+        body: new URLSearchParams(updatedData)  // ✅ send as form-data for Apps Script
+      })
+      .then(res => res.text())
+      .then(msg => {
+        alert(msg);
+        formArea.innerHTML = "";
+      })
+      .catch(err => {
+        console.error("Update record error:", err);
+        alert("Error updating record. Check console for details.");
+      })
+      .finally(() => {
+        // ✅ Reset button & remove processing message
+        if (updateBtn) {
+          updateBtn.disabled = false;
+          updateBtn.innerText = "✅ Update Record";
+        }
+        const loadingMsg = document.getElementById("loadingMsg");
+        if (loadingMsg) loadingMsg.remove();
+      });
+    }
+
+    // ✅ Load profile and check admin from backend
+    function loadUserProfile() {
+      if (!loginUsername) {
+        formArea.innerHTML = `<div class="error-box">❌ User not found. Please login again.</div>`;
+        return;
+      }
+
+      fetch(BASE_URL, {
+        method: "POST",
+        body: new URLSearchParams({ action: "checkadmin", username: loginUsername })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (!data.success) {
+          formArea.innerHTML = `<div class="error-box">⚠ ${data.message || "Error validating user."}</div>`;
+          return;
+        }
+
+        if (data.isAdmin) {
+          searchContainer.style.display = "flex";
+          adminNotice.style.display = "block";
+          allUsers = data.users || [];
+          formArea.innerHTML = "";
+        } else {
+          formArea.innerHTML = `<div class="error-box">⚠ This feature is only available for Admin users.</div>`;
+        }
+      })
+      .catch(err => {
+        console.error("Error:", err);
+        formArea.innerHTML = `<div class="error-box">⚠ Error loading profile. Please try again later.</div>`;
+      });
+    }
+
+    function searchStudent() {
+      const searchUsername = searchInput.value.trim();
+      if (!searchUsername) {
+        alert("Please enter a username to search.");
+        return;
+      }
+
+      const user = allUsers.find(u => u.username.toLowerCase() === searchUsername.toLowerCase());
+      if (!user) {
+        alert("User not found!");
+        return;
+      }
+
+      modifyRecord(user);
+    }
+
+    loadUserProfile();
+  </script>
+
+  <footer id="footer"></footer>
+  <script src="header-footer.js"></script>
+</body>
+</html>
